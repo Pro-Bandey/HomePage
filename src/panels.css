@@ -161,7 +161,7 @@ hr {
 }
 /* Info Popup */
 .info-bar {
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     background: #ffffff22;
