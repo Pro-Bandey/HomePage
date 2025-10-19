@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Toggle TB – Info</title>
+  <link rel="icon" href="icon.png" />
+  <link rel="stylesheet" href="info.css" />
+  <style>
+    /* =====================================================
+   Material You / Pixel-style mobile info page
+   Adaptive to system light/dark mode
+===================================================== */
+
+@media (max-width: 480px) {
+  :root {
+    --radius: 18px;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --transition: 0.3s ease;
+  }
+
+  /* ---------- Light Theme ---------- */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --primary: #1a73e8;
+      --surface: #ffffff;
+      --background: #f4f6fb;
+      --text-primary: #1f1f1f;
+      --text-secondary: #5f6368;
+      --card-bg: #ffffff;
+      --divider: #e0e0e0;
+      --link-bg: #1a73e8;
+      --link-hover: #155fc1;
+    }
+  }
+
+  /* ---------- Dark Theme ---------- */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #8ab4f8;
+      --surface: #1c1c1e;
+      --background: #121212;
+      --text-primary: #e8eaed;
+      --text-secondary: #a1a3a7;
+      --card-bg: #1e1f22;
+      --divider: #2c2c2c;
+      --link-bg: #8ab4f8;
+      --link-hover: #5b9df2;
+    }
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Google Sans", "Poppins", sans-serif;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 25px 20px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 15px;
+  }
+
+  .app-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .version {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Details / Changelog ---------- */
+  details {
+    background: var(--surface);
+    border-radius: var(--radius);
+    margin-top: 20px;
+    padding: 12px 14px;
+    border: 1px solid var(--divider);
+  }
+
+  summary {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 20px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] summary::after {
+    content: "▲";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  details summary::after {
+    content: "▼";
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  details ul {
+    margin-top: 8px;
+    padding-left: 15px;
+  }
+
+  details ul li {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  /* ---------- Assets Section ---------- */
+  .assets {
+    margin-top: 22px;
+  }
+
+  .assets h2 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .assets ul {
+    list-style: none;
+  }
+
+  .assets ul li {
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .assets ul li strong {
+    color: var(--text-primary);
+  }
+
+  /* ---------- Social Links ---------- */
+  .links {
+    margin-top: 22px;
+  }
+
+  .links h2 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .social-links a {
+    flex: 1 1 45%;
+    text-align: center;
+    text-decoration: none;
+    background: var(--link-bg);
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    transition: background var(--transition);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .social-links a:hover {
+    background: var(--link-hover);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  /* ---------- Animation ---------- */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ---------- Desktop Notice ---------- */
+@media (min-width: 481px) {
+  body::before {
+    content: "⚠️ This not compatble Destop width Page is optimized for mobile devices only.";
+    color: #666;
+    font-family: sans-serif;
+    display: block;
+    text-align: center;
+    margin-top: 40vh;
+  }
+
+  .info-card {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="info-card">
+    <header>
+      <img src="/main/src/assets/mri.png" alt="App Icon" class="app-icon" />
+      <div class="app-info">
+        <h1>Multi Toggle TB</h1>
+        <p class="version">Version 1.0.0</p>
+      </div>
+    </header>
+
+    <details class="changelog" open>
+      <summary>🧾 Change Log</summary>
+      <ul>
+        <li>Material You Dynamic Theme support</li>
+        <li>Adaptive color for light & dark mode</li>
+        <li>Optimized mobile layout & animations</li>
+        <li>Improved performance for small screens</li>
+      </ul>
+    </details>
+
+    <section class="assets">
+      <h2>📦 Assets & Credits</h2>
+      <ul>
+        <li><strong>Developer:</strong> M Ramzan Ch</li>
+        <li><strong>Organization:</strong> MicroResearch Corporation®</li>
+        <li><strong>Distributor:</strong> MegaMind-Solutions</li>
+        <li><strong>Asset Creator:</strong> MindRise Designs©</li>
+        <li><strong>License:</strong> GPL Boost</li>
+      </ul>
+    </section>
+
+    <section class="links">
+      <h2>🔗 Connect</h2>
+      <div class="social-links">
+        <a href="https://facebook.com/rm4814691" target="_blank">Facebook</a>
+        <a href="https://instagram.com/rm4814691" target="_blank">Instagram</a>
+        <a href="https://github.com/megmind-solution" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/mramzanch" target="_blank">LinkedIn</a>
+        <a href="mailto:rm4814691@gmail.com">Email</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 MicroResearch Corporation®. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
