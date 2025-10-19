@@ -1,0 +1,16 @@
+[
+  { "name": "Pakizle", "url": "https://pakizle.com", "fallback": "PKL" },
+  { "name": "Facebook", "url": "https://facebook.com", "fallback": "FB" },
+  { "name": "Instagram", "url": "https://instagram.com", "fallback": "Ins" },
+  { "name": "X Twitter", "url": "https://X.com", "fallback": "X" },
+  { "name": "Threads", "url": "https://threads.com", "fallback": "THd" },
+  { "name": "LinkedIn", "url": "https://linkedin.com", "fallback": "Lnk" },
+  { "name": "WhatsApp Web", "url": "https://web.whatsapp.com", "fallback": "WAW" },
+  { "name": "YouTube", "url": "https://youtube.com", "fallback": "YT" },
+  { "name": "TikTok", "url": "https://tiktok.com", "fallback": "Tik" },
+  { "name": "GitHub", "url": "https://gihub.com", "fallback": "Git" },
+  { "name": "GitLab", "url": "https://gitlab.com", "fallback": "GitL" },
+  { "name": "BitBucket", "url": "https://bitbucket.com", "fallback": "BBt" },
+  { "name": "Azure", "url": "https://dev.azure.com", "fallback": "Azr" },
+  { "name": "SourceForge", "url": "https://sourceforge.org", "fallback": "SFg" }
+]
