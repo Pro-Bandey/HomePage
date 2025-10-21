@@ -1,0 +1,60 @@
+{
+  "manifest_version": 3,
+  "name": "HomePage",
+  "version": "2025.10.15",
+  "description": "A homepage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
+  "author": "MicroResearch Corporation®",
+  "offline_enabled": true,
+  "chrome_url_overrides": {
+    "newtab": "./home/index.html",
+    "homepage": "./home/index.html"
+  },
+  "action": {
+    "default_popup": "./main/pop.html",
+    "browser_style": false,
+    "default_icon": {
+      "16": "./home/src/assets/icon16.png",
+      "48": "./home/src/assets/icon48.png",
+      "64": "./home/src/assets/icon64.png",
+      "128": "./home/src/assets/icon128.png",
+      "256": "./home/src/assets/icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "./main/worker.js"
+  },
+  "icons": {
+    "16": "./home/src/assets/icon16.png",
+    "48": "./home/src/assets/icon48.png",
+    "64": "./home/src/assets/icon64.png",
+    "128": "./home/src/assets/icon128.png",
+    "256": "./home/src/assets/icon.png"
+  },
+  "permissions": [
+    "cookies",
+    "tabs",
+    "notifications",
+    "alarms",
+    "storage",
+    "unlimitedStorage",
+    "declarativeNetRequest",
+    "contextMenus",
+    "clipboardWrite",
+    "clipboardRead",
+    "activeTab",
+    "scripting"
+  ],
+  "homepage_url": "https://github.com/MegaMind-Solution",
+  "host_permissions": [
+    "http://*/**",
+    "https://*/**",
+    "https://v6.exchangerate-api.com/*",
+    "https://www.chatgpt.com/*",
+    "https://www.gemini.google.com/*",
+    "https://www.google.com/s2/favicons/*"
+  ],
+"content_security_policy": {
+  "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: https://www.google.com https://*.gstatic.com https://icons.duckduckgo.com https://logo.clearbit.com; connect-src 'self' https://www.google.com https://*.gstatic.com https://icons.duckduckgo.com https://logo.clearbit.com https://v6.exchangerate-api.com;"
+},
+  "incognito": "split"
+}
