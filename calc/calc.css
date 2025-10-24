@@ -1,6 +1,6 @@
 @font-face {
     font-family: Digital-7;
-    src: url(assets/Fonts/digital-7.ttf);
+    src: url(/src/fonts/digital-7.ttf);
 }
 body {
     width: 380px;

@@ -1,3 +1,6 @@
+@import url(./links.css);
+@import url(./panels.css);
+
 /* Body */
 body {
     background: #333;
@@ -16,19 +19,10 @@ body {
     /* overflow-y: auto; */
     box-sizing: border-box;
 }
-.body-p {
-    position: fixed;
-    color: #fff;
-    background: #00000088;
-    font-weight: 600;
-    font-size: 12px;
-    margin: auto;
-    padding: 2px 5px;
-}
 /* Branding */
 .branding {
     position: fixed;
-    top: 20px;
+    top: 0;
     color: #f44234;
     text-align: left;
     font-size: 14px;
@@ -238,7 +232,7 @@ body {
     margin: auto;
     background: #ffffff33;
     border-radius: 10px;
-    background-image: url(assets/search.svg);
+    background-image: url(/src/assets/search.svg);
     background-position: left center;
     background-repeat: no-repeat;
     padding: 0px 5px;
@@ -276,8 +270,8 @@ body {
 .drop-btn img {
     height: inherit;
 }
-.drop-btn:hover img:hover {
-    content: url(assets/menu.svg);
+.drop-btn:hover img:active {
+    content: url(/src/assets/menu.png);
 }
 .search-btn {
     border: none;
@@ -407,8 +401,8 @@ body {
 .info-btn img,.todo-btn img, .ico-btn img { height: 50px; }
 .cal-btn img { height: 35px; }
 
-.info-btn img:hover {content:url(assets/info1.svg);}
-.calc-btn img:active {content: url(assets/calc1.png);}
+.info-btn img:hover {content:url(/src/assets/info1.svg);}
+.calc-btn img:active {content: url(/src/assets/calc1.png);}
 
 .info-btn img:hover, .calc-btn img:hover, .todo-btn img:hover, .mri-btn img:hover, .ico-btn img:hover, .cal-btn img:hover { position: relative; }
 
@@ -496,7 +490,7 @@ body {
 .Profile-Name:hover {
     height: auto;
     width: 200px;
-    content: url(assets/founderofMRC&D.png);
+    content: url(/src/assets/founderofMRC&D.png);
     animation: ani6 1s linear;
 }
 @keyframes ani6 {
