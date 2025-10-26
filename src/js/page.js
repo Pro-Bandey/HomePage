@@ -1,10 +1,10 @@
 // Background Images
 const backgrounds = [
-  'url("./bg/bg_001.jpg")', 'url("./bg/bg_002.jpg")', 'url("./bg/bg_003.jpg")',
-  'url("./bg/bg_004.jpg")', 'url("./bg/bg_005.jpg")', 'url("./bg/bg_006.jpg")',
-  'url("./bg/bg_007.jpg")', 'url("./bg/bg_008.jpg")', 'url("./bg/bg_009.jpg")',
-  'url("./bg/bg_010.jpg")', 'url("./bg/bg_011.jpg")', 'url("./bg/bg_012.jpg")',
-  'url("./bg/bg_013.jpg")'
+  'url("/src/assets/bg_001.jpg")', 'url("/src/assets/bg_002.jpg")', 'url("/src/assets/bg_003.jpg")',
+  'url("/src/assets/bg_004.jpg")', 'url("/src/assets/bg_005.jpg")', 'url("/src/assets/bg_006.jpg")',
+  'url("/src/assets/bg_007.jpg")', 'url("/src/assets/bg_008.jpg")', 'url("/src/assets/bg_009.jpg")',
+  'url("/src/assets/bg_010.jpg")', 'url("/src/assets/bg_011.jpg")', 'url("/src/assets/bg_012.jpg")',
+  'url("/src/assets/bg_013.jpg")'
 ];
 
 //  Current index for the background images. Initialized randomly.
