@@ -693,15 +693,6 @@ body {
     .ico-btn img { height: 38px; }
     .cal-btn img { height: 28px; }
 }
-/* ---------------Info-Page-Style-------------------- */
-    /* .main-inf {
-        flex-direction: column;
-    }
-    .inf {
-        width: auto;
-        height:33.3%;
-    } */
-/* Even smaller adjustments for very small phones */
 @media (max-width: 480px) {
 
     .header {
