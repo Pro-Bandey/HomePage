@@ -20,7 +20,7 @@
     <!-- Alert Box -->
     <div id="alert-overlay" class="alert-overlay"></div>
     <div id="alert-box" class="alert-box">
-        <h3 class="alert-box-heading">Error/Alert ⚠️</h3>
+        <h3 class="alert-box-heading">Alert ⚠️</h3>
         <div class="alert-box-content">
             <p id="alert-box-message">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890</p>
             <button id="alert-box-ok-btn">OK</button>
@@ -51,10 +51,10 @@
         <!-- Time Date -->
         <div class="date-time">
             <div id="uptime" class="uptime"></div>
-            <div id="time" class="time"></div>
+            <span class="blink-colon">:</span><div id="time" class="time"></div>
             <div class="day-date">
                 <p id="day"></p>
-                <p style="margin:0 2px ;">|</p>
+                <p>&NonBreakingSpace;</p>
                 <p id="date"></p>
             </div>
         </div>
@@ -138,8 +138,8 @@
     </div>
     <div class="float-btnR">
         <button class="cal-btn" id="cal-btn" title="Chrome App Launcher"><img src="src/assets/Chrome App Launcher.png" alt="CAL" title="Chrome App Launcher"></button>
-        <a href="module/icons.htm" target="_blank"><button class="ico-btn" id="ico-btn" title="Icons Module"><img src="module/fav.ico" alt="MRc" title="Material Icons By MRc"></button></a>
         <button class="mri-btn" id="mri-btn" title="MRi Chatbot"><img src="src/assets/mri.png" alt="🤖" title="MRi AI Assistant"></button>
+        <a href="module/icons.htm" target="_blank"><button class="ico-btn" id="ico-btn" title="Icons Module"><img src="module/fav.ico" alt="MRc" title="Material Icons By MRc"></button></a>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Info Bar -->
@@ -252,7 +252,7 @@
             <button id="cal-export-btn">📤 Export</button>
             <input type="file" id="cal-import-file" accept="application/json" hidden>
             <button id="cal-import-btn">📥 Import</button>
-            <a href="/src/js/products.json" target="_blank">More Products</a>
+            <a href="/src/js/products.json" target="_blank"><button>More Products</button></a>
         </div>
     </div>
     <!-- Context Menu of Cal -->

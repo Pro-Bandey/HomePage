@@ -1,0 +1,50 @@
+/* ===== Theme Colors ===== */
+:root {
+  /* defaults */
+  --accent: #f44234;
+  --border: #333;
+  --accent-h: #752020;
+  --accent-soft: #f4423499;
+  --border-c: #ff000033;
+  --border-d: #00880033;
+  --green: #00ff00;
+  --red: #ff0000;
+  --teal: #008080;
+  --white: #ffffff;
+  --panel-bkdrop: blur(12px);
+  /* Utility */
+  --highlight: #ff9800;
+  --muted: #888;
+  --gray-soft: #7d7d7d33;
+  --gray-mid: #83838366;
+  --gray-light: #ffffff66;
+  /* main */
+  --text: #262121;
+  --bg: #ffffff;
+  --transulent-bg: #ffffff33;
+  --overlay: #0000001a;
+  /* Shadows */
+  --shadow-o: 0px 0px 5px 1px #ffffff88;
+  --shadow-h: inset 0 0 6px 1px #00000066;
+  /* Alerts & surfaces */
+  --alert-bg: #b9b9b977;
+  --alert-heading-bg: #fdfdfd;
+  --alert-heading: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* main */
+    --text: #ffffff;
+    --bg: #222;
+    --transulent-bg: #1c1c2233;
+    --overlay: #00000033;
+    /* Shadows */
+    --shadow-o: 0px 0px 6px 2px #00000066;
+    --shadow-h: inset 0 0 5px 0 #ffffff88;
+    /* Alerts & surfaces */
+    --alert-bg: #0009;
+    --alert-heading-bg: #343434;
+    --alert-heading: #ffffff;
+  }
+}

@@ -53,50 +53,101 @@ function showCustomAlert(message) {
     }
   };
 };
+
 // Elements for date, time, and uptime display
 const currentTimeElement = document.getElementById("time");
 const currentDayElement = document.getElementById("day");
 const currentDateElement = document.getElementById("date");
 const uptimeElement = document.getElementById("uptime");
 
-// Timestamp when the page started.
+// Timestamp when the page started
 let startTime = Date.now();
-//  Updates the current time, day, and date displayed on the page.
+
+// Adds a leading zero to numbers less than 10
+function padZero(num) {
+  return (num < 10 ? "0" : "") + num;
+}
+
+// Returns ordinal suffix (st, nd, rd, th)
+function getOrdinalSuffix(day) {
+  if (day > 3 && day < 21) return "th"; // handles 11th–13th
+  switch (day % 10) {
+    case 1: return "st";
+    case 2: return "nd";
+    case 3: return "rd";
+    default: return "th";
+  }
+}
+
+// Generates a random bright color in hex format
+function getRandomColor() {
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 90%, 60%)`;
+}
+
+// Store a unique random color for today's date (so it changes once per day)
+let today = new Date().getDate();
+let randomSuffixColor = getRandomColor();
+
+// Updates the current time, day, and date displayed on the page
 function updateDateTime() {
   const now = new Date();
   const hours = now.getHours();
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
-  const ampm = hours >= 12 ? "PM" : "AM";
+  const isPM = hours >= 12;
+  const ampm = isPM ? "PM" : "AM";
+
+  // Generate new suffix color when the day changes
+  if (now.getDate() !== today) {
+    today = now.getDate();
+    randomSuffixColor = getRandomColor();
+  }
 
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
   const dayName = days[now.getDay()];
   const date = now.getDate();
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const suffix = getOrdinalSuffix(date);
   const monthName = months[now.getMonth()];
   const year = now.getFullYear();
 
-  const timeString = `${padZero(hours % 12 || 12)}:${padZero(minutes)}:${padZero(seconds)} ${ampm}`;
-  const dateString = `${date} ${monthName} ${year}`;
+  const timeString = `
+    <span class="time-hour-min">${padZero(hours % 12 || 12)}   ${padZero(minutes)}</span>
+    <span class="time-sec-ampm">
+      <sup class="ampm" style="color:${isPM ? "var(--red)" : "var(--teal)"};">${ampm}</sup>
+      <sub class="time-sec">${padZero(seconds)}</sub>
+    </span>
+  `;
 
-  currentTimeElement.textContent = timeString;
-  currentDateElement.textContent = dateString;
+  const dateString = `
+    ${date}<sup style="color:${randomSuffixColor};">${suffix}</sup> ${monthName} ${year}
+  `;
+
+  currentTimeElement.innerHTML = timeString.trim();
+  currentDateElement.innerHTML = dateString.trim();
   currentDayElement.textContent = dayName;
-};
-//  Updates the uptime counter displayed on the page.
+}
+
+// Updates the uptime counter displayed on the page
 function updateUptime() {
   let elapsedTime = Date.now() - startTime;
-  let milliseconds = Math.floor(elapsedTime / 100) % 100; // Display hundredths of a second
+  let milliseconds = Math.floor(elapsedTime / 10) % 100;
   let seconds = Math.floor(elapsedTime / 1000) % 60;
   let minutes = Math.floor(elapsedTime / 60000) % 60;
   let hours = Math.floor(elapsedTime / 3600000);
 
   uptimeElement.textContent = `Uptime: ${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}-${padZero(milliseconds)}`;
-};
-// Adds a leading zero to numbers less than 10.
-function padZero(num) {
-  return (num < 10 ? "0" : "") + num;
-};
+}
+
+// Initialize and update every second
+updateDateTime();
+updateUptime();
+setInterval(updateDateTime, 1000);
+setInterval(updateUptime, 100);
+
+
 // The main animation loop that updates date, time, and uptime using `requestAnimationFrame`.
 function loop() {
   updateDateTime();

@@ -1,3 +1,4 @@
+@import url(./Pallet.css);
 /* ----------------------------------------------------------- */
 /* Link Bar */
 .bar-link-grid, .cal-link-grid {
@@ -25,7 +26,7 @@
   animation:fade3 2s ease-in-out;
 }
 .link-card:hover, .card:hover {
-  background: #ffffff4d;
+  background: var(--gray-mid);
 }
 .card .icon,.link-card .icon {
   width: 50px;
@@ -54,7 +55,9 @@
     text-overflow: ellipsis;
     animation:fade3 2s ease-in-out;
 }
-
+.card .name {
+  color: var(--white);
+}
 @keyframes fade3 {
     0% {transform: translateY(-50%); }
     100% {transform: translateY(0%); }
@@ -72,8 +75,8 @@
   padding: 0 5px;
 }
 .menu-btn:hover {
-  background: #93939366;
-  color: #fff;
+  background:var(--gray-light);
+  color:var(--white);
   border-radius: 5px;
 }
 
@@ -83,10 +86,11 @@
     position: absolute;
     top: 20px;
     right: 2px;
-    background: #00000099;
-    border: 1px solid #00000058;
+    background:var(--transulent-bg);
+    backdrop-filter: var(--panel-bkdrop);
+    border: 1px solid var(--border);
     border-radius: 6px;
-    box-shadow: 0 0 10px 8px rgba(0, 0, 0, 10%);
+    box-shadow:var(--shadow-o);
     z-index: 101;
     max-width: 130px;
     animation: fade5 1s ease-in-out;
@@ -100,56 +104,62 @@
     cursor: pointer;
     font-size: 13px;
     font-weight: 700;
-    color: #ffffff;
+    color:var(--white);
 }
 @keyframes fade5 {
   0% {opacity: 0; transform: rotateY(90deg);}
   100% {opacity: 1; transform: rotateY(0deg);}
 }
 .context-menu button:hover {
-  background: #00000077;
+  background:var(--gray-mid);
 }
 /* cal-controls */
 .cal-controls {
   display: flex;
+  justify-content: center;
+  position: sticky;
+  bottom: 10px;
   gap: 15px;
   margin: auto;
   padding: 20px 0 0 0;
   flex-direction: row;
 }
 .cal-controls button {
-  padding: 10px 10px;
+  padding: 5px 9px;
   border: none;
-  width: 90px;
+  width: 80px;
   border-radius: 5px;
-  background: #f44234;
-  color: white;
+  background:var(--accent);
+  color:var(--text);
   cursor: pointer;
 }
 .cal-controls button:hover {
-  background: #642420;
+  background: var(--accent-h);
+}
+.cal-controls button:active {
+  background: var(--accent-soft);
 }
 .add-card {
   width: 75px;
   height: 75px;
-  border: 1px solid #0000008a;
+  border: 1px solid var(--border);
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color:var(--border);
 }
 .add-card p {
   font-size: 24px;
 }
 .add-card:hover {
     border:1px solid #ffffff8a;
-    color: #fff;
-    background: rgb(0, 0, 0, 0.3);
+    color:var(--text) ;
+    background: #0000004d;
 }
 .add-link-box {
   display:none;
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 20%);
+  background:var(--overlay);
   align-items: center;
   justify-content: center;
   z-index: 99;
@@ -161,7 +171,7 @@
   border-radius: 12px;
   width: 90%;
   max-width: 350px;
-  box-shadow: 0 0 10px 8px rgba(0, 0, 0, 20%);
+  box-shadow:var(--shadow-o);
   animation:fade4 1s ease-in-out;
 }
 @keyframes fade4 {
@@ -176,9 +186,10 @@
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
-  background: #fdfdfdfd;
+  color: var(--alert-heading);
+  background:var(--alert-heading-bg);
   width: auto;
-  box-shadow: 0px 6px 16px -1px rgb(0 0 0 / 25%);
+  box-shadow: var(--shadow-o);
 }
 .add-link-box-content input {
   width:inherit;
@@ -189,14 +200,17 @@
   border-radius: 6px;
   margin: auto;
   margin-bottom: 10px;
-  box-shadow:0 0 10px 8px rgb(0 0 0 / 20%);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow:var(--shadow-o);
 }
 .input-optional {
   margin: auto;
   padding: inherit;
 }
 .input-optional p {
-  background: #ffffff4a;
+  background: var(--gray-mid);
+  color: var(--text);
   padding-left: 5px;
   font-size: 18px;
   font-weight: 600;
@@ -206,10 +220,10 @@
   width: inherit;
 }
 .input-optional #linkFaviconFile {
-  background: #fff;
+  background:var(--bg);
   width: 45px;
   padding: 0px;
-  box-shadow: 0 0 32px -7px rgb(0 0 0);
+  box-shadow:var(--shadow-o);
   margin-left: 5px;
   background-image: url(/src/assets/down.svg);
   background-repeat: no-repeat;
@@ -240,9 +254,42 @@
     cursor: pointer;
 }
 .add-link-box-buttons .cancel {
-  background: #ffffff;
+  background: var(--bg);
+  color: var(--text);
 }
-.add-link-box-buttons .add, .danger {
-  background: #f44234;
-  color: #fff;
+.add-link-box-buttons .cancel:hover {
+  background: gray;
+}
+.add-link-box-buttons .add {
+  background: var(--accent);
+  color:var(--text);
+}
+.add-link-box-buttons .add:hover {
+  background: var(--accent-h);
+}
+
+
+@media (max-width: 768px) {
+  .cal-link-grid {
+    max-height: 65vh;
+  }
+}
+
+@media (max-width: 480px) {
+    .cal-link-grid {
+    max-height: 82vh;
+  }
+  .link-card, .card {
+    width: 70px;
+    height: 70px;
+  }
+  .card .icon, .link-card .icon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+ }
+ .card .name, .link-card .link-label {
+  margin-top: 0;
+  font-size: 0.7rem;
+ }
 }

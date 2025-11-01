@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
           { name: "ChatGpt", url: "https://chatgpt.com", fallback: "CGT" },
           { name: "GitHub", url: "https://github.com", fallback: "Git" },
         ]
-      ),
+        ),
           k(y),
           E());
     }
@@ -371,28 +371,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// --- Block right-click context menu for images ---
-const images = document.querySelectorAll('img');
-
-images.forEach(img => {
-  img.addEventListener('contextmenu', function (e) {
-    e.preventDefault(); // Prevent the default right-click context menu
-  });
-});
-
-
-
-
-
-
-
-
 (function () {
   // ===== Variables =====
   let launcherLinks = [];
-  let currentIndex = null; // editing index
-  let editingIndex = null;  // for modal editing
-  let deletingIndex = null; // for delete confirmation
+  let currentIndex = null;
+  let editingIndex = null;
+  let deletingIndex = null;
   let contextMenuElement = null;
 
   // Elements (launcher.js IDs)
@@ -625,7 +609,7 @@ images.forEach(img => {
     } else {
       linkTitleInput.value = "";
       linkUrlInput.value = "";
-      editingIndex = null; // reset
+      editingIndex = null;
     }
 
     linkTitleInput.focus();
@@ -637,20 +621,31 @@ images.forEach(img => {
   saveBtn.addEventListener("click", () => {
     const name = linkTitleInput.value.trim();
     let url = linkUrlInput.value.trim();
-    if (!name || !url) return;
-
-    if (!/^https?:\/\//i.test(url)) url = "https://" + url;
-    const fallback = generateFallback(name);
-
-    if (editingIndex !== null) {
-      launcherLinks[editingIndex] = { name, url, fallback };
-    } else {
-      launcherLinks.push({ name, url, fallback });
+    if (!name || !url) {
+      showCustomAlert("Please fill in both the Name and URL fields.");
+      return;
     }
-
-    editingIndex = null; // reset
-    renderGrid();
-    closeModal();
+    const urlWithScheme = /^https?:\/\//i.test(url) ? url : "https://" + url;
+    try {
+      const parsed = new URL(urlWithScheme);
+      if (!/^https?:$/i.test(parsed.protocol)) {
+        showCustomAlert("Only http/https URLs are allowed.");
+        return;
+      }
+      const normalizedUrl = parsed.href;
+      const fallback = generateFallback(name);
+      if (editingIndex !== null) {
+        launcherLinks[editingIndex] = { name, url: normalizedUrl, fallback };
+      } else {
+        launcherLinks.push({ name, url: normalizedUrl, fallback });
+      }
+      editingIndex = null;
+      renderGrid();
+      closeModal();
+    } catch (err) {
+      showCustomAlert("Invalid URL format.");
+      return;
+    }
   });
 
 
@@ -681,3 +676,26 @@ images.forEach(img => {
   loadLauncherLinks();
 
 })();
+
+// Displays a custom alert box with a given message.
+function showCustomAlert(message) {
+  const overlay = document.getElementById("alert-overlay");
+  const alertBox = document.getElementById("alert-box");
+  const alertBoxMessage = document.getElementById("alert-box-message");
+  const alertBoxOkBtn = document.getElementById("alert-box-ok-btn");
+
+  alertBoxMessage.textContent = message;
+  overlay.style.display = "block";
+  alertBox.style.display = "block";
+
+  alertBoxOkBtn.onclick = function () {
+    overlay.style.display = "none";
+    alertBox.style.display = "none";
+  };
+  overlay.onclick = function (event) {
+    if (event.target === overlay) {
+      overlay.style.display = "none";
+      alertBox.style.display = "none";
+    }
+  };
+};
