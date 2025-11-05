@@ -1,4 +1,4 @@
-@import url(./css/Pallet.css);
+@import url(/src/css/Pallet.css);
 html,
 body {
   transition: background-image 2s ease-in-out, background 0.4s, color 0.4s;

@@ -637,10 +637,10 @@ hr {
     }
 
     .toolbar button {
-        height: 50px;
-        width: 50px;
+        min-height: 50px;
+        min-width: 50px;
         border-radius: 12px;
-        font-size: 35px;
+        font-size: 2rem;
     }
 
     .fontSelect,
@@ -648,7 +648,7 @@ hr {
         height: 45px;
         width: fit-content;
         border-radius: 12px;
-        font-size: 30px;
+        font-size: 24px;
     }
 
     .todo-inputbar {
@@ -730,7 +730,14 @@ hr {
     .panel-spons p {
         margin-bottom: 20px;
     }
-
+    .fontSelect {
+        width: 110px;
+        font-size: 16px;
+    }
+    .fontSize {
+        width:60px;
+        font-size: 16px;
+    }
     .pop-search {
         top: -43px;
         right: 0;
