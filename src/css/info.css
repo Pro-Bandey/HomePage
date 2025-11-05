@@ -1,0 +1,472 @@
+@import url(./css/Pallet.css);
+html,
+body {
+  transition: background-image 2s ease-in-out, background 0.4s, color 0.4s;
+}
+
+body {
+  background: var(--border);
+  color: var(--text);
+  padding: 10px 5px;
+  background-size: cover;
+  background-position-x: center;
+  background-repeat: no-repeat;
+}
+
+.main-inf {
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* ===== Section Cards ===== */
+.inf-div {
+  background: var(--transulent-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  margin: 10px 5px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 28px var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
+}
+
+.inf-div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+.inf-div h2 {
+  text-align: center;
+  font-size: 1.7rem;
+  color:var(--accent);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+/* ===== Inner Section ===== */
+.inf-div-bg {
+  background: transparent;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1.6rem;
+}
+
+.inf-div-profile-section {
+  width: max-content;
+  margin: auto;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* ===== Profile ===== */
+.inf-div-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: ani1 6s ease-in-out infinite;
+}
+
+@keyframes ani1 {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.Profile {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  object-fit: cover;
+  cursor: grab;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.Profile-Name {
+  height: 38px;
+  object-fit: contain;
+  filter: var(--img-invert);
+}
+
+.Profile,
+.Profile-Name {
+  animation: ani2 2s ease-in-out;
+}
+
+@keyframes ani2 {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.Profile:hover {
+  animation: ani3 2s linear;
+}
+
+@keyframes ani3 {
+  0% {
+    rotate: 0deg;
+    scale: 1;
+  }
+
+  100% {
+    rotate: 360deg;
+    scale: 0;
+  }
+}
+
+.Profile-Name:hover {
+  height: 38px;
+  width: 250px;
+  content: url(/src/assets/founderofMRC&D.png);
+  animation: ani4 1s linear;
+  filter: var(--img-invert);
+}
+
+@keyframes ani4 {
+  0% {
+    transform: scale(2);
+    opacity: .5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== Social Links ===== */
+.inf-div-links {
+  gap: 0.6rem;
+  flex: 1;
+  margin: auto;
+  min-width: 240px;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.inf-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: transparent;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.inf-links img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.inf-links:hover {
+  background: var(--accent-h);
+  color:var(--text);
+  transform: scale(1.05);
+}
+
+.inf-links:hover img {
+  transform: translateY(-5px);
+  rotate: 10deg;
+}
+
+/* ===== Description ===== */
+.inf-desc {
+  border: 1px solid var(--gray-light);
+  text-align: center;
+  width: 90%;
+  padding: 10px;
+  border-radius: 20px;
+  text-wrap: wrap;
+  margin: auto auto 10px auto;
+}
+
+.inf-desc p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.inf-desc-ul-div {
+  display: flex;
+  border-left: 10px solid var(--gray-light);
+  width: fit-content;
+  padding: 10px;
+  padding-left: 0;
+  margin: auto auto 10px auto;
+}
+
+.inf-desc-ul {
+  text-align: left;
+  margin: 0;
+}
+
+.inf-desc-ul li {
+  margin-top: 0.45rem;
+}
+
+/* ===== Images / Logos ===== */
+.inf-mr {
+  width: 100%;
+  max-width: 555px;
+  border-radius: 20px;
+  padding: 5px;
+  margin: auto;
+  background:var(--transulent-bg);
+  backdrop-filter: var(--panel-bkdrop);
+  overflow: hidden;
+  cursor: grab;
+}
+
+.inf-mr:active {
+  cursor: grabbing;
+}
+
+.c {
+  border: 2px double var(--border-c);
+}
+
+.d {
+  border: 2px double var(--border-d);
+}
+
+.c-img,
+.d-img {
+  width: 100%;
+}
+
+.c-img:hover,
+.d-img:hover {
+  animation: ani5 2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+@keyframes ani5 {
+  0% {
+    opacity: .5;
+    scale: 1.5;
+  }
+
+  10% {
+    opacity: 1;
+    scale: 1.5;
+  }
+
+  20% {
+    opacity: .5;
+    scale: 2;
+  }
+
+  30% {
+    opacity: 1;
+    scale: 1;
+  }
+
+  40% {
+    opacity: .5;
+    scale: .5;
+  }
+
+  50% {
+    opacity: 1;
+    scale: .5;
+  }
+
+  60% {
+    opacity: .5;
+    scale: 1.1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: .5;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: .5;
+    scale: 0;
+  }
+}
+
+/* ===== Details & Summary (Changelog etc.) ===== */
+.summary {
+  background: transparent;
+  border-radius: 20px;
+  width: 90%;
+  margin: 20px auto;
+  border: 1px solid darkgray;
+  transition: background 0.3s ease;
+}
+
+.changelog {
+  margin: 0 1.2rem 1.2rem 1.2rem;
+  background: var(--link-bg);
+  border: 1px solid var(--border);
+  transition: background 0.3s ease;
+}
+
+.summary summary,
+.changelog summary {
+  font-weight: 600;
+  margin: 0.5rem 0 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+details summary:hover {
+  color: var(--accent);
+}
+
+details p,
+details ul {
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+details ul {
+  list-style-type: disc;
+}
+
+details.changelog summary {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* =========================================
+   📱 RESPONSIVE DESIGN
+   ========================================= */
+
+/* Mobile Landscape & Phones */
+@media (max-width: 768px)  {
+  .inf-div {
+    padding: 1rem 5px;
+  }
+  .inf-div-profile-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .Profile {
+    width: 150px;
+    height: 150px;
+  }
+  .inf-links {
+    width: 80px;
+    justify-content: center;
+  }
+  .inf-links img {
+    width: 50px;
+    height: 50px;
+  }
+  .inf-desc h1 {
+    font-size: 1.15rem;
+  }
+
+  .inf-desc p,
+  .inf-desc ul {
+    font-size: 0.9rem;
+  }
+
+  .inf-desc ul {
+    margin-left: 1rem;
+  }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+
+  html,
+  body {
+    font-size: 0.88rem;
+    padding: 1rem 5pxrem;
+  }
+
+  .inf-div {
+    padding: 5pxrem;
+  }
+  .inf-div-profile-section {
+    flex-direction: column;
+  }
+  .Profile {
+    width: 110px;
+    height: 110px;
+  }
+  .Profile-Name {
+    height: 27px;
+  }
+  .Profile-Name:hover {
+    height: 27px;
+    width: 180px;
+  }
+  .inf-div-links {
+    width: 90%;
+  }
+  .inf-links {
+    width: 60px;
+    font-size: 0.85rem;
+  }
+  .inf-links img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .inf-desc h1 {
+    font-size: 1rem;
+  }
+
+  details summary {
+    font-size: 0.9rem;
+  }
+
+  details ul {
+    margin-left: 0.9rem;
+  }
+}
+
+/* Extra-Wide Screens */
+@media (min-width: 1440px) {
+  .inf {
+    max-width: 1400px;
+    gap: 2.5rem;
+  }
+
+  .inf-div {
+    padding: 2rem 2.5rem;
+  }
+
+  .inf-desc p {
+    font-size: 1rem;
+  }
+}

@@ -71,7 +71,6 @@
   font-weight: 600;
   color: #000; 
   cursor: pointer;
-  z-index: 2;
   padding: 0 5px;
 }
 .menu-btn:hover {
@@ -162,10 +161,11 @@
   background:var(--overlay);
   align-items: center;
   justify-content: center;
-  z-index: 99;
+  z-index: 101;
 }
 .add-link-box-content {
-  background: #7d7d7d33;
+  background: var(--alert-bg);
+  backdrop-filter: var(--panel-bkdrop);
   border-top:none;
   padding-bottom: 10px;
   border-radius: 12px;
@@ -217,7 +217,7 @@
   text-align: left;
 }
 .input-optional #linkFavicon {
-  width: inherit;
+  width: 77%;
 }
 .input-optional #linkFaviconFile {
   background:var(--bg);
@@ -276,8 +276,15 @@
 }
 
 @media (max-width: 480px) {
-    .cal-link-grid {
+  .bar-link-grid, .cal-link-grid {
+    gap: 0;
+  }
+  .cal-link-grid {
     max-height: 82vh;
+  }
+  .add-card {
+    height: 60px;
+    width: 60px;
   }
   .link-card, .card {
     width: 70px;

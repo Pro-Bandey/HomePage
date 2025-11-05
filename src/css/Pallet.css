@@ -2,15 +2,15 @@
 :root {
   /* defaults */
   --accent: #f44234;
-  --border: #333;
   --accent-h: #752020;
   --accent-soft: #f4423499;
   --border-c: #ff000033;
-  --border-d: #00880033;
+  --border-d: #00808033;
   --green: #00ff00;
   --red: #ff0000;
   --teal: #008080;
   --white: #ffffff;
+  --border: #333;
   --panel-bkdrop: blur(12px);
   /* Utility */
   --highlight: #ff9800;
@@ -19,10 +19,11 @@
   --gray-mid: #83838366;
   --gray-light: #ffffff66;
   /* main */
-  --text: #262121;
+  --text: #000000;
   --bg: #ffffff;
   --transulent-bg: #ffffff33;
   --overlay: #0000001a;
+  --img-invert:invert(1);
   /* Shadows */
   --shadow-o: 0px 0px 5px 1px #ffffff88;
   --shadow-h: inset 0 0 6px 1px #00000066;
@@ -39,6 +40,7 @@
     --bg: #222;
     --transulent-bg: #1c1c2233;
     --overlay: #00000033;
+    --img-invert:invert(0);
     /* Shadows */
     --shadow-o: 0px 0px 6px 2px #00000066;
     --shadow-h: inset 0 0 5px 0 #ffffff88;
@@ -47,4 +49,23 @@
     --alert-heading-bg: #343434;
     --alert-heading: #ffffff;
   }
+}
+
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+  cursor: grab;
+}
+::-webkit-scrollbar-thumb:active {
+  cursor: grabbing;
 }

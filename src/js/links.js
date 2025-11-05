@@ -601,7 +601,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== Modal =====
   function openModal(edit = false) {
     popupBox.style.display = "flex";
-    boxTitle.innerText = edit ? "Edit Shortcut" : "Add Shortcut";
 
     if (edit && editingIndex !== null) {
       linkTitleInput.value = launcherLinks[editingIndex].name;

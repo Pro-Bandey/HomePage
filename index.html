@@ -17,35 +17,6 @@
         <span>Maintain By :</span> M Ramzan Ch <span>at <a style="color: #fff;; text-decoration: none;" href="https://github/com/Pro-Bandey" target="_blank">Pro-Bandey</a></span>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
-    <!-- Alert Box -->
-    <div id="alert-overlay" class="alert-overlay"></div>
-    <div id="alert-box" class="alert-box">
-        <h3 class="alert-box-heading">Alert ⚠️</h3>
-        <div class="alert-box-content">
-            <p id="alert-box-message">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890</p>
-            <button id="alert-box-ok-btn">OK</button>
-        </div>
-    </div>
-    <!-- Delete Box -->
-    <div id="delete-box" class="delete-box" style="display:none;">
-        <h2 class="alert-box-heading">Delete Shortcut</h2>
-        <div class="delete-box-content">
-            <p>Are you sure you want to remove this shortcut?</p>
-            <div class="delete-box-action">
-                <button id="deleteConfirmBtn" class="danger">Delete</button>
-                <button id="deleteCancelBtn">Cancel</button>
-            </div>
-        </div>
-    </div>
-    <!-- Reminder Box -->
-    <div id="reminderDialog" class="reminder-box hidden">
-        <h3 class="alert-box-heading">Reminder</h3>
-        <div class="alert-box-content">
-            <p id="reminderText">Thre is Text</p>
-            <button id="closeReminder">Close</button>
-        </div>
-    </div>
-    <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Time SideShow Display -->
     <div class="Time-SideShow">
         <!-- Time Date -->
@@ -120,7 +91,7 @@
             <input type="url" id="linkURL" placeholder="Shortcut URL (e.g., google.com)">
             <div class="input-optional">
                 <p>Optional:<span style="font-size: 14px;">Past link or Choose From Local</span></p>
-                <input type="text" id="linkFavicon" placeholder="https://example.com/icon.png" style="width:260px;">
+                <input type="text" id="linkFavicon" placeholder="https://example.com/icon.png">
                 <input type="file" id="linkFaviconFile" accept="image/*" style="width:45px;padding: 0px;">
             </div>
             <div class="add-link-box-buttons">
@@ -280,13 +251,42 @@
     <div id="popup" class="right-panel">
         <div class="panel-header">
             <div>
-                <img src="./src/assets/mr]">
+                <img src="./src/assets/mri.png">
             </div>
-            <h1>MicroResearch Intelligence</h1>
+            <h1 style="color: var(--red);">Micro<span style="color:#008800;">Research</span>&nbsp;<Span style="color:#ff9800;">Intelligence</Span> </h1>
             <button class="panel-close" id="mri-close"><img src="src/assets/clse.svg" alt=""></button>
         </div>
         <hr>
         <iframe src="./chat/MRi.htm" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
+    </div>
+    <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
+    <!-- Alert Box -->
+    <div id="alert-overlay" class="alert-overlay"></div>
+    <div id="alert-box" class="alert-box">
+        <h3 class="alert-box-heading">Alert ⚠️</h3>
+        <div class="alert-box-content">
+            <p id="alert-box-message">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890</p>
+            <button id="alert-box-ok-btn">OK</button>
+        </div>
+    </div>
+    <!-- Delete Box -->
+    <div id="delete-box" class="delete-box" style="display:none;">
+        <h2 class="alert-box-heading">Delete Shortcut</h2>
+        <div class="delete-box-content">
+            <p>Are you sure you want to remove this shortcut?</p>
+            <div class="delete-box-action">
+                <button id="deleteConfirmBtn" class="danger">Delete</button>
+                <button id="deleteCancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Reminder Box -->
+    <div id="reminderDialog" class="reminder-box hidden">
+        <h3 class="alert-box-heading">Reminder</h3>
+        <div class="alert-box-content">
+            <p id="reminderText">Thre is Text</p>
+            <button id="closeReminder">Close</button>
+        </div>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Link to External Scripts-->
