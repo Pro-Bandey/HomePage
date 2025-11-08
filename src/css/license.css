@@ -1,0 +1,152 @@
+@import url(./Pallet.css);
+
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--border);
+    color: var(--text);
+    background-size: cover;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+}
+
+.inf-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: sticky;
+    width: 98%;
+    z-index: 1001;
+    background: var(--accent-h);
+    backdrop-filter: var(--panel-bkdrop);
+    top: 5px;
+    margin: auto;
+    font-size: 1.2rem;
+    border-radius: 15px;
+}
+
+.inf-navbar div a {
+    color: var(--text);
+    text-decoration: none;
+    color: var(--text);
+    text-decoration: none;
+    margin: 10px;
+}
+
+.container {
+    max-width: 900px;
+    background: var(--transulent-bg);
+    backdrop-filter: var(--panel-bkdrop);
+    margin: 40px auto;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-o);
+}
+
+h1 {
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.brand {
+    text-align: center;
+    color: var(--gray-light);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+pre {
+    text-align: center;
+    background: var(--gray-light);
+    padding: 20px;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-size: .95rem;
+    color: var(--text);
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: var(--text);
+    margin: 35px 0;
+}
+
+h2 {
+    color: var(--text);
+    margin-top: 35px;
+    font-size: 1.3rem;
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+}
+
+p,
+ul {
+    font-size: 1rem;
+}
+
+ul {
+    margin: 10px 0 10px 25px;
+}
+
+footer {
+    text-align: center;
+    font-size: .9rem;
+    margin-top: 45px;
+    color: var(--gray-light);
+}
+
+
+@media (max-width:768px) {
+    .container {
+        margin: 20px;
+        padding: 25px 20px;
+        border-radius: 14px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    pre {
+        font-size: .9rem;
+    }
+
+    p,
+    ul {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width:480px) {
+    .container {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    pre {
+        font-size: .85rem;
+    }
+
+    p,
+    ul {
+        font-size: 0.9rem;
+    }
+}

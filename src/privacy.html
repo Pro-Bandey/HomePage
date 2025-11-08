@@ -6,134 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Homepage Extension</title>
-    <style>
-        body {
-            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, #f0f4ff, #ffffff);
-            color: #222;
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-        }
-
-        .container {
-            max-width: 900px;
-            background: #fff;
-            margin: 40px auto;
-            padding: 40px 50px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            text-align: center;
-            color: #ff0000;
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
-
-        .brand {
-            text-align: center;
-            color: #444;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            color: #333;
-            margin-top: 35px;
-            font-size: 1.3rem;
-            border-left: 4px solid #ff0000;
-            padding-left: 10px;
-        }
-
-        p,
-        ul {
-            font-size: 1rem;
-        }
-
-        ul {
-            margin: 10px 0 10px 25px;
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background: #e2e2e2;
-            margin: 35px 0;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.9rem;
-            margin-top: 45px;
-            color: #555;
-        }
-
-        footer a {
-            color: #ff0000;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        .logo {
-            display: block;
-            margin: 0 auto 20px auto;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 25px 20px;
-                border-radius: 14px;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            h2 {
-                font-size: 1.15rem;
-            }
-
-            p,
-            ul {
-                font-size: 0.95rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px 15px;
-                border-radius: 12px;
-            }
-
-            h1 {
-                font-size: 1.4rem;
-            }
-
-            h2 {
-                font-size: 1rem;
-            }
-
-            p,
-            ul {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/license.css">
 </head>
 
 <body>
+    <nav class="inf-navbar">
+        <div class="inf-navbarl">
+            <a href="#">About</a>
+            <a href="#mit">Policy</a>
+        </div>
+        <div class="inf-navbarr">
+            <a href="../index.html">HomePage</a>
+            <a href="./license.html">License</a>
+            <a href="./terms.html">Terms &amp; Conditions</a>
+            <a href="./feed.html">FeedBack</a>
+        </div>
+    </nav>
     <div class="container">
         <img src="./assets/icon.png" alt="App Logo" class="logo">
         <h1>Privacy Policy</h1>
@@ -141,7 +29,7 @@
 
         <p><strong>Effective Date:</strong> October 21, 2025</p>
 
-        <h2>1. Information We Collect</h2>
+        <h2 id="mit">1. Information We Collect</h2>
         <ul>
             <li><strong>Basic Usage Data</strong> – theme, layout, and preferences.</li>
             <li><strong>Local Storage Data</strong> – saved in your browser only.</li>
@@ -169,11 +57,11 @@
         <hr>
         <footer>
             &copy; 2025 MicroResearch Corporation®. All Rights Reserved.<br>
-            <a href="terms.html">Terms & Conditions</a> •
-            <a href="license.html">License</a><br>
+            <br>
             Made with ♥ by M Ramzan Ch
         </footer>
     </div>
 </body>
+<script type="module" src="./js/page.js"></script>
 
 </html>

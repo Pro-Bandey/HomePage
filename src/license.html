@@ -5,121 +5,29 @@
     <link rel="icon" href="./assets/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>License | Apache 2.0 | Homepage Extension</title>
-    <style>
-        body {
-            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, #f0f4ff, #ffffff);
-            color: #222;
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-        }
-
-        .container {
-            max-width: 900px;
-            background: #fff;
-            margin: 40px auto;
-            padding: 40px 50px;
-            border-radius: 20px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        h1 {
-            text-align: center;
-            color: #ff0000;
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
-
-        .brand {
-            text-align: center;
-            color: #444;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 25px;
-        }
-
-        pre {
-            background: #f7f9fc;
-            padding: 20px;
-            border-radius: 12px;
-            overflow-x: auto;
-            font-size: .95rem;
-            color: #333;
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background: #e2e2e2;
-            margin: 35px 0;
-        }
-
-        footer {
-            text-align: center;
-            font-size: .9rem;
-            margin-top: 45px;
-            color: #555;
-        }
-
-        footer a {
-            color: #ff0000;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .logo {
-            display: block;
-            margin: 0 auto 20px;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        @media(max-width:768px) {
-            .container {
-                margin: 20px;
-                padding: 25px 20px;
-                border-radius: 14px;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            pre {
-                font-size: .9rem;
-            }
-        }
-
-        @media(max-width:480px) {
-            .container {
-                padding: 20px 15px;
-                border-radius: 12px;
-            }
-
-            h1 {
-                font-size: 1.4rem;
-            }
-
-            pre {
-                font-size: .85rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/license.css">
+    <title>License | MIT | Homepage Extension</title>
 </head>
 
 <body>
-    <div class="container">
-        <img src="./assets/icon.png" alt="App Logo" class="logo">
-        <h1>License</h1>
-        <div class="brand">MIT</div>
+    <nav class="inf-navbar">
+        <div class="inf-navbarl">
+            <a href="#">About</a>
+            <a href="#mit">License</a>
+        </div>
+        <div class="inf-navbarr">
+            <a href="../index.html">HomePage</a>
+            <a href="./terms.html">Terms &amp; Conditions</a>
+            <a href="./privacy.html">Privacy Policy</a>
+            <a href="./feed.html">FeedBack</a>
+        </div>
+    </nav>
+        <div class="container">
+            <img src="./assets/icon.png" alt="App Logo" class="logo">
+            <h1>License</h1>
+            <div class="brand">MIT</div>
 
-        <pre style="text-align: center;">
+            <pre id="mit">
 MIT License
 
 Copyright (c) 2025 MicroResearch Corporation®
@@ -144,24 +52,25 @@ SOFTWARE.
 
   </pre>
 
-        <h2>Usage Rights</h2>
-        <p>This software may be used, modified, and distributed under the MIT License. Attribution to
-            <strong>MicroResearch Corporation®</strong> and <strong>M Ramzan Ch</strong> is appreciated.
-        </p>
+            <h2>Usage Rights</h2>
+            <p>This software may be used, modified, and distributed under the MIT License. Attribution to
+                <strong>MicroResearch Corporation®</strong> and <strong>M Ramzan Ch</strong> is appreciated.
+            </p>
 
-        <p>________________________________________________________________________________________________________________________________________
-        </p>
-        <p><strong>Organization:</strong> MicroResearch Corporation®<br>
-            <strong>Provider:</strong> Pro-Bandey
-        </p>
-        <hr>
-        <footer>
-            &copy; 2025 MicroResearch Corporation®. All Rights Reserved.<br>
-            <a href="privacy.html">Privacy Policy</a> •
-            <a href="terms.html">Terms & Conditions</a><br>
-            Made with ♥ by M Ramzan Ch
-        </footer>
-    </div>
+            <p>________________________________________________________________________________________________________________________________________
+            </p>
+            <p><strong>Organization:</strong> MicroResearch Corporation®<br>
+                <strong>Provider:</strong><a href="https://github.com/Pro-Bandey" target="_blank"
+                    style="color:var(--text); text-decoration: none;"> Pro-Bandey</a>
+            </p>
+            <hr>
+            <footer>
+                &copy; 2025 MicroResearch Corporation®. All Rights Reserved.<br>
+                <br>
+                Made with ♥ by M Ramzan Ch
+            </footer>
+        </div>
 </body>
+<script type="module" src="./js/page.js"></script>
 
 </html>
