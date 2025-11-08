@@ -158,12 +158,13 @@
                 <label class="converter-label">From:</label>
                 <input type="number" id="length-input" class="converter-input" placeholder="0" value="1">
                 <select id="length-from-unit" class="custom-select">
-                    <option value="meters">Meters (m)</option>
-                    <option value="kilometers">Kilometers (km)</option>
-                    <option value="centimeters">Centimeters (cm)</option>
                     <option value="millimeters">Millimeters (mm)</option>
-                    <option value="miles">Miles (mi)</option>
+                    <option value="centimeters">Centimeters (cm)</option>
+                    <option value="decimeter">Decimeter (dm)</option>
+                    <option value="meters" selected>Meters (m)</option>
+                    <option value="kilometers">Kilometers (km)</option>
                     <option value="yards">Yards (yd)</option>
+                    <option value="miles">Miles (mi)</option>
                     <option value="feet">Feet (ft)</option>
                     <option value="inches">Inches (in)</option>
                 </select>
@@ -177,12 +178,13 @@
                     <span id="length-output">3.28084</span>
                 </div>
                 <select id="length-to-unit" class="custom-select">
+                    <option value="millimeters">Millimeters (mm)</option>
+                    <option value="centimeters">Centimeters (cm)</option>
+                    <option value="decimeter">Decimeter (dm)</option>
                     <option value="meters">Meters (m)</option>
                     <option value="kilometers">Kilometers (km)</option>
-                    <option value="centimeters">Centimeters (cm)</option>
-                    <option value="millimeters">Millimeters (mm)</option>
-                    <option value="miles">Miles (mi)</option>
                     <option value="yards">Yards (yd)</option>
+                    <option value="miles">Miles (mi)</option>
                     <option value="feet" selected>Feet (ft)</option>
                     <option value="inches">Inches (in)</option>
                 </select>
@@ -273,8 +275,11 @@
                 <label class="converter-label">From:</label>
                 <input type="number" id="volume-input" class="converter-input" placeholder="0" value="1">
                 <select id="volume-from-unit" class="custom-select">
-                    <option value="liters">Liters (L)</option>
                     <option value="milliliters">Milliliters (mL)</option>
+                    <option value="centiliters">Centiiters (ml</option>
+                    <option value="deciliters">Deciliters (dl)</option>
+                    <option value="quartliters">Quarterliters (ql)</option>
+                    <option value="liters" selected>Liters (L)</option>
                     <option value="gallons">Gallons (gal)</option>
                     <option value="quarts">Quarts (qt)</option>
                     <option value="pints">Pints (pt)</option>
@@ -293,8 +298,11 @@
                     <span id="volume-output">1000.00</span>
                 </div>
                 <select id="volume-to-unit" class="custom-select">
-                    <option value="liters">Liters (L)</option>
                     <option value="milliliters" selected>Milliliters (mL)</option>
+                    <option value="centiliters">Centiiters (ml</option>
+                    <option value="deciliters">Deciliters (dl)</option>
+                    <option value="quartliters">Quarterliters (ql)</option>
+                    <option value="liters">Liters (L)</option>
                     <option value="gallons">Gallons (gal)</option>
                     <option value="quarts">Quarts (qt)</option>
                     <option value="pints">Pints (pt)</option>
@@ -306,8 +314,7 @@
             </div>
         </div>
     </div>
-
-    <!-- dsgbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb -->
+    
     <div id="area-page" class="page-content hidden">
         <div class="page-header">
             <button id="menu-btn-area" class="page-menu-button">☰</button>
@@ -319,13 +326,14 @@
                 <label class="converter-label">From:</label>
                 <input type="number" id="area-input" class="converter-input" placeholder="0" value="1">
                 <select id="area-from-unit" class="custom-select">
+                    <option value="squareCentimeters">Square Centimeters (cm²)</option>
                     <option value="squareMeters">Square Meters (m²)</option>
                     <option value="squareKilometers">Square Kilometers (km²)</option>
-                    <option value="squareCentimeters">Square Centimeters (cm²)</option>
                     <option value="squareFeet">Square Feet (ft²)</option>
                     <option value="squareYards">Square Yards (yd²)</option>
                     <option value="squareMiles">Square Miles (mi²)</option>
                     <option value="acres">Acres</option>
+                    <option value="sqacres">Square Acres (sq)</option>
                     <option value="hectares">Hectares (ha)</option>
                 </select>
             </div>
@@ -338,13 +346,14 @@
                     <span id="area-output">10.7639</span>
                 </div>
                 <select id="area-to-unit" class="custom-select">
+                    <option value="squareCentimeters">Square Centimeters (cm²)</option>
                     <option value="squareMeters">Square Meters (m²)</option>
                     <option value="squareKilometers">Square Kilometers (km²)</option>
-                    <option value="squareCentimeters">Square Centimeters (cm²)</option>
                     <option value="squareFeet" selected>Square Feet (ft²)</option>
                     <option value="squareYards">Square Yards (yd²)</option>
                     <option value="squareMiles">Square Miles (mi²)</option>
                     <option value="acres">Acres</option>
+                    <option value="sqacres">Square Acres (sq)</option>
                     <option value="hectares">Hectares (ha)</option>
                 </select>
             </div>
@@ -398,8 +407,9 @@
         <div class="converter-section">
             <div class="converter-card">
                 <label class="converter-label">From:</label>
-                <input type="number" id="time-input" class="converter-input placeholder="0" value="1">
+                <input type="number" id="time-input" class="converter-input" placeholder="0" value="1"/>
                 <select id="time-from-unit" class="custom-select">
+                    <option value="milliseconds">Milliseconds (ms)</option>
                     <option value="seconds">Seconds (s)</option>
                     <option value="minutes">Minutes (min)</option>
                     <option value="hours" selected>Hours (hr)</option>
@@ -407,13 +417,14 @@
                     <option value="weeks">Weeks</option>
                     <option value="months">Months</option>
                     <option value="years">Years</option>
-                    <option value="milliseconds">Milliseconds (ms)</option>
+                    <option value="century">Century</option>
                 </select>
             </div>
             <div class="swap-button-container"><button id="time-swap-btn" class="swap-button">⇅</button></div>
             <div class="converter-card"><label class="converter-label">To:</label>
                 <div class="converter-output-display"><span id="time-output">60.00</span></div><select id="time-to-unit"
                     class="custom-select">
+                    <option value="milliseconds">Milliseconds (ms)</option>
                     <option value="seconds">Seconds (s)</option>
                     <option value="minutes" selected>Minutes (min)</option>
                     <option value="hours">Hours (hr)</option>
@@ -421,7 +432,7 @@
                     <option value="weeks">Weeks</option>
                     <option value="months">Months</option>
                     <option value="years">Years</option>
-                    <option value="milliseconds">Milliseconds (ms)</option>
+                    <option value="century">Century</option>
                 </select>
             </div>
         </div>

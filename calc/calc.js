@@ -54,6 +54,7 @@ const lengthFormulas = {
     toBase: {
         meters: (value) => value,
         kilometers: (value) => value * 1000,
+        decimeter: (value) => value / 10,
         centimeters: (value) => value / 100,
         millimeters: (value) => value / 1000,
         miles: (value) => value * 1609.344,
@@ -65,6 +66,7 @@ const lengthFormulas = {
     fromBase: {
         meters: (value) => value,
         kilometers: (value) => value / 1000,
+        decimeter: (value) => value * 10,
         centimeters: (value) => value * 100,
         millimeters: (value) => value * 1000,
         miles: (value) => value / 1609.344,
@@ -97,6 +99,9 @@ const volumeFormulas = {
     toBase: {
         liters: (value) => value,
         milliliters: (value) => value / 1000,
+        centiliters: (value) => value / 100,
+        deciliters: (value) => value / 10,
+        quartliters: (value) => value / 4,
         gallons: (value) => value * 3.78541,
         quarts: (value) => value * 0.946353,
         pints: (value) => value * 0.473176,
@@ -109,6 +114,9 @@ const volumeFormulas = {
     fromBase: {
         liters: (value) => value,
         milliliters: (value) => value * 1000,
+        centiliters: (value) => value * 100,
+        deciliters: (value) => value * 10,
+        quartliters: (value) => value * 4,
         gallons: (value) => value / 3.78541,
         quarts: (value) => value / 0.946353,
         pints: (value) => value / 0.473176,
@@ -129,6 +137,7 @@ const areaFormulas = {
         squareYards: (value) => value * 0.836127,
         squareMiles: (value) => value * 2589988.11,
         acres: (value) => value * 4046.86,
+        sqacres: (value) => value * 102421.5,
         hectares: (value) => value * 10000
     },
     // Convert FROM square meters to other units
@@ -140,6 +149,7 @@ const areaFormulas = {
         squareYards: (value) => value / 0.836127,
         squareMiles: (value) => value / 2589988.11,
         acres: (value) => value / 4046.86,
+        sqacres: (value) => value / 102421.5,
         hectares: (value) => value / 10000
     }
 };
@@ -175,6 +185,7 @@ const timeFormulas = {
         weeks: (value) => value * 604800,
         months: (value) => value * 2592000,  // Approximation: 30 days
         years: (value) => value * 31557600,  // 365.25 days (accounting for leap years)
+        century: (value) => value * 3155760000,
         milliseconds: (value) => value / 1000
     },
     // Convert FROM seconds to other units
@@ -186,6 +197,7 @@ const timeFormulas = {
         weeks: (value) => value / 604800,
         months: (value) => value / 2592000,
         years: (value) => value / 31557600,
+        century: (value) => value / 3155760000,
         milliseconds: (value) => value * 1000
     }
 };

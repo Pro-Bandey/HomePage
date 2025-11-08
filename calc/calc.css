@@ -68,7 +68,7 @@ body {
     padding: 5px;
     display: flex;
     flex-direction: column;
-    font-family: 'Google Sans', 'Roboto', 'digital-7', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: 'Google Sans', 'Roboto', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     /* Google Fonts */
     color: var(--text);
 }
