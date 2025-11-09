@@ -1,10 +1,10 @@
 // Background Images
 const backgrounds = [
-  'url("../src/assets/bg_001.jpg")', 'url("../src/assets/bg_002.jpg")', 'url("../src/assets/bg_003.jpg")',
-  'url("../src/assets/bg_004.jpg")', 'url("../src/assets/bg_005.jpg")', 'url("../src/assets/bg_006.jpg")',
-  'url("../src/assets/bg_007.jpg")', 'url("../src/assets/bg_008.jpg")', 'url("../src/assets/bg_009.jpg")',
-  'url("../src/assets/bg_010.jpg")', 'url("../src/assets/bg_011.jpg")', 'url("../src/assets/bg_012.jpg")',
-  'url("../src/assets/bg_013.jpg")'
+  'url("./src/assets/bg_001.jpg")', 'url("./src/assets/bg_002.jpg")', 'url("./src/assets/bg_003.jpg")',
+  'url("./src/assets/bg_004.jpg")', 'url("./src/assets/bg_005.jpg")', 'url("./src/assets/bg_006.jpg")',
+  'url("./src/assets/bg_007.jpg")', 'url("./src/assets/bg_008.jpg")', 'url("./src/assets/bg_009.jpg")',
+  'url("./src/assets/bg_010.jpg")', 'url("./src/assets/bg_011.jpg")', 'url("./src/assets/bg_012.jpg")',
+  'url("./src/assets/bg_013.jpg")'
 ];
 
 //  Current index for the background images. Initialized randomly.
@@ -54,107 +54,215 @@ function showCustomAlert(message) {
   };
 };
 
-// Elements for date, time, and uptime display
-const currentTimeElement = document.getElementById("time");
-const currentDayElement = document.getElementById("day");
-const currentDateElement = document.getElementById("date");
-const uptimeElement = document.getElementById("uptime");
+// // Elements for date, time, and uptime display
+// const currentTimeElement = document.getElementById("time");
+// const currentDayElement = document.getElementById("day");
+// const currentDateElement = document.getElementById("date");
+// const uptimeElement = document.getElementById("uptime");
 
-// Timestamp when the page started
-let startTime = Date.now();
+// // Timestamp when the page started
+// let startTime = Date.now();
 
-// Adds a leading zero to numbers less than 10
-function padZero(num) {
-  return (num < 10 ? "0" : "") + num;
-}
+// // Adds a leading zero to numbers less than 10
+// function padZero(num) {
+//   return (num < 10 ? "0" : "") + num;
+// }
 
-// Returns ordinal suffix (st, nd, rd, th)
-function getOrdinalSuffix(day) {
-  if (day > 3 && day < 21) return "th"; // handles 11th–13th
-  switch (day % 10) {
-    case 1: return "st";
-    case 2: return "nd";
-    case 3: return "rd";
-    default: return "th";
+// // Returns ordinal suffix (st, nd, rd, th)
+// function getOrdinalSuffix(day) {
+//   if (day > 3 && day < 21) return "th"; // handles 11th–13th
+//   switch (day % 10) {
+//     case 1: return "st";
+//     case 2: return "nd";
+//     case 3: return "rd";
+//     default: return "th";
+//   }
+// }
+
+// // Generates a random bright color in hex format
+// function getRandomColor() {
+//   const hue = Math.floor(Math.random() * 360);
+//   return `hsl(${hue}, 90%, 60%)`;
+// }
+
+// // Store a unique random color for today's date (so it changes once per day)
+// let today = new Date().getDate();
+// let randomSuffixColor = getRandomColor();
+
+// // Updates the current time, day, and date displayed on the page
+// function updateDateTime() {
+//   const now = new Date();
+//   const hours = now.getHours();
+//   const minutes = now.getMinutes();
+//   const seconds = now.getSeconds();
+//   const isPM = hours >= 12;
+//   const ampm = isPM ? "PM" : "AM";
+
+//   // Generate new suffix color when the day changes
+//   if (now.getDate() !== today) {
+//     today = now.getDate();
+//     randomSuffixColor = getRandomColor();
+//   }
+
+//   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+//   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+//   const dayName = days[now.getDay()];
+//   const date = now.getDate();
+//   const suffix = getOrdinalSuffix(date);
+//   const monthName = months[now.getMonth()];
+//   const year = now.getFullYear();
+
+//   const timeString = `
+//     <span class="time-hour-min">${padZero(hours % 12 || 12)}   ${padZero(minutes)}</span>
+//     <span class="time-sec-ampm">
+//       <sup class="ampm" style="color:${isPM ? "var(--red)" : "var(--teal)"};">${ampm}</sup>
+//       <sub class="time-sec">${padZero(seconds)}</sub>
+//     </span>
+//   `;
+
+//   const dateString = `
+//     ${date}<sup style="color:${randomSuffixColor};">${suffix}</sup> ${monthName} ${year}
+//   `;
+
+//   currentTimeElement.innerHTML = timeString.trim();
+//   currentDateElement.innerHTML = dateString.trim();
+//   currentDayElement.textContent = dayName;
+// }
+
+// // Updates the uptime counter displayed on the page
+// function updateUptime() {
+//   let elapsedTime = Date.now() - startTime;
+//   let milliseconds = Math.floor(elapsedTime / 10) % 100;
+//   let seconds = Math.floor(elapsedTime / 1000) % 60;
+//   let minutes = Math.floor(elapsedTime / 60000) % 60;
+//   let hours = Math.floor(elapsedTime / 3600000);
+
+//   uptimeElement.textContent = `Uptime: ${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}-${padZero(milliseconds)}`;
+// }
+
+// // Initialize and update every second
+// updateDateTime();
+// updateUptime();
+// setInterval(updateDateTime, 1000);
+// setInterval(updateUptime, 100);
+
+
+// // The main animation loop that updates date, time, and uptime using `requestAnimationFrame`.
+// function loop() {
+//   updateDateTime();
+//   updateUptime();
+//   requestAnimationFrame(loop);
+// };
+// loop();
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Elements for date, time, and uptime display
+  const currentTimeElement = document.getElementById("time");
+  const currentDayElement = document.getElementById("day");
+  const currentDateElement = document.getElementById("date");
+  const uptimeElement = document.getElementById("uptime");
+
+  // Timestamp when the page started
+  let startTime = Date.now();
+
+  // Adds a leading zero to numbers less than 10
+  function padZero(num) {
+    return (num < 10 ? "0" : "") + num;
   }
-}
 
-// Generates a random bright color in hex format
-function getRandomColor() {
-  const hue = Math.floor(Math.random() * 360);
-  return `hsl(${hue}, 90%, 60%)`;
-}
-
-// Store a unique random color for today's date (so it changes once per day)
-let today = new Date().getDate();
-let randomSuffixColor = getRandomColor();
-
-// Updates the current time, day, and date displayed on the page
-function updateDateTime() {
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-  const isPM = hours >= 12;
-  const ampm = isPM ? "PM" : "AM";
-
-  // Generate new suffix color when the day changes
-  if (now.getDate() !== today) {
-    today = now.getDate();
-    randomSuffixColor = getRandomColor();
+  // Returns ordinal suffix (st, nd, rd, th)
+  function getOrdinalSuffix(day) {
+    if (day > 3 && day < 21) return "th";
+    switch (day % 10) {
+      case 1: return "st";
+      case 2: return "nd";
+      case 3: return "rd";
+      default: return "th";
+    }
   }
 
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  // Generates a random bright color
+  function getRandomColor() {
+    const hue = Math.floor(Math.random() * 360);
+    return `hsl(${hue}, 90%, 60%)`;
+  }
 
-  const dayName = days[now.getDay()];
-  const date = now.getDate();
-  const suffix = getOrdinalSuffix(date);
-  const monthName = months[now.getMonth()];
-  const year = now.getFullYear();
+  // Store a unique random color for today's date
+  let today = new Date().getDate();
+  let randomSuffixColor = getRandomColor();
 
-  const timeString = `
-    <span class="time-hour-min">${padZero(hours % 12 || 12)}   ${padZero(minutes)}</span>
-    <span class="time-sec-ampm">
-      <sup class="ampm" style="color:${isPM ? "var(--red)" : "var(--teal)"};">${ampm}</sup>
-      <sub class="time-sec">${padZero(seconds)}</sub>
-    </span>
-  `;
+  // Updates the current time, day, and date displayed on the page
+  function updateDateTime() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const isPM = hours >= 12;
+    const ampm = isPM ? "PM" : "AM";
 
-  const dateString = `
-    ${date}<sup style="color:${randomSuffixColor};">${suffix}</sup> ${monthName} ${year}
-  `;
+    // Update color daily
+    if (now.getDate() !== today) {
+      today = now.getDate();
+      randomSuffixColor = getRandomColor();
+    }
 
-  currentTimeElement.innerHTML = timeString.trim();
-  currentDateElement.innerHTML = dateString.trim();
-  currentDayElement.textContent = dayName;
-}
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-// Updates the uptime counter displayed on the page
-function updateUptime() {
-  let elapsedTime = Date.now() - startTime;
-  let milliseconds = Math.floor(elapsedTime / 10) % 100;
-  let seconds = Math.floor(elapsedTime / 1000) % 60;
-  let minutes = Math.floor(elapsedTime / 60000) % 60;
-  let hours = Math.floor(elapsedTime / 3600000);
+    const dayName = days[now.getDay()];
+    const date = now.getDate();
+    const suffix = getOrdinalSuffix(date);
+    const monthName = months[now.getMonth()];
+    const year = now.getFullYear();
 
-  uptimeElement.textContent = `Uptime: ${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}-${padZero(milliseconds)}`;
-}
+    const timeString = `
+      <span class="time-hour-min">${padZero(hours % 12 || 12)} ${padZero(minutes)}</span>
+      <span class="time-sec-ampm">
+        <sup class="ampm" style="color:${isPM ? "var(--red)" : "var(--teal)"};">${ampm}</sup>
+        <sub class="time-sec">${padZero(seconds)}</sub>
+      </span>
+    `;
 
-// Initialize and update every second
-updateDateTime();
-updateUptime();
-setInterval(updateDateTime, 1000);
-setInterval(updateUptime, 100);
+    const dateString = `
+      ${date}<sup style="color:${randomSuffixColor};">${suffix}</sup> ${monthName} ${year}
+    `;
 
+    // ✅ Only update if elements exist
+    if (currentTimeElement) currentTimeElement.innerHTML = timeString.trim();
+    if (currentDateElement) currentDateElement.innerHTML = dateString.trim();
+    if (currentDayElement) currentDayElement.textContent = dayName;
+  }
 
-// The main animation loop that updates date, time, and uptime using `requestAnimationFrame`.
-function loop() {
+  // Updates uptime display
+  function updateUptime() {
+    const elapsedTime = Date.now() - startTime;
+    const milliseconds = Math.floor(elapsedTime / 10) % 100;
+    const seconds = Math.floor(elapsedTime / 1000) % 60;
+    const minutes = Math.floor(elapsedTime / 60000) % 60;
+    const hours = Math.floor(elapsedTime / 3600000);
+
+    if (uptimeElement)
+      uptimeElement.textContent = `Uptime: ${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}-${padZero(milliseconds)}`;
+  }
+
+  // Initial updates
   updateDateTime();
   updateUptime();
-  requestAnimationFrame(loop);
-};
-loop();
+
+  // Interval updates
+  setInterval(updateDateTime, 1000);
+  setInterval(updateUptime, 100);
+
+  // Optional animation loop (can be removed if redundant)
+  function loop() {
+    updateDateTime();
+    updateUptime();
+    requestAnimationFrame(loop);
+  }
+  loop();
+});
+
 
 // function to control Current index for the slideshow.
 let slideIndex = 0;
