@@ -4,11 +4,11 @@
 
 @font-face {
     font-family: Digital-7;
-    src: url(./src/fonts/digital-7.ttf);
+    src: url(../fonts/digital-7.ttf);
 }
 @media (prefers-color-scheme:light) {
     .drop-btn img:active{
-        content: url(./src/assets/menu2.svg);
+        content: url(../assets/menu1.svg);
     }
     .links-a img,.links-ab img {
         filter: invert(0);
@@ -16,7 +16,7 @@
 }
 @media (prefers-color-scheme:dark) {
 .drop-btn img:active {
-        content: url(./src/assets/menu1.svg);
+        content: url(../assets/menu2.svg);
     }
     .links-a img,.links-ab img {
         filter: invert();
@@ -200,7 +200,7 @@ body {
     background:var(--transulent-bg);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    background-image: url(./src/assets/search.svg);
+    background-image: url(../assets/search.svg);
     background-position: left center;
     background-repeat: no-repeat;
     padding: 0px 5px;
@@ -252,7 +252,7 @@ body {
 
 .drop-btn img {
     height: inherit;
-    content: url(./src/assets/menu.svg);
+    content: url(../assets/menu.svg);
 }
 
 
@@ -400,11 +400,11 @@ body {
 }
 
 .info-btn img:hover {
-    content: url(./src/assets/info1.svg);
+    content: url(../assets/info1.svg);
 }
 
 .calc-btn img:active {
-    content: url(./src/assets/calc1.png);
+    content: url(../assets/calc1.png);
 }
 
 .info-btn img:hover,
