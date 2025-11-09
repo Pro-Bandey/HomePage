@@ -41,6 +41,30 @@ body {
     box-sizing: border-box;
 }
 
+.inf-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    width: 50%;
+    z-index: 1001;
+    background: var(--accent-h);
+    backdrop-filter: var(--panel-bkdrop);
+    bottom: 5px;
+    transform: translateX(50%);
+    margin: auto;
+    font-size: 1.2rem;
+    border-radius: 15px;
+}
+
+.inf-navbar div a {
+    color: var(--text);
+    text-decoration: none;
+    color: var(--text);
+    text-decoration: none;
+    margin: 8px;
+}
+
 /* Branding */
 .branding {
     position: fixed;

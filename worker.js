@@ -18,7 +18,7 @@ const API_URLS = [
 if (typeof chrome !== 'undefined' && chrome.runtime) {
   // Uninstall feedback page (Chromium only)
   if (chrome.runtime.setUninstallURL) {
-    chrome.runtime.setUninstallURL('https://thirdparty-pro.github.io/help/');
+    chrome.runtime.setUninstallURL('https://Pro-Bandey.github.io/help/');
   }
 
   // Open homepage when extension icon clicked
