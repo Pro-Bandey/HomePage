@@ -1,4 +1,4 @@
-@import url(/src/css/Pallet.css);
+@import url(./Pallet.css);
 html,
 body {
   transition: background-image 2s ease-in-out, background 0.4s, color 0.4s;
@@ -152,7 +152,7 @@ body {
 .Profile-Name:hover {
   height: 38px;
   width: 250px;
-  content: url(/src/assets/founderofMRC&D.png);
+  content: url(../assets/founderofMRC&D.png);
   animation: ani4 1s linear;
   filter: var(--img-invert);
 }

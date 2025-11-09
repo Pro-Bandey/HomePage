@@ -1,8 +1,8 @@
-@import url(/src/css/Pallet.css);
+@import url(../src/css/Pallet.css);
 
 @font-face {
     font-family: Digital-7;
-    src: url(/src/fonts/digital-7.ttf);
+    src: url(../src/fonts/digital-7.ttf);
 }
 
 /* ===== Theme Colors ===== */
