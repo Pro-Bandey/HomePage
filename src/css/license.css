@@ -8,28 +8,20 @@ body {
     background-position-x: center;
     background-repeat: no-repeat;
     margin: 0;
+    overflow: hidden auto;
     padding: 0;
     line-height: 1.7;
 }
 
-.inf-navbar {
+.inf-navbar-bottom {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
-    position: sticky;
-    width: 98%;
-    z-index: 1001;
-    background: var(--accent-h);
-    backdrop-filter: var(--panel-bkdrop);
-    top: 5px;
-    margin: auto;
     font-size: 1.2rem;
-    border-radius: 15px;
 }
 
-.inf-navbar div a {
-    color: var(--text);
-    text-decoration: none;
+.inf-navbar-bottom a {
     color: var(--text);
     text-decoration: none;
     margin: 10px;
@@ -82,7 +74,6 @@ hr {
     border: none;
     height: 1px;
     background: var(--text);
-    margin: 35px 0;
 }
 
 h2 {
@@ -104,9 +95,7 @@ ul {
 
 footer {
     text-align: center;
-    font-size: .9rem;
-    margin-top: 45px;
-    color: var(--gray-light);
+    color: var(---text);
 }
 
 

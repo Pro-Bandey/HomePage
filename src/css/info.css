@@ -16,18 +16,17 @@ body {
   flex-direction: row;
   justify-content: space-around;
   position: sticky;
-  width: 98%;
+  width:fit-content;
   z-index: 1001;
   background: var(--accent-h);
   backdrop-filter: var(--panel-bkdrop);
   top: 5px;
   margin: auto;
+  padding: 1px 10px;
   font-size: 1.2rem;
   border-radius: 15px;
 }
 .inf-navbar div a {
-    color: var(--text);
-    text-decoration: none;
     color: var(--text);
     text-decoration: none;
     margin: 10px;
@@ -383,7 +382,21 @@ details.changelog summary {
   font-size: 0.9rem;
   opacity: 0.9;
 }
-
+.inf-navbar-bottom {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.inf-navbar-bottom a {
+    color: var(--text);
+    text-decoration: none;
+    margin: 7px;
+    font-size: 1.2rem;
+}
+footer {
+  text-align: center;
+}
 /* =========================================
    📱 RESPONSIVE DESIGN
    ========================================= */
@@ -429,11 +442,10 @@ details.changelog summary {
   html,
   body {
     font-size: 0.88rem;
-    padding: 1rem 5pxrem;
   }
 
   .inf-div {
-    padding: 5pxrem;
+    padding: 5px;
   }
   .inf-div-profile-section {
     flex-direction: column;
@@ -463,6 +475,9 @@ details.changelog summary {
 
   .inf-desc h1 {
     font-size: 1rem;
+  }
+  .inf-desc ul {
+    margin-left: 0;
   }
 
   details summary {
