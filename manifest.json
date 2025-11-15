@@ -1,8 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "HomePage part of Hiya",
-  "version": "2025.10.15",
-  "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
+  "name": "HomePage",
+  "version": "2025.11.14",  "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
   "author": "MicroResearch Corporation®",
   "offline_enabled": true,
   "chrome_url_overrides": {

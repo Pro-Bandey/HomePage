@@ -24,56 +24,44 @@
                 <span class="menu-item-icon">🧮</span>
                 <span class="menu-item-text">Calculator</span>
             </button>
-            <button id="currency-menu-btn" class="menu-item-button padded">
+            <button id="currency-menu-btn" class="menu-item-button">
                 <span class="menu-item-icon">💱</span>
                 <span class="menu-item-text">Currency Converter</span>
             </button>
-            
-            <div class="measurements-dropdown">
-                <button id="measurements-dropdown-btn" class="dropdown-button">
-                    <div class="flex items-center space-x-3">
-                        <span class="menu-item-icon">📏</span>
-                        <span class="menu-item-text">Measurements</span>
-                    </div>
-                    <span id="measurements-arrow" class="dropdown-arrow">▷</span>
-                </button>
-                <div id="measurements-submenu" class="measurements-submenu">
-                    <button id="length-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">📏</span>
-                        <span class="menu-item-text small">Length / Distance</span>
-                    </button>
-                    <button id="mass-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">⚖️</span>
-                        <span class="menu-item-text small">Mass / Weight</span>
-                    </button>
-                    <button id="temperature-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">🌡️</span>
-                        <span class="menu-item-text small">Temperature</span>
-                    </button>
-                    <button id="volume-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">🥤</span>
-                        <span class="menu-item-text small">Volume</span>
-                    </button>
-                    <button id="area-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">🟦</span>
-                        <span class="menu-item-text small">Area</span>
-                    </button>
-                    <button id="speed-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">🏃</span>
-                        <span class="menu-item-text small">Speed</span>
-                    </button>
-                    <button id="time-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">⏰</span>
-                        <span class="menu-item-text small">Time</span>
-                    </button>
-                    <button id="age-menu-btn" class="submenu-item-button">
-                        <span class="menu-item-icon small">🎂</span>
-                        <span class="menu-item-text small">Age Extractor</span>
-                    </button>
-                </div>
-            </div>
-            </div>
-            </div>
+            <button id="length-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">📏</span>
+                <span class="menu-item-text">Length / Distance</span>
+            </button>
+            <button id="mass-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">⚖️</span>
+                <span class="menu-item-text">Mass / Weight</span>
+            </button>
+            <button id="temperature-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">🌡️</span>
+                <span class="menu-item-text">Temperature</span>
+            </button>
+            <button id="volume-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">🥤</span>
+                <span class="menu-item-text">Volume</span>
+            </button>
+            <button id="area-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">🟦</span>
+                <span class="menu-item-text">Area</span>
+            </button>
+            <button id="speed-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">🏃</span>
+                <span class="menu-item-text">Speed</span>
+            </button>
+            <button id="time-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">⏰</span>
+                <span class="menu-item-text">Time</span>
+            </button>
+            <button id="age-menu-btn" class="menu-item-button">
+                <span class="menu-item-icon">🎂</span>
+                <span class="menu-item-text">Age Extractor</span>
+            </button>
+        </div>
+    </div>
 
     <div id="calculator-page" class="page-content">
         <div class="page-header">
@@ -315,7 +303,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="area-page" class="page-content hidden">
         <div class="page-header">
             <button id="menu-btn-area" class="page-menu-button">☰</button>
@@ -408,7 +396,7 @@
         <div class="converter-section">
             <div class="converter-card">
                 <label class="converter-label">From:</label>
-                <input type="number" id="time-input" class="converter-input" placeholder="0" value="1"/>
+                <input type="number" id="time-input" class="converter-input" placeholder="0" value="1" />
                 <select id="time-from-unit" class="custom-select">
                     <option value="milliseconds">Milliseconds (ms)</option>
                     <option value="seconds">Seconds (s)</option>
@@ -450,7 +438,7 @@
                 <input type="date" value="2006-09-30" id="dob-input" class="converter-input" />
             </div>
             <div class="swap-button-container">
-                <button id="calc-age-btn" class="calculate-age-button">Calculate Age</button>
+                <button id="calc-age-btn" class="swap-button" style="width: fit-content;">Calculate Age</button>
             </div>
             <div class="converter-card">
                 <label class="age-result-label">Your Age:</label>
@@ -460,6 +448,7 @@
     </div>
 
     <script src="./calc.js"></script>
+    <script type="module" src="../src/js/bg.js"></script>
 </body>
 
 </html>
