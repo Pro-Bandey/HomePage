@@ -3,7 +3,7 @@
 // service-worker.js (2025-safe version)
 // ----------------------
 
-const CACHE_KEY = '2025.10.15';
+const CACHE_KEY = 'HomePage';
 
 // Domains to always fetch fresh
 const API_URLS = [
@@ -30,13 +30,13 @@ if (typeof chrome !== 'undefined' && chrome.runtime) {
   }
 
   // Open homepage on first install
-  chrome.runtime.onInstalled.addListener((details) => {
-    console.log('Homepage Extension with Context Menu Installed');
-    if (details.reason === 'install') {
-      const url = chrome.runtime.getURL('./wel.html');
-      chrome.tabs.create({ url });
-    }
-  });
+  // chrome.runtime.onInstalled.addListener((details) => {
+  //   console.log('Homepage Extension with Context Menu Installed');
+  //   if (details.reason === 'install') {
+  //     const url = chrome.runtime.getURL('./wel.html');
+  //     chrome.tabs.create({ url });
+  //   }
+  // });
 
   // Reminder alarm handling
   chrome.alarms.onAlarm.addListener((alarm) => {
@@ -59,21 +59,21 @@ if (typeof chrome !== 'undefined' && chrome.runtime) {
   });
 
   // Handle messages from popup or background
-  chrome.runtime.onMessage.addListener((msg, sender) => {
-    if (msg.action === 'openReadingMode' && chrome.sidePanel) {
-      chrome.sidePanel.open({ windowId: sender.tab.windowId });
-      chrome.sidePanel.setOptions({
-        tabId: sender.tab.id,
-        path: 'reading.html',
-        enabled: true
-      });
-    }
+  // chrome.runtime.onMessage.addListener((msg, sender) => {
+  //   if (msg.action === 'openReadingMode' && chrome.sidePanel) {
+  //     chrome.sidePanel.open({ windowId: sender.tab.windowId });
+  //     chrome.sidePanel.setOptions({
+  //       tabId: sender.tab.id,
+  //       path: './index.html.html',
+  //       enabled: true
+  //     });
+  //   }
 
-    if (msg.action === 'viewSource' && msg.url) {
-      const viewSourceUrl = 'view-source:' + msg.url;
-      chrome.tabs.create({ url: viewSourceUrl });
-    }
-  });
+  //   if (msg.action === 'viewSource' && msg.url) {
+  //     const viewSourceUrl = 'view-source:' + msg.url;
+  //     chrome.tabs.create({ url: viewSourceUrl });
+  //   }
+  // });
 }
 
 // ----------------------

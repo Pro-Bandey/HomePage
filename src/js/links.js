@@ -43,17 +43,19 @@ document.addEventListener("DOMContentLoaded", function () {
           E())
         : ((y = [
           { name: "Facebook", url: "https://facebook.com", fallback: "FB" },
-          { name: "Pakizle", url: "https://pakizle.com", fallback: "PKL" },
           { name: "Instagram", url: "https://instagram.com", fallback: "Ins" },
-          { name: "X Twitter", url: "https://x.com", fallback: "X" },
+          { name: "Meta Ai", url: "https://Meta.ai", fallback: "MAi" },
           { name: "Threads", url: "https://threads.com", fallback: "THd" },
+          { name: "Instagram", url: "https://telegram.com", fallback: "Ins" },
+          { name: "X Twitter", url: "https://x.com", fallback: "X" },
           { name: "LinkedIn", url: "https://linkedin.com", fallback: "Lnk" },
           { name: "WhatsApp Web", url: "https://web.whatsapp.com", fallback: "WAW" },
-          { name: "YouTube", url: "https://youtube.com", fallback: "YT" },
           { name: "WhatsApp", url: "https://whatsapp.com", fallback: "WA" },
+          { name: "YouTube", url: "https://youtube.com", fallback: "YT" },
           { name: "TikTok", url: "https://tiktok.com", fallback: "TkTk" },
-          { name: "ChatGpt", url: "https://chatgpt.com", fallback: "CGT" },
           { name: "GitHub", url: "https://github.com", fallback: "Git" },
+          { name: "claude", url: "https://claude.com", fallback: "CLD" },
+          { name: "Copilot", url: "https://Copilot.ai", fallback: "CpT" },
         ]
         ),
           k(y),

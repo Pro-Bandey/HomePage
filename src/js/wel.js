@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (typeof browser !== 'undefined' && browser.runtime) {
       newTabURL = 'about:newtab'; // Firefox
     } else {
-      newTabURL = 'about:blank'; // fallback
+      newTabURL = './index.html'; // fallback
     }
 
     // Open new tab and close wizard if popup

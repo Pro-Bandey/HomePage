@@ -593,9 +593,9 @@ body {
 .reminder-box,
 .delete-box {
     position: fixed;
-    top: 20%;
+    top: 15rem;
     right: 50%;
-    transform: translate(50%, 50%);
+    transform: translatex(50%);
     border: 1px solid var(--border);
     background: var(--alert-bg);
     backdrop-filter: blur(12px);
@@ -624,15 +624,25 @@ body {
     display: none;
 }
 
+.alert-box {
+    right: 25%;
+}
+
+.reminder-box {
+    left: -10%;
+}
+
 @keyframes fade2 {
     0% {
         opacity: 0;
-        transform: translate(50%, 30%)
+        transform: scale(.5),translateX(50%);
+        top: 13rem;
     }
-
     100% {
         opacity: 1;
-        transform: translate(50%, 50%)
+        transform: scale(1),translateX(50%);
+
+
     }
 }
 
@@ -654,6 +664,8 @@ body {
     font-size: 1.1em;
     line-height: 1.5;
     color: var(--text);
+    max-height: 75px;
+    overflow: clip auto;
 }
 
 .alert-box button,
@@ -678,6 +690,7 @@ body {
 .delete-box-action {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
 }
 
 .delete-box-action button {
@@ -699,6 +712,10 @@ body {
 .delete-box-action .danger {
     background: var(--accent);
     color: var(--text);
+}
+
+.delete-box-action .danger.single {
+    width: 150px;
 }
 
 .delete-box-action .danger:hover {
@@ -811,17 +828,20 @@ body {
 @media (max-width: 480px) {
     .inf-navbar {
         width: -webkit-fill-available;
-        bottom: auto;top: 5px;
+        bottom: auto;
+        top: 5px;
         transform: none;
     }
+
     .inf-navbar div {
         display: flex;
         flex-direction: row;
     }
+
     .inf-navbar div a {
         width: 60px;
         text-overflow: ellipsis;
-        text-wrap-mode: nowrap; 
+        text-wrap-mode: nowrap;
         overflow: clip;
         font-size: 1rem;
         margin: 7px;
