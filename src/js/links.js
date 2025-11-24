@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
           { name: "Instagram", url: "https://telegram.com", fallback: "Ins" },
           { name: "X Twitter", url: "https://x.com", fallback: "X" },
           { name: "LinkedIn", url: "https://linkedin.com", fallback: "Lnk" },
-          { name: "WhatsApp Web", url: "https://web.whatsapp.com", fallback: "WAW" },
+          { name: "WhatsApp Web", url: "https://chatgpt.com", fallback: "Gpt" },
           { name: "WhatsApp", url: "https://whatsapp.com", fallback: "WA" },
           { name: "YouTube", url: "https://youtube.com", fallback: "YT" },
           { name: "TikTok", url: "https://tiktok.com", fallback: "TkTk" },
