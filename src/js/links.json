@@ -1,16 +1,16 @@
 [
-  { "name": "Pakizle", "url": "https://pakizle.com", "fallback": "PKL" },
   { "name": "Facebook", "url": "https://facebook.com", "fallback": "FB" },
   { "name": "Instagram", "url": "https://instagram.com", "fallback": "Ins" },
-  { "name": "X Twitter", "url": "https://X.com", "fallback": "X" },
+  { "name": "Meta Ai", "url": "https://Meta.ai", "fallback": "MAi" },
   { "name": "Threads", "url": "https://threads.com", "fallback": "THd" },
+  { "name": "Instagram", "url": "https://telegram.com", "fallback": "Ins" },
+  { "name": "X Twitter", "url": "https://x.com", "fallback": "X" },
   { "name": "LinkedIn", "url": "https://linkedin.com", "fallback": "Lnk" },
-  { "name": "WhatsApp Web", "url": "https://web.whatsapp.com", "fallback": "WAW" },
+  { "name": "ChatGpt", "url": "https://chatgpt.com", "fallback": "Gpt" },
+  { "name": "WhatsApp", "url": "https://whatsapp.com", "fallback": "WA" },
   { "name": "YouTube", "url": "https://youtube.com", "fallback": "YT" },
-  { "name": "TikTok", "url": "https://tiktok.com", "fallback": "Tik" },
-  { "name": "GitHub", "url": "https://gihub.com", "fallback": "Git" },
-  { "name": "GitLab", "url": "https://gitlab.com", "fallback": "GitL" },
-  { "name": "BitBucket", "url": "https://bitbucket.com", "fallback": "BBt" },
-  { "name": "Azure", "url": "https://dev.azure.com", "fallback": "Azr" },
-  { "name": "SourceForge", "url": "https://sourceforge.org", "fallback": "SFg" }
+  { "name": "TikTok", "url": "https://tiktok.com", "fallback": "TkTk" },
+  { "name": "GitHub", "url": "https://github.com", "fallback": "Git" },
+  { "name": "claude", "url": "https://claude.com", "fallback": "CLD" },
+  { "name": "Copilot", "url": "https://Copilot.ai", "fallback": "CpT" }
 ]
