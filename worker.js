@@ -28,15 +28,16 @@ if (typeof chrome !== 'undefined' && chrome.runtime) {
       chrome.tabs.create({ url });
     });
   }
-
+/*
   // Open homepage on first install
-  // chrome.runtime.onInstalled.addListener((details) => {
-  //   console.log('Homepage Extension with Context Menu Installed');
-  //   if (details.reason === 'install') {
-  //     const url = chrome.runtime.getURL('./wel.html');
-  //     chrome.tabs.create({ url });
-  //   }
-  // });
+  chrome.runtime.onInstalled.addListener((details) => {
+    console.log('Homepage Extension with Context Menu Installed');
+    if (details.reason === 'install') {
+      const url = chrome.runtime.getURL('./wel.html');
+      chrome.tabs.create({ url });
+    }
+  });
+  */
 
   // Reminder alarm handling
   chrome.alarms.onAlarm.addListener((alarm) => {
