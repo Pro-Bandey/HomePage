@@ -87,19 +87,20 @@ Unlockable milestones as users explore more of the extension:
 
 ## 🛠️ Release Versions
 
-### **Latest Release: v1.0.0**
-- Core features added  
-- UI/UX polished  
-- AI Chatbot (MRI) integrated  
-- Slideshow branding implemented  
-- Stats system introduced  
+### **Latest Release: v2025.11.***
+- Improve UI in Translucent look
+- Fix CAL and Link bar issues
+- Introduce new info page look
+- Improve Time & Date look and performance
+- Default Translucent UI look for MultCalc
+- Terms & Conditions | Privacy Policy | License Individual pages instead of single info pages
 
-### **Upcoming Release: v1.1.0**
-- Achievements UI  
-- User profiles  
-- Themes support  
-- Cloud sync *(planned)*
-
+### **Upcoming Release: v2025.10.14.***
+- Remove Legacy ToDo Lister and Introduce brand New Reminder ToDo Task YDTYour Dalily Task
+- Improve Ui CAL
+- Stop MRi updates due to privacy issues
+- Update materials
+- Introduce a Multi Calculator instead single Legacy
 ---
 
 ## 💬 Feedback & Support
