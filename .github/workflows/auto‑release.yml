@@ -1,18 +1,19 @@
-name: Run 3 Days After Release
+name: Auto Release with ZIP Pack
 
 on:
+  workflow_dispatch:   # Manual trigger (optional)
   schedule:
-    - cron: '*/5 * * * *' # Runs every 5 minutes
-  workflow_dispatch: # Optional manual trigger
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 jobs:
-  run-after-release:
+  auto-release:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 1: Get latest release date
       - name: Get latest release date
         id: get_release
         uses: actions/github-script@v7
@@ -23,23 +24,50 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo
               });
-              const releaseDate = new Date(latestRelease.data.published_at);
-              return releaseDate.toISOString();
+              return latestRelease.data.published_at;
             } catch (error) {
-              return null; // No release found
+              return null;
             }
 
+      # Step 2: Check if 3 days passed
       - name: Check if 3 days passed
         id: check_days
         run: |
           latest_release="${{ steps.get_release.outputs.result }}"
-          if [ -z "$latest_release" ]; then
-            echo "No releases found. Exiting..."
-            exit 0
-          fi
-          release_ts=$(date -d "$latest_release" +%s)
-          now_ts=$(date +%s)
-          diff_days=$(( (now_ts - release_ts) / 86400 ))
-          echo "Days since release: $diff_days"
-          if [ "$diff_days" -lt 3 ]; then
-            echo "Less than 3 days since last release, exiting.
+          if [ -n "$latest_release" ]; then
+            release_ts=$(date -d "$latest_release" +%s)
+            now_ts=$(date +%s)
+            diff_days=$(( (now_ts - release_ts) / 86400 ))
+            echo "Days since last release: $diff_days"
+            if [ "$diff_days" -lt 3 ]; then
+              echo "Less than 3 days since last release, exiting..."
+              exit 0
+            fi
+
+      # Step 3: Prepare project files only
+      - name: Prepare project files
+        run: |
+          mkdir -p release
+          # Copy only project folders/files (replace with your actual project folders)
+          cp -r src release/
+          cp -r dist release/
+          cp package.json release/  # Example: include package.json
+          cp README.md release/     # Include README if needed
+          # Exclude any unwanted files like .git, workflows, etc.
+
+      # Step 4: Create ZIP package
+      - name: Create ZIP package
+        run: |
+          zip -r release_$(date +'%Y.%m.%d').zip release
+          echo "ZIP file created: release_$(date +'%Y.%m.%d').zip"
+
+      # Step 5: Publish GitHub release with ZIP
+      - name: Create new release with ZIP
+        uses: ncipollo/release-action@v1
+        with:
+          tag: "v$(date +'%Y.%m.%d')"
+          name: "Release $(date +'%Y-%m-%d')"
+          body: "Automated release with ZIP package 3+ days after last release."
+          draft: false
+          prerelease: false
+          files: release_$(date +'%Y.%m.%d').zip
