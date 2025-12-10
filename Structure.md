@@ -4,7 +4,7 @@ D:\Documents\Repo\📁HomePage
   |__manifest.json/
   |__ReadMe.md/
   |__License/
-  |
+
   |__📁calc
   | |__calc.html
   | |__calc.js
@@ -34,9 +34,7 @@ D:\Documents\Repo\📁HomePage
 
 
 ___________________________________________________________________
-
-
-  ```
+```
 └── 📁HomePage
     └── 📁calc
         ├── calc.css
@@ -44,9 +42,7 @@ ___________________________________________________________________
         ├── calc.js
     └── 📁chat
         └── 📁assets
-            ├── .md
             ├── alert.svg
-            ├── manifest.json
             ├── mri.png
             ├── send.svg
             ├── user.png
@@ -57,12 +53,10 @@ ___________________________________________________________________
         ├── MRi.js
     └── 📁module
         └── 📁src
-            ├── .md
             ├── js.js
             ├── mrc.png
             ├── script.js
             ├── style.css
-        ├── .md
         ├── fav.ico
         ├── icons.htm
     └── 📁src
@@ -97,6 +91,7 @@ ___________________________________________________________________
             ├── gemini.svg
             ├── GitHub.png
             ├── google.png
+            ├── home.svg
             ├── icon.png
             ├── icon128.png
             ├── icon16.png
@@ -110,13 +105,14 @@ ___________________________________________________________________
             ├── logo.svg
             ├── M Ramzan Ch.png
             ├── mail.svg
-            ├── menu.png
             ├── menu.svg
             ├── menu1.svg
+            ├── menu2.svg
             ├── mri.png
             ├── open.svg
             ├── openin.svg
             ├── Profile.png
+            ├── Profile0.png
             ├── search.svg
             ├── slide_01.png
             ├── slide_02.png
@@ -127,22 +123,31 @@ ___________________________________________________________________
             ├── yandex.png
             ├── youtube.png
         └── 📁css
+            ├── info.css
+            ├── license.css
             ├── links.css
             ├── page.css
+            ├── Pallet.css
             ├── panels.css
         └── 📁fonts
             ├── digital-7.ttf
             ├── Orbitron-Regular.ttf
         └── 📁js
+            ├── bg.js
             ├── links.js
             ├── links.json
             ├── menu.js
             ├── page.js
-            ├── popup.js
+            ├── panels.js
             ├── products.json
+            ├── todo.js
+            ├── wel.js
+        ├── ChangeLog.md
+        ├── feed.html
         ├── info.html
         ├── license.html
-        ├── pravacy.html
+        ├── pop.html
+        ├── privacy.html
         ├── terms.html
     ├── .gitignore
     ├── index.html
@@ -150,5 +155,6 @@ ___________________________________________________________________
     ├── manifest.json
     ├── README.md
     ├── Structure.md
-    └── wel.html
+    ├── wel.html
+    └── worker.js
 ```

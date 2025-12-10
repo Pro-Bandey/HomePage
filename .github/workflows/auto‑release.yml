@@ -1,5 +1,4 @@
-name: Auto Release with ZIP Pack
-
+name: Auto Releaser By MicroResearch Corporation
 on:
   workflow_dispatch:   # Manual trigger (optional)
   schedule:
@@ -44,30 +43,42 @@ jobs:
               exit 0
             fi
 
-      # Step 3: Prepare project files only
+      # Step 3: Prepare project files (exclude unwanted files/folders)
       - name: Prepare project files
         run: |
+          rm -rf release
           mkdir -p release
-          # Copy only project folders/files (replace with your actual project folders)
-          cp -r src release/
-          cp -r dist release/
-          cp package.json release/  # Example: include package.json
-          cp README.md release/     # Include README if needed
-          # Exclude any unwanted files like .git, workflows, etc.
+          rsync -av --exclude='.git' --exclude='.github' --exclude='.vscode' \
+                    --exclude='.gitignore' --exclude='package.json' --exclude='Structure.md' \
+                    ./ release/
+          echo "Project files copied to release folder."
 
       # Step 4: Create ZIP package
       - name: Create ZIP package
         run: |
-          zip -r release_$(date +'%Y.%m.%d').zip release
-          echo "ZIP file created: release_$(date +'%Y.%m.%d').zip"
+          ZIP_FILE="release_$(date +'%Y.%m.%d').zip"
+          zip -r "$ZIP_FILE" release
+          echo "ZIP file created: $ZIP_FILE"
+          echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_ENV
 
-      # Step 5: Publish GitHub release with ZIP
+      # Step 5: Generate release notes automatically
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          TAG="v$(date +'%Y.%m.%d')"
+          NOTES="Release $TAG\n\n"
+          NOTES+="Author: M Ramzan Ch\nCompany: MicroResearch Corporation\nReleased By: MR Intelligence\nPublished By: Pro Badney"
+          echo -e "$NOTES" > release_notes.txt
+          echo "Release notes generated."
+          echo "RELEASE_NOTES=$(cat release_notes.txt)" >> $GITHUB_ENV
+
+      # Step 6: Publish GitHub release with ZIP and notes
       - name: Create new release with ZIP
         uses: ncipollo/release-action@v1
         with:
           tag: "v$(date +'%Y.%m.%d')"
-          name: "Release $(date +'%Y-%m-%d')"
-          body: "Automated release with ZIP package 3+ days after last release."
+          name: "v$(date +'%Y-%m-%d')"
+          body: ${{ env.RELEASE_NOTES }}
           draft: false
           prerelease: false
-          files: release_$(date +'%Y.%m.%d').zip
+          files: ${{ env.ZIP_FILE }}
