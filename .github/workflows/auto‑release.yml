@@ -1,25 +1,45 @@
-name: Auto Release Every 3 Days
+name: Run 3 Days After Release
 
 on:
   schedule:
-    # Runs at 00:00 UTC every 3rd day of the month
-    - cron: '0 0 */3 * *'
-  workflow_dispatch:
+    - cron: '*/5 * * * *' # Runs every 5 minutes
+  workflow_dispatch: # Optional manual trigger
 
 jobs:
-  create_release:
+  run-after-release:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Create Release
-        uses: actions/create-release@v1
+      - name: Get latest release date
+        id: get_release
+        uses: actions/github-script@v7
         with:
-          tag_name: "release-$(date +'%Y-%m-%d')"
-          release_name: "Release $(date +'%Y-%m-%d')"
-          body: "Automated release for $(date +'%Y-%m-%d')"
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            try {
+              const latestRelease = await github.rest.repos.getLatestRelease({
+                owner: context.repo.owner,
+                repo: context.repo.repo
+              });
+              const releaseDate = new Date(latestRelease.data.published_at);
+              return releaseDate.toISOString();
+            } catch (error) {
+              return null; // No release found
+            }
+
+      - name: Check if 3 days passed
+        id: check_days
+        run: |
+          latest_release="${{ steps.get_release.outputs.result }}"
+          if [ -z "$latest_release" ]; then
+            echo "No releases found. Exiting..."
+            exit 0
+          fi
+          release_ts=$(date -d "$latest_release" +%s)
+          now_ts=$(date +%s)
+          diff_days=$(( (now_ts - release_ts) / 86400 ))
+          echo "Days since release: $diff_days"
+          if [ "$diff_days" -lt 3 ]; then
+            echo "Less than 3 days since last release, exiting.
