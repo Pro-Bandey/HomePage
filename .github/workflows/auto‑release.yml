@@ -17,18 +17,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ------------------------------
-      # 1. Checkout
-      # ------------------------------
+      # -------------------------------------------------
+      # 1. Checkout repository (full history required)
+      # -------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ------------------------------
-      # 2. Get latest release date
-      # ------------------------------
-      - name: Get latest release date
+      # -------------------------------------------------
+      # 2. Get latest release info safely
+      # -------------------------------------------------
+      - name: Get latest release
         id: latest
         uses: actions/github-script@v7
         with:
@@ -36,21 +36,23 @@ jobs:
             try {
               const r = await github.rest.repos.getLatestRelease({
                 owner: context.repo.owner,
-                repo: context.repo.repo,
+                repo: context.repo.repo
               });
+              core.setOutput('tag', r.data.tag_name);
               core.setOutput('published_at', r.data.published_at);
             } catch {
+              core.setOutput('tag', '');
               core.setOutput('published_at', '');
             }
 
-      # ------------------------------
-      # 3. Decide if release is needed
-      # ------------------------------
+      # -------------------------------------------------
+      # 3. Decide whether a release should run (daily)
+      # -------------------------------------------------
       - name: Decide release
         id: decide
         run: |
-          TODAY=$(date -u +'%Y.%m.%d')
-          echo "DATE=$TODAY" >> $GITHUB_ENV
+          DATE=$(date -u +'%Y.%m.%d')
+          echo "DATE=$DATE" >> $GITHUB_ENV
 
           if [ -z "${{ steps.latest.outputs.published_at }}" ]; then
             echo "release=true" >> $GITHUB_OUTPUT
@@ -61,20 +63,18 @@ jobs:
           NOW=$(date +%s)
           DAYS=$(( (NOW - LAST) / 86400 ))
 
-          echo "Days since last release: $DAYS"
-
           if [ "$DAYS" -ge 1 ]; then
             echo "release=true" >> $GITHUB_OUTPUT
           else
             echo "release=false" >> $GITHUB_OUTPUT
           fi
 
-      # ------------------------------
-      # 4. Prevent duplicate tags
-      # ------------------------------
-      - name: Check tag existence
-        if: steps.decide.outputs.release == 'true'
+      # -------------------------------------------------
+      # 4. Prevent duplicate tag creation
+      # -------------------------------------------------
+      - name: Check if tag exists
         id: tagcheck
+        if: steps.decide.outputs.release == 'true'
         run: |
           TAG="v${DATE}"
           if git rev-parse "$TAG" >/dev/null 2>&1; then
@@ -83,9 +83,28 @@ jobs:
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
-      # ------------------------------
-      # 5. Prepare release files
-      # ------------------------------
+      # -------------------------------------------------
+      # 5. Build official Full Changelog URL
+      # -------------------------------------------------
+      - name: Build changelog URL
+        if: |
+          steps.decide.outputs.release == 'true' &&
+          steps.tagcheck.outputs.exists == 'false'
+        run: |
+          REPO_URL="https://github.com/${{ github.repository }}"
+          TODAY_TAG="v${DATE}"
+
+          if [ -n "${{ steps.latest.outputs.tag }}" ]; then
+            CHANGELOG_URL="$REPO_URL/compare/${{ steps.latest.outputs.tag }}...$TODAY_TAG"
+          else
+            CHANGELOG_URL="$REPO_URL/commits/main"
+          fi
+
+          echo "CHANGELOG_URL=$CHANGELOG_URL" >> $GITHUB_ENV
+
+      # -------------------------------------------------
+      # 6. Prepare release package
+      # -------------------------------------------------
       - name: Prepare files
         if: |
           steps.decide.outputs.release == 'true' &&
@@ -102,9 +121,9 @@ jobs:
             --exclude='Structure.md' \
             ./ release/
 
-      # ------------------------------
-      # 6. Zip package
-      # ------------------------------
+      # -------------------------------------------------
+      # 7. Zip package
+      # -------------------------------------------------
       - name: Create ZIP
         if: |
           steps.decide.outputs.release == 'true' &&
@@ -114,10 +133,10 @@ jobs:
           zip -qr "$ZIP" release
           echo "ZIP=$ZIP" >> $GITHUB_ENV
 
-      # ------------------------------
-      # 7. Generate release notes
-      # ------------------------------
-      - name: Release notes
+      # -------------------------------------------------
+      # 8. Build final release notes
+      # -------------------------------------------------
+      - name: Build release notes
         if: |
           steps.decide.outputs.release == 'true' &&
           steps.tagcheck.outputs.exists == 'false'
@@ -129,15 +148,20 @@ jobs:
           Company: MicroResearch Corporation
           Released By: MR Intelligence
           Published By: Pro Badney
+
+          ────────────────────────
+          Full Changelog
+          ────────────────────────
+          ${CHANGELOG_URL}
           EOF
 
           echo "NOTES<<EOF" >> $GITHUB_ENV
           cat notes.txt >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # ------------------------------
-      # 8. Create GitHub release
-      # ------------------------------
+      # -------------------------------------------------
+      # 9. Publish GitHub release
+      # -------------------------------------------------
       - name: Publish release
         if: |
           steps.decide.outputs.release == 'true' &&
