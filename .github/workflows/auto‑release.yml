@@ -1,8 +1,12 @@
 name: Auto Releaser By MicroResearch Corporation
+
 on:
-  workflow_dispatch:   # Manual trigger (optional)
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at midnight UTC
+    - cron: '0 0 * * *'
+
+permissions:
+  contents: write
 
 jobs:
   auto-release:
@@ -18,67 +22,91 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
+            const core = require('@actions/core');
             try {
-              const latestRelease = await github.rest.repos.getLatestRelease({
+              const release = await github.rest.repos.getLatestRelease({
                 owner: context.repo.owner,
-                repo: context.repo.repo
+                repo: context.repo.repo,
               });
-              return latestRelease.data.published_at;
-            } catch (error) {
-              return null;
+              core.setOutput('published_at', release.data.published_at);
+            } catch (e) {
+              core.setOutput('published_at', '');
             }
 
       # Step 2: Check if 3 days passed
       - name: Check if 3 days passed
         id: check_days
         run: |
-          latest_release="${{ steps.get_release.outputs.result }}"
-          if [ -n "$latest_release" ]; then
-            release_ts=$(date -d "$latest_release" +%s)
-            now_ts=$(date +%s)
-            diff_days=$(( (now_ts - release_ts) / 86400 ))
-            echo "Days since last release: $diff_days"
-            if [ "$diff_days" -lt 3 ]; then
-              echo "Less than 3 days since last release, exiting..."
-              exit 0
-            fi
+          if [ -z "${{ steps.get_release.outputs.published_at }}" ]; then
+            echo "should_release=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
 
-      # Step 3: Prepare project files (exclude unwanted files/folders)
+          release_ts=$(date -d "${{ steps.get_release.outputs.published_at }}" +%s)
+          now_ts=$(date +%s)
+          diff_days=$(( (now_ts - release_ts) / 86400 ))
+
+          echo "Days since last release: $diff_days"
+
+          if [ "$diff_days" -ge 3 ]; then
+            echo "should_release=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_release=false" >> $GITHUB_OUTPUT
+          fi
+
+      # Step 3: Set date variables
+      - name: Set release variables
+        if: steps.check_days.outputs.should_release == 'true'
+        run: |
+          echo "RELEASE_DATE=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+          echo "ZIP_FILE=release_$(date +'%Y.%m.%d').zip" >> $GITHUB_ENV
+
+      # Step 4: Prepare project files
       - name: Prepare project files
+        if: steps.check_days.outputs.should_release == 'true'
         run: |
           rm -rf release
-          mkdir -p release
-          rsync -av --exclude='.git' --exclude='.github' --exclude='.vscode' \
-                    --exclude='.gitignore' --exclude='package.json' --exclude='Structure.md' \
-                    ./ release/
-          echo "Project files copied to release folder."
+          mkdir release
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.vscode' \
+            --exclude='.gitignore' \
+            --exclude='package.json' \
+            --exclude='Structure.md' \
+            ./ release/
 
-      # Step 4: Create ZIP package
+      # Step 5: Create ZIP package
       - name: Create ZIP package
+        if: steps.check_days.outputs.should_release == 'true'
         run: |
-          ZIP_FILE="release_$(date +'%Y.%m.%d').zip"
           zip -r "$ZIP_FILE" release
-          echo "ZIP file created: $ZIP_FILE"
-          echo "ZIP_FILE=$ZIP_FILE" >> $GITHUB_ENV
 
-      # Step 5: Generate release notes automatically
+      # Step 6: Generate release notes
       - name: Generate release notes
-        id: release_notes
+        if: steps.check_days.outputs.should_release == 'true'
         run: |
-          TAG="v$(date +'%Y.%m.%d')"
-          NOTES="Release $TAG\n\n"
-          NOTES+="Author: M Ramzan Ch\nCompany: MicroResearch Corporation\nReleased By: MR Intelligence\nPublished By: Pro Badney"
-          echo -e "$NOTES" > release_notes.txt
-          echo "Release notes generated."
-          echo "RELEASE_NOTES=$(cat release_notes.txt)" >> $GITHUB_ENV
+          cat <<EOF > release_notes.txt
+          Release v${RELEASE_DATE}
 
-      # Step 6: Publish GitHub release with ZIP and notes
-      - name: Create new release with ZIP
+          Author: M Ramzan Ch
+          Company: MicroResearch Corporation
+          Released By: MR Intelligence
+          Published By: Pro Badney
+          EOF
+
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          cat release_notes.txt >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      # Step 7: Publish GitHub release
+      - name: Create GitHub Release
+        if: steps.check_days.outputs.should_release == 'true'
         uses: ncipollo/release-action@v1
         with:
-          tag: "v$(date +'%Y.%m.%d')"
-          name: "v$(date +'%Y-%m-%d')"
+          tag: v${{ env.RELEASE_DATE }}
+          name: v${{ env.RELEASE_DATE }}
           body: ${{ env.RELEASE_NOTES }}
+          files: ${{ env.ZIP_FILE }}
           draft: false
           prerelease: false
-          files: ${{ env.ZIP_FILE }}
