@@ -179,7 +179,7 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
   // ----------------------
   function openNewTabPage() {
     chrome.tabs.create({
-      url: "cchrome-extension://mheekocaahckfapmfbbacfmhmofnjhbf/index.html", // FIXED
+      url: "chrome://newtab", // FIXED
     });
   }
 

@@ -95,7 +95,7 @@ Unlockable milestones as users explore more of the extension:
 - Default Translucent UI look for MultCalc
 - Terms & Conditions | Privacy Policy | License Individual pages instead of single info pages
 
-### **Upcoming Release: v2025.10.14.***
+### **Upcoming Release: v2025.11.15.***
 - Remove Legacy ToDo Lister and Introduce brand New Reminder ToDo Task YDTYour Dalily Task
 - Improve Ui CAL
 - Stop MRi updates due to privacy issues
