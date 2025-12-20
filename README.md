@@ -5,7 +5,7 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
 ![Chrome Users](https://img.shields.io/badge/Chrome%20Users-1k+-brightgreen)
 ![Total Downloads](https://img.shields.io/badge/Downloads-2500+-blue)
 ![Daily Installs](https://img.shields.io/badge/Daily%20Repo%20Visitor-70-orange)
-![Version](https://img.shields.io/badge/version-2025.11.14-green)
+![Version](https://img.shields.io/badge/version-2025.12.20-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Maintenance](https://img.shields.io/badge/maintained-yes-success)
 
@@ -95,7 +95,7 @@ Unlockable milestones as users explore more of the extension:
 - Default Translucent UI look for MultCalc
 - Terms & Conditions | Privacy Policy | License Individual pages instead of single info pages
 
-### **Upcoming Release: v2025.11.15.***
+### **Upcoming Release: v2025.12.20.***
 - Remove Legacy ToDo Lister and Introduce brand New Reminder ToDo Task YDTYour Dalily Task
 - Improve Ui CAL
 - Stop MRi updates due to privacy issues
