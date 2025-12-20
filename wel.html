@@ -1,51 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
-  <title>Extension Wizard</title>
+  <title>HomePage Extension Wizard</title>
   <link rel="shortcut icon" href="./src/assets/icon.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <!-- <style>
-    *{
-    box-sizing:border-box;margin:0;padding:0}
-    body{
-      font-family:Arial,Helvetica,sans-serif;
-      display:flex;align-items:center;justify-content:center;
-      height:100vh;background:#f4f4f4;
-    }
-
-    .container{
-      width:460px;background:#fff;border-radius:12px;padding:20px;
-      box-shadow:0 6px 18px rgba(0,0,0,.12);overflow:hidden;
-    }
-
-    /* progress */
-    .progress-container{position:relative;display:flex;justify-content:space-between;margin-bottom:18px}
-    .progress-container::before{
-      content:"";position:absolute;left:0;right:0;top:50%;height:4px;background:#e6e6e6;transform:translateY(-50%);z-index:1;
-    }
-    .progress{position:absolute;left:0;top:50%;height:4px;transform:translateY(-50%);background:#007bff;z-index:2;transition:width .28s ease}
-
-    .circle{width:32px;height:32px;border-radius:50%;background:#e6e6e6;display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer;font-weight:600;color:#444;transition:background .2s,color .2s}
-    .circle.active{background:#007bff;color:#fff}
-
-    /* steps + animation */
-    .steps-wrapper{position:relative;height:170px;overflow:hidden}
-    .step{
-      position:absolute;top:0;left:100%;width:100%;opacity:0;transition:all .45s cubic-bezier(.2,.9,.2,1);
-    }
-    .step.active{left:0;opacity:1}
-    .step.left-exit{left:-100%;opacity:0}
-    .step.right-exit{left:100%;opacity:0}
-
-    .buttons{margin-top:18px;text-align:center}
-    button{margin:0 6px;padding:8px 14px;border-radius:8px;border:0;background:#007bff;color:#fff;cursor:pointer}
-    button[disabled]{background:#cfcfcf;cursor:default}
-    button.skip{background:#d33}
-    button.finish{background:#28a745}
-  </style> -->
-  <style>    body {
-    background: 50% / cover no-repeat rgb(51, 51, 51);
+  <style>
+    body {
+      background: 50% / cover no-repeat rgb(51, 51, 51);
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -58,7 +21,7 @@
       padding: 20px;
       background: white;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       text-align: center;
     }
 
@@ -159,10 +122,12 @@
 
     button.skip:hover {
       background: #a71d2a;
-    }</style>
+    }
+  </style>
 </head>
+
 <body>
-  <!-- <div class="container">
+  <div class="container">
     <div id="progress-container" class="progress-container">
       <div id="progress" class="progress" style="width:0%"></div>
     </div>
@@ -218,38 +183,10 @@
         </div>
       </div>
     </div>
-  </div> -->
-
-  <!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/gzxoys4lhuz0ni1hb59rla9s7cq50jh9xlxoxi3d0rl9wrz7/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
-
-<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-<script>
-  tinymce.init({
-    selector: 'textarea',
-    plugins: [
-      // Core editing features
-      'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
-      // Your account includes a free trial of TinyMCE premium features
-      // Try the most popular premium features until Dec 23, 2025:
-      'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
-    ],
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-    mergetags_list: [
-      { value: 'First.Name', title: 'First Name' },
-      { value: 'Email', title: 'Email' },
-    ],
-    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
-    uploadcare_public_key: 'c5f55a97e0a7ebeb2843',
-  });
-</script>
-<textarea>
-  Welcome to TinyMCE!
-</textarea>
+  </div>
 
   <script type="module" src="./src/js/page.js"></script>
   <script src="./src/js/wel.js"></script>
 </body>
+
 </html>

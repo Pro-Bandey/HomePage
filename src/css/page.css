@@ -471,7 +471,8 @@ body {
 .links-a,
 .links-ab {
     color: var(--text);
-    padding: 10px 5px;
+    padding:5px;
+    white-space: nowrap;
     text-decoration: none;
     display: block;
     text-align: left;

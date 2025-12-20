@@ -112,6 +112,11 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
     title: "NewTab",
     contexts: MENU_2,
   });
+  chrome.contextMenus.create({
+    id: "online",
+    title: "Online",
+    contexts: MENU_1,
+  });
 
   chrome.contextMenus.create({
     id: "info",
@@ -152,6 +157,10 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
         openNewTabPage();
         break;
 
+      case "online":
+        openOnlinePage();
+        break;
+
       case "info":
         openInfoPage();
         break;
@@ -180,6 +189,12 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
   function openNewTabPage() {
     chrome.tabs.create({
       url: "chrome://newtab", // FIXED
+    });
+  }
+
+  function openOnlinePage() {
+    chrome.tabs.create({
+      url: "https://homepage-gamma-dun.vercel.app/", // FIXED
     });
   }
 
