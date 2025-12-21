@@ -194,7 +194,7 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
 
   function openOnlinePage() {
     chrome.tabs.create({
-      url: "https://homepage-gamma-dun.vercel.app/", // FIXED
+      url: "https://online-homepage.vercel.app/", // FIXED
     });
   }
 
@@ -238,13 +238,27 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
 // ----------------------
 self.addEventListener("install", (event) => {
   const urlsToCache = [
-    "./index.html",
-    "./src/info.html",
     "./src/assets/icon16.png",
     "./src/assets/icon48.png",
     "./src/assets/icon64.png",
     "./src/assets/icon128.png",
     "./src/assets/icon.png",
+    "./index.html",
+    "./wel.html",
+
+    "./calc/calc.html",
+    "./calc/calc.css",
+    "./calc/calc.js",
+
+    "./chat/MRi.html",
+    "./chat/MRi.css",
+    "./chat/MRi.js",
+
+    "/src/css/page.css",
+    "/src/css/panels.css",
+    "/src/js/page.js",
+    "/src/js/menu.js",
+    "/src/js/panels.js",
   ];
 
   // Filter invalid URLs (avoid chrome-extension://)

@@ -1,0 +1,67 @@
+{
+  "name": "HomePage",
+  "short_name": "HomePage",
+  "lang": "en",
+  "orientation": "any",
+  "author": "M Ramzan Ch",
+  "publisher": "MicroResearch Corporation®",
+  "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f44234",
+  "background_color": "#333333",
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/newEmail?to=%s"
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "shortcuts": [
+    {
+      "name": "Info",
+      "short_name": "Info",
+      "description": "Jump to Info",
+      "url": "./",
+      "icons": [
+        {
+          "src": "./src/assets/icon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "./src/assets/icon.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "./src/assets/icon.png",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://iili.io/f1XsLyN.png",
+      "type": "image/png",
+      "description": "PWABuilder Home Screen"
+    },
+    {
+      "src": "https://iili.io/fc3P9Y7.png",
+      "type": "image/png",
+      "description": "PWABuilder Report Card"
+    },
+    {
+      "src": "https://iili.io/fc3NbZ7.png",
+      "type": "image/png",
+      "description": "Manifest information on the Report Card"
+    }
+  ]
+}

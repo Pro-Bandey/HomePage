@@ -1,9 +1,15 @@
 {
   "manifest_version": 3,
   "name": "HomePage",
+  "short_name": "HomePage",
   "version": "2025.12.20",
+  "version_name": "v2025.12.20",
   "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
-  "author": "MicroResearch Corporation®",
+  "company": "MicroResearch Corporation®",
+  "start_url": "./",
+  "theme_color": "#f44234",
+  "background_color": "#2e2c35",
+  "minimum_chrome_version": "130",
   "offline_enabled": true,
   "chrome_url_overrides": {
     "newtab": "./index.html",
@@ -11,6 +17,7 @@
   },
   "action": {
     "default_popup": "./src/pop.html",
+    "default_title": "StartPage",
     "browser_style": true,
     "default_icon": {
       "16": "./src/assets/icon16.png",
@@ -21,7 +28,7 @@
     }
   },
   "background": {
-    "service_worker": "./worker.js"
+    "service_worker": "./src/js/ex-sw.js"
   },
   "icons": {
     "16": "./src/assets/icon16.png",
