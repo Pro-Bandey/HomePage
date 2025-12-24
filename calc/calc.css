@@ -52,7 +52,7 @@ button {
     width: fit-content;
     min-width: fit-content;
     height: -webkit-fill-available;
-    background-color: var(--alert-bg);
+    background-color: var(--transulent-bg);
     backdrop-filter: var(--panel-bkdrop);
     transform: translateX(-100%);
     z-index: 50;
