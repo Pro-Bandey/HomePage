@@ -24,10 +24,10 @@
       "name": "Info",
       "short_name": "Info",
       "description": "Jump to Info",
-      "url": "./",
+      "url": "./src/info.html",
       "icons": [
         {
-          "src": "./src/assets/icon.png",
+          "src": "./src/assets/icon48.png",
           "sizes": "192x192"
         }
       ]
@@ -37,7 +37,7 @@
     {
       "purpose": "maskable",
       "sizes": "512x512",
-      "src": "./src/assets/icon.png",
+      "src": "./src/assets/icon128.png",
       "type": "image/png"
     },
     {
@@ -49,19 +49,9 @@
   ],
   "screenshots": [
     {
-      "src": "https://iili.io/f1XsLyN.png",
+      "src": "./src/assets/shot.png",
       "type": "image/png",
-      "description": "PWABuilder Home Screen"
-    },
-    {
-      "src": "https://iili.io/fc3P9Y7.png",
-      "type": "image/png",
-      "description": "PWABuilder Report Card"
-    },
-    {
-      "src": "https://iili.io/fc3NbZ7.png",
-      "type": "image/png",
-      "description": "Manifest information on the Report Card"
+      "description": "Home Screen"
     }
   ]
 }
