@@ -6,6 +6,8 @@
     <meta content="IE=7,8,edge" http-equiv="X-UA-Compatible" />
     <meta content="text/html;charset=UTF-8" http-equiv="refresh" />
     <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="Content-Security-Policy" 
+      content="script-src 'self' 'nonce-EDN21869CNWEH27' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:*;">
     <!-- Seo Meta Tags -->
     <meta content="HomePage" name="title" />
     <meta content="HomePage" name="name" />
@@ -37,7 +39,7 @@
     <!-- StyleSheets -->
      <link rel="stylesheet" href="./src/css/page.css">   
     <!-- Service Worker -->
-    <script>navigator.serviceWorker.register("./src/js/web-sw.js")</script>
+    <script src="./src/js/register-sw.js"></script>
 
 
     <title>HomePage</title>
