@@ -1,72 +1,106 @@
-/* ===== Theme Colors ===== */
 :root {
-  /* defaults */
-  --accent: #f44234;
-  --accent-h: #752020;
-  --accent-soft: #f4423499;
-  --border-c: #ff000033;
-  --border-d: #00808033;
-  --green: #00ff00;
-  --red: #ff0000;
-  --teal: #008080;
+  /* ===== Shape System (Pixel UI) ===== */
+  --radius-xs: 4px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 28px; /* Standard Panel/Card radius */
+  --radius-pill: 9999px; /* For buttons/search */
+
+  /* ===== Light Mode (Material 3 Defaults) ===== */
+  /* Primary Actions */
+  --accent: #9c413a;          /* MD3 Primary */
+  --accent-h: #ffdad6;        /* MD3 Primary Container (Highlight) */
+  --accent-soft: #9c413a99;
+  
+  /* Status/Utility */
+  --border-c: #9c413a4d;
+  --border-d: #3d666b4d;
+  --green: #4d6835;           /* Muted/Natural Green */
+  --red: #ba1a1a;             /* Error Red */
+  --teal: #3d666b;
   --white: #ffffff;
-  --border: #333;
-  --panel-bkdrop: blur(12px);
+  --border: #e7e0df;          /* Surface Variant Outline */
+  
+  /* Glass/Blur Effects */
+  --panel-bkdrop: blur(20px); /* Heavier Pixel-style blur */
+
   /* Utility */
-  --highlight: #ff9800;
-  --muted: #888;
-  --gray-soft: #7d7d7d33;
-  --gray-mid: #83838366;
-  --gray-light: #ffffff66;
-  /* main */
-  --text: #000000;
-  --bg: #ffffff;
-  --transulent-bg: #ffffff33;
-  --overlay: #0000001a;
-  --img-invert:invert(1);
-  /* Shadows */
-  --shadow-o: 0px 0px 5px 1px #ffffff88;
-  --shadow-h: inset 0 0 6px 1px #00000066;
-  /* Alerts & surfaces */
-  --alert-bg: #b9b9b977;
-  --alert-heading-bg: #fdfdfd;
-  --alert-heading: #000;
+  --highlight: #8c4f00;
+  --muted: #76777a;
+  --gray-soft: #7d7d7d22;
+  --gray-mid: #e7e0df88;      /* Surface Variant */
+  --gray-light: #ffffff88;
+
+  /* Surfaces & Text */
+  --text: #201a19;            /* On Surface */
+  --bg: #fff8f6;              /* Surface */
+  --transulent-bg: #fff8f6cc; /* Surface with Alpha */
+  --overlay: #201a191a;
+  --img-invert: invert(0);    /* Icons darker in light mode */
+
+  /* Shadows (Pixel uses softer, larger shadows) */
+  --shadow-o: 0px 4px 8px 3px rgba(0, 0, 0, 0.05); 
+  --shadow-h: inset 0 0 0px 1px #9c413a;
+
+  /* Alerts & Surfaces */
+  --alert-bg: #fff8f6ee;
+  --alert-heading-bg: #ffdad6; /* Primary Container */
+  --alert-heading: #3b0906;    /* On Primary Container */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* main */
-    --text: #ffffff;
-    --bg: #222;
-    --transulent-bg: #1c1c2233;
-    --overlay: #00000033;
-    --img-invert:invert(0);
+    /* ===== Dark Mode (Material 3 Defaults) ===== */
+    /* Primary Actions */
+    --accent: #ffb4ab;          /* MD3 Primary Inverse */
+    --accent-h: #72342e;        /* MD3 Primary Container */
+    --accent-soft: #ffb4ab99;
+
+    /* Surfaces & Text */
+    --text: #ede0de;            /* On Surface */
+    --bg: #1a1110;              /* Surface Dark */
+    --transulent-bg: #2b2120bb; /* Surface Variant Dark with Alpha */
+    --overlay: #00000066;
+    --img-invert: invert(1);    /* Icons white in dark mode */
+
+    /* Status/Utility */
+    --border: #534341;          /* Outline Dark */
+    --border-c: #ffb4ab4d;
+    --border-d: #a6dce24d;
+
     /* Shadows */
-    --shadow-o: 0px 0px 6px 2px #00000066;
-    --shadow-h: inset 0 0 5px 0 #ffffff88;
-    /* Alerts & surfaces */
-    --alert-bg: #0009;
-    --alert-heading-bg: #343434;
-    --alert-heading: #ffffff;
+    --shadow-o: 0px 4px 12px 4px rgba(0, 0, 0, 0.4);
+    --shadow-h: inset 0 0 0 1px #ffb4ab;
+
+    /* Alerts & Surfaces */
+    --alert-bg: #201a19ee;      /* Surface Container High */
+    --alert-heading-bg: #3b0906; /* On Primary Container */
+    --alert-heading: #ffdad6;
+    
+    /* Grays adapted for Dark */
+    --gray-mid: #53434188;
+    --gray-light: #53434144;
   }
 }
 
-
-/* ===== Scrollbar ===== */
+/* ===== Scrollbar (Pill Shaped) ===== */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
+  margin-block: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 4px;
+  background: var(--accent); /* Uses Primary color */
+  border-radius: var(--radius-pill);
   cursor: grab;
 }
+
 ::-webkit-scrollbar-thumb:active {
+  background: var(--accent-h);
   cursor: grabbing;
 }

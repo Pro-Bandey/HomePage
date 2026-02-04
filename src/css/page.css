@@ -1,3 +1,4 @@
+
 @import url(./links.css);
 @import url(./panels.css);
 @import url(./Pallet.css);
@@ -32,7 +33,7 @@
 /* Body */
 body {
     background: #333;
-    font-family: Arial, sans-serif;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif; /* Adjusted font stack for Pixel feel */
     text-align: center;
     background-size: cover;
     background-position-x: center;
@@ -55,14 +56,15 @@ body {
     position: fixed;
     width: 50%;
     z-index: 1001;
-    background: var(--accent-h);
+    background: var(--transulent-bg); /* Use surface variant */
     backdrop-filter: var(--panel-bkdrop);
     bottom: 5px;
     transform: translateX(50%);
     margin: auto;
     font-size: 1.2rem;
-    border-radius: 15px;
+    border-radius: var(--radius-pill); /* Pixel Navbar Pill */
     z-index: 0;
+    border: 1px solid var(--border);
 }
 
 .inf-navbar div a {
@@ -82,13 +84,14 @@ body {
     font-size: 14px;
     font-weight: 600;
     padding-left: 5px;
-    border-left: 2px solid var(--red);
+    border-left: 4px solid var(--accent); /* Thicker accent line */
     width: fit-content;
     animation: ani0 3s ease-in-out forwards;
+    border-bottom-right-radius: var(--radius-sm);
 }
 
 .branding span {
-    color: var(--white);
+    color: var(--text); /* Changed from white to text variable for theme consistency */
     text-transform: capitalize;
 }
 
@@ -125,6 +128,8 @@ body {
     width: fit-content;
     cursor: default;
     animation: ani1 3s ease-in-out forwards;
+    border-radius: var(--radius-md);
+    padding: 5px 15px; /* Added padding for aesthetic */
 }
 
 @keyframes ani1 {
@@ -205,8 +210,8 @@ body {
     width: 300px;
     max-width: 300px;
     border-top: 5px double var(--red);
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
     background: var(--transulent-bg);
     backdrop-filter: blur(5px);
     padding: 2px;
@@ -218,6 +223,7 @@ body {
     display: none;
     width: 100%;
     height: auto;
+    border-radius: var(--radius-md);
 }
 
 /* Slide Show */
@@ -331,17 +337,19 @@ body {
     margin: auto;
     background: var(--transulent-bg);
     backdrop-filter: blur(10px);
-    border-radius: 10px;
+    border-radius: var(--radius-pill); /* Pixel Search Bar */
     background-image: url(../assets/search.svg);
     background-position: left center;
     background-repeat: no-repeat;
     padding: 0px 5px;
     box-shadow: var(--shadow-o);
     animation: ani2 3s ease-in-out forwards;
+    border: 1px solid var(--border);
 }
 
 .search-box:hover {
-    outline: 2px solid #ffffff88;
+    outline: 2px solid var(--accent); /* Material focus ring */
+    background-color: var(--bg);
 }
 
 @keyframes ani2 {
@@ -359,18 +367,18 @@ body {
 .search-box input {
     border: none;
     font-size: 20px;
-    color: var(--white);
+    color: var(--text);
     width: 100%;
     height: 100%;
     margin-left: 50px;
-    background: #ffffff00;
+    background: transparent;
     outline: none;
     padding: 0;
 }
 
 .search-box input::-webkit-input-placeholder,
 .send-area input::-webkit-input-placeholder {
-    color: #ffffff88;
+    color: var(--muted);
     line-height: 100%;
 }
 
@@ -393,6 +401,7 @@ body {
     border: none;
     background: none;
     height: inherit;
+    border-radius: var(--radius-pill);
 }
 
 .search-btn img {
@@ -440,13 +449,13 @@ body {
     height: 50px;
     margin: 0;
     padding: 0;
-    border-radius: 10px;
+    border-radius: var(--radius-sm); /* M3 Icon Shape */
 }
 
 .links-btn img:hover,
 .more-shortcuts img:hover {
     transform: translateY(5px);
-    border-radius: 10px;
+    border-radius: var(--radius-md);
 }
 
 .links-content,
@@ -463,15 +472,16 @@ body {
     backdrop-filter: blur(5px);
     min-width: 130px;
     left: -40px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px 8px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-o);
     z-index: 99;
+    border: 1px solid var(--border);
 }
 
 .links-a,
 .links-ab {
     color: var(--text);
-    padding:5px;
+    padding: 5px;
     white-space: nowrap;
     text-decoration: none;
     display: block;
@@ -480,7 +490,8 @@ body {
 
 
 .links-dropdown a:hover {
-    background-color: var(--gray-mid);
+    background-color: var(--accent-h);
+    border-radius: var(--radius-xs);
 }
 
 .links-content:hover .links-dropdown {
@@ -518,10 +529,11 @@ body {
     width: 55px;
     margin-left: 5px;
     background: var(--transulent-bg);
-    border: none;
-    border-radius: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md); /* Pixel Squared Circle shape */
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-o);
 }
 
 .float-btnL button:hover,
@@ -597,10 +609,10 @@ body {
     top: 15rem;
     right: 50%;
     transform: translatex(50%);
-    border: 1px solid var(--border);
+    border: none;
     background: var(--alert-bg);
     backdrop-filter: blur(12px);
-    border-radius: 10px;
+    border-radius: var(--radius-lg); /* M3 Dialog Radius */
     box-shadow: var(--shadow-o);
     z-index: 1001;
     padding-bottom: 10px;
@@ -609,24 +621,20 @@ body {
     width: 70%;
     font-size: 16px;
     font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Google Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     animation: fade2 1s ease-out;
 }
 
 .alert-box:hover,
 .reminder-box:hover,
 .delete-box:hover {
-    box-shadow: var(--shadow-h);
+    box-shadow: 0px 8px 16px 4px rgba(0,0,0,0.1);
 }
 
 .alert-box,
 .delete-box,
 .reminder-box.hidden {
     display: none;
-}
-
-.alert-box {
-    right: 25%;
 }
 
 .reminder-box {
@@ -651,7 +659,7 @@ body {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
     margin: auto;
-    padding: 2px;
+    padding: 15px;
     font-size: 20px;
     font-weight: 700;
     background: var(--alert-heading-bg);
@@ -672,19 +680,20 @@ body {
 .alert-box button,
 .reminder-box button {
     background: var(--accent);
-    color: var(--text);
-    padding: 8px 20px;
+    color: var(--bg);
+    padding: 10px 24px;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-pill); /* M3 Button */
     cursor: pointer;
     font-size: 1em;
     transition: background 0.2s ease-out;
-    margin: 0 0 5px 0;
+    margin: 0 5px 10px 5px;
 }
 
 .alert-box button:hover,
 .reminder-box button:hover {
     background: var(--accent-h);
+    color: var(--text);
     border: none;
 }
 
@@ -698,11 +707,11 @@ body {
     width: -webkit-fill-available;
     background: var(--bg);
     color: var(--text);
-    padding: 10px 12px;
+    padding: 10px 24px;
     margin: 0 10px 0 10px;
     font-size: 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-pill);
     cursor: pointer;
 }
 
@@ -711,8 +720,8 @@ body {
 }
 
 .delete-box-action .danger {
-    background: var(--accent);
-    color: var(--text);
+    background: var(--red);
+    color: var(--white);
 }
 
 .delete-box-action .danger.single {
@@ -721,6 +730,7 @@ body {
 
 .delete-box-action .danger:hover {
     background: var(--accent-h);
+    color: var(--text);
 }
 
 /* ______________________________________________________________________ */
@@ -758,8 +768,8 @@ body {
     .slideshow-container {
         width: 90%;
         max-width: 250px;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: var(--radius-lg);
+        border-bottom-right-radius: var(--radius-lg);
     }
 
     .search-box {
@@ -909,7 +919,7 @@ body {
     .more-shortcuts img {
         width: 35px;
         height: 35px;
-        border-radius: 7px;
+        border-radius: var(--radius-xs);
     }
 
     .todo-pan {

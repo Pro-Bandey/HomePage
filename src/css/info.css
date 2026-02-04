@@ -5,11 +5,12 @@ body {
 }
 
 body {
-  background: var(--border);
+  background: var(--bg);
   color: var(--text);
   background-size: cover;
   background-position-x: center;
   background-repeat: no-repeat;
+  font-family: 'Google Sans', Roboto, sans-serif;
 }
 .inf-navbar {
   display: flex;
@@ -18,13 +19,14 @@ body {
   position: sticky;
   width:fit-content;
   z-index: 1001;
-  background: var(--accent-h);
+  background: var(--transulent-bg);
   backdrop-filter: var(--panel-bkdrop);
   top: 5px;
   margin: auto;
-  padding: 1px 10px;
+  padding: 5px 15px;
   font-size: 1.2rem;
-  border-radius: 15px;
+  border-radius: var(--radius-pill); /* Pixel Pill Navbar */
+  border: 1px solid var(--border);
 }
 .inf-navbar div a {
     color: var(--text);
@@ -40,16 +42,17 @@ body {
 .inf-div {
   background: var(--transulent-bg);
   backdrop-filter: blur(12px);
-  border-radius: 20px;
+  border-radius: var(--radius-lg); /* Large Pixel Card */
   margin: 10px 5px;
   border: 1px solid var(--border);
-  box-shadow: 0 8px 28px var(--shadow);
+  box-shadow: var(--shadow-o);
   transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
 }
 
 .inf-div:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px var(--shadow);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  background: var(--bg);
 }
 
 .inf-div h2 {
@@ -104,11 +107,11 @@ body {
 .Profile {
   width: 180px;
   height: 180px;
-  border-radius: 20px;
+  border-radius: var(--radius-lg); /* Rounded Square Profile */
   object-fit: cover;
   cursor: grab;
-  border: 1px solid var(--accent);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--accent);
+  box-shadow: var(--shadow-o);
 }
 
 .Profile-Name {
@@ -188,18 +191,19 @@ body {
   align-items: center;
   background: transparent;
   width: 100px;
-  border-radius: 10px;
+  border-radius: var(--radius-md); /* M3 Card Link */
   font-size: 0.95rem;
   color: transparent;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
+  padding: 5px;
 }
 
 .inf-links img {
   width: 60px;
   height: 60px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   transition: transform 0.3s;
 }
 
@@ -216,11 +220,12 @@ body {
 
 /* ===== Description ===== */
 .inf-desc {
-  border: 1px solid var(--gray-light);
+  border: 1px solid var(--border);
+  background: var(--bg);
   text-align: center;
   width: 90%;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 15px;
+  border-radius: var(--radius-md);
   text-wrap: wrap;
   margin: auto auto 10px auto;
 }
@@ -232,11 +237,14 @@ body {
 
 .inf-desc-ul-div {
   display: flex;
-  border-left: 4px solid var(--gray-light);
+  border-left: 4px solid var(--accent);
   width: fit-content;
   padding: 10px;
-  padding-left: 0;
+  padding-left: 15px;
   margin: auto auto 10px auto;
+  background: var(--gray-light);
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
 }
 
 .inf-desc-ul {
@@ -252,13 +260,14 @@ body {
 .inf-mr {
   width: 100%;
   max-width: 555px;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   padding: 5px;
   margin: auto;
   background:var(--transulent-bg);
   backdrop-filter: var(--panel-bkdrop);
   overflow: hidden;
   cursor: grab;
+  border: 1px solid var(--border);
 }
 
 .inf-mr:active {
@@ -276,6 +285,7 @@ body {
 .c-img,
 .d-img {
   width: 100%;
+  border-radius: var(--radius-md);
 }
 
 .c-img:hover,
@@ -339,19 +349,20 @@ body {
 
 /* ===== Details & Summary (Changelog etc.) ===== */
 .summary {
-  background: transparent;
-  border-radius: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-md);
   width: 90%;
   margin: 20px auto;
-  border: 1px solid darkgray;
+  border: 1px solid var(--border);
   transition: background 0.3s ease;
 }
 
 .changelog {
   margin: 0 1.2rem 1.2rem 1.2rem;
-  background: var(--link-bg);
+  background: var(--transulent-bg);
   border: 1px solid var(--border);
   transition: background 0.3s ease;
+  border-radius: var(--radius-md);
 }
 
 .summary summary,
@@ -361,6 +372,7 @@ body {
   cursor: pointer;
   font-size: 1rem;
   color: var(--text);
+  padding: 5px;
 }
 
 details summary:hover {

@@ -16,7 +16,7 @@
   width: 80px;
   height: 80px;
   background: transparent;
-  border-radius: 5px;
+  border-radius: var(--radius-md); /* Pixel Card Shape */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,14 +24,16 @@
   position: relative;
   transition: background 0.2s ease;
   animation:fade3 2s ease-in-out;
+  border: 1px solid transparent; /* Prepare for hover border */
 }
 .link-card:hover, .card:hover {
-  background: var(--gray-mid);
+  background: var(--accent-h); /* Primary Container */
+  border-color: var(--border-c);
 }
 .card .icon,.link-card .icon {
   width: 50px;
   height: 50px;
-  border-radius: 15px;
+  border-radius: var(--radius-sm); /* M3 Icon Shape */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,7 +45,7 @@
 .card .icon img, .link-card .icon img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 .card .name, .link-card .link-label {
     width: 100%;
@@ -56,7 +58,7 @@
     animation:fade3 2s ease-in-out;
 }
 .card .name {
-  color: var(--white);
+  color: var(--text);
 }
 @keyframes fade3 {
     0% {transform: translateY(-50%); }
@@ -69,14 +71,15 @@
   border: none;
   font-size: 16px;
   font-weight: 600;
-  color: #000; 
+  color: var(--text); 
   cursor: pointer;
   padding: 0 5px;
+  border-radius: var(--radius-xs);
 }
 .menu-btn:hover {
-  background:var(--gray-light);
-  color:var(--white);
-  border-radius: 5px;
+  background:var(--accent-h);
+  color:var(--text);
+  border-radius: var(--radius-xs);
 }
 
 .context-menu {
@@ -85,25 +88,26 @@
     position: absolute;
     top: 20px;
     right: 2px;
-    background:var(--transulent-bg);
+    background:var(--bg);
     backdrop-filter: var(--panel-bkdrop);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: var(--radius-sm); /* M3 Menu Shape */
     box-shadow:var(--shadow-o);
     z-index: 101;
     max-width: 130px;
     animation: fade5 1s ease-in-out;
+    padding: 5px 0;
 }
 .context-menu button {
     background: none;
     border: none;
     text-align: start;
-    padding: 10px 5px;
+    padding: 10px 15px;
     width: 100%;
     cursor: pointer;
     font-size: 13px;
     font-weight: 700;
-    color:var(--white);
+    color:var(--text);
 }
 @keyframes fade5 {
   0% {opacity: 0; transform: rotateY(90deg);}
@@ -127,13 +131,14 @@
   padding: 5px 9px;
   border: none;
   width: 80px;
-  border-radius: 5px;
+  border-radius: var(--radius-pill); /* Pill Buttons */
   background:var(--accent);
-  color:var(--text);
+  color:var(--bg);
   cursor: pointer;
 }
 .cal-controls button:hover {
   background: var(--accent-h);
+  color: var(--text);
 }
 .cal-controls button:active {
   background: var(--accent-soft);
@@ -141,18 +146,19 @@
 .add-card {
   width: 75px;
   height: 75px;
-  border: 1px solid var(--border);
+  border: 1px dashed var(--border);
   background: transparent;
   cursor: pointer;
-  color:var(--border);
+  color:var(--text);
+  border-radius: var(--radius-md);
 }
 .add-card p {
   font-size: 24px;
 }
 .add-card:hover {
-    border:1px solid #ffffff8a;
-    color:var(--text) ;
-    background: #0000004d;
+    border:1px solid var(--accent);
+    color:var(--accent);
+    background: var(--accent-h);
 }
 .add-link-box {
   display:none;
@@ -168,11 +174,12 @@
   backdrop-filter: var(--panel-bkdrop);
   border-top:none;
   padding-bottom: 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg); /* M3 Dialog Shape */
   width: 90%;
   max-width: 350px;
   box-shadow:var(--shadow-o);
   animation:fade4 1s ease-in-out;
+  border: 1px solid var(--border);
 }
 @keyframes fade4 {
     0% {opacity: 0.2; transform: translateY(-30%); }
@@ -181,7 +188,7 @@
 .add-link-box-content h2 {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-  padding: 3px;
+  padding: 15px;
   margin: auto;
   margin-bottom: 10px;
   font-size: 20px;
@@ -195,14 +202,14 @@
   width:inherit;
   padding: 8px;
   font-size: 16px;
-  border: none;
+  border: 1px solid var(--border);
   outline: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm); /* M3 Input Shape */
   margin: auto;
   margin-bottom: 10px;
   background: var(--bg);
   color: var(--text);
-  box-shadow:var(--shadow-o);
+  box-shadow: none;
 }
 .input-optional {
   margin: auto;
@@ -215,6 +222,7 @@
   font-size: 18px;
   font-weight: 600;
   text-align: left;
+  border-radius: var(--radius-xs);
 }
 .input-optional #linkFavicon {
   width: 77%;
@@ -229,6 +237,7 @@
   background-repeat: no-repeat;
   background-size: inherit;
   background-position:center;
+  border-radius: var(--radius-sm);
 }
 .input-optional input::file-selector-button {
   width: 40px;
@@ -250,7 +259,7 @@
     margin:0 10px 0 10px;
     font-size: 14px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-pill); /* M3 Buttons */
     cursor: pointer;
 }
 .add-link-box-buttons .cancel {
@@ -258,14 +267,15 @@
   color: var(--text);
 }
 .add-link-box-buttons .cancel:hover {
-  background: gray;
+  background: var(--gray-mid);
 }
 .add-link-box-buttons .add {
   background: var(--accent);
-  color:var(--text);
+  color:var(--bg);
 }
 .add-link-box-buttons .add:hover {
   background: var(--accent-h);
+  color: var(--text);
 }
 
 
