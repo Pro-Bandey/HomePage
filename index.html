@@ -6,26 +6,30 @@
     <meta content="IE=7,8,edge" http-equiv="X-UA-Compatible" />
     <meta content="text/html;charset=UTF-8" http-equiv="refresh" />
     <meta content="width=device-width,initial-scale=1" name="viewport" />
-    <meta http-equiv="Content-Security-Policy" 
-      content="script-src 'self' 'nonce-EDN21869CNWEH27' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:*;">
+    <meta http-equiv="Content-Security-Policy"
+        content="script-src 'self' 'nonce-EDN21869CNWEH27' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:*;">
     <!-- Seo Meta Tags -->
     <meta content="HomePage" name="title" />
     <meta content="HomePage" name="name" />
     <meta content="M Ramzan Ch" name="author" />
-    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®." name="description" />
-    <meta content="M Ramzan Ch" name="copyright"  />
-    <meta content="M-RAMZAN, M Ramzan Ch, mspot, Website, Pro Bandey, MegaMind-Solution, rm4814691, MRamzanCh " name="keywords" />
+    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®."
+        name="description" />
+    <meta content="M Ramzan Ch" name="copyright" />
+    <meta content="M-RAMZAN, M Ramzan Ch, mspot, Website, Pro Bandey, MegaMind-Solution, rm4814691, MRamzanCh "
+        name="keywords" />
     <meta content="#F44234" name="theme-color" />
     <meta content="#333333" name="background-color" />
-    <meta content="website" property="og:type"/>
+    <meta content="website" property="og:type" />
     <meta content="https://online-homepage.vercel.app/" property="og:url" />
     <meta content="HomePage" property="og:title" />
-    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®." property="og:description" />
+    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®."
+        property="og:description" />
     <meta content="https://iili.io/f1XsLyN.png" property="og:image" />
     <meta content="summary_large_image" property="twitter:card" />
     <meta content="https://online-homepage.vercel.app/" property="twitter:url" />
     <meta content="HomePage" property="twitter:title" />
-    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®. "property="twitter:description" />
+    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®. "
+        property="twitter:description" />
     <meta content="https://iili.io/f1XsLyN.png" property="twitter:image" />
     <!-- PWA Content -->
     <link href="./manfest.webmanifest" rel="manifest" />
@@ -37,7 +41,7 @@
     <link href="./src/assets/icon.png" rel="icon" sizes="16x16" />
     <link href="./src/assets/icon.png" rel="icon" />
     <!-- StyleSheets -->
-     <link rel="stylesheet" href="./src/css/page.css">   
+    <link rel="stylesheet" href="./src/css/page.css">
     <!-- Service Worker -->
     <script src="./src/js/register-sw.js"></script>
 
@@ -79,30 +83,68 @@
         <!-- Slideshow images -->
         <div class="slideshow-container">
             <!-- Slides (images) -->
-            <img class="slide fade" src="./src/assets/slide_01.png">
-            <img class="slide slide-ltr" src="./src/assets/slide_02.png">
-            <img class="slide slide-rtl" src="./src/assets/slide_03.png">
-            <img class="slide zoom-i" src="./src/assets/slide_04.png">
+            <a href="https://microresearch-corporation.github.io/" target="_blank">
+                <img class="slide fade" src="./src/assets/slide_01.png" />
+            </a>
+            <a href="https://microresearch-corporation.github.io/Minimalistic-Wallpapers-Gallery/" target="_blank">
+                <img class="slide slide-ltr" src="./src/assets/slide_02.png" />
+            </a>
+            <a href="https://www.google.com/search?q=About+most+power+Search+Engines+like+%28Yahoo+Brave+DuckDuckGo+Ecosia+Google+Qwant+Yandex+Startpage+and+Bing&source=homepage"
+                target="_blank">
+                <img class="slide slide-rtl" src="./src/assets/slide_03.png" />
+            </a>
+            <a href="https://google.com/" target="_blank">
+                <img class="slide zoom-i" src="./src/assets/slide_04.png" />
+            </a>
         </div>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Search Box -->
-    <div id="search-overlay" class="overlay"></div>
     <div class="search-box">
         <input type="text" id="search" class="search" autocomplete="off" placeholder="Search or type a URL">
-        <button class="drop-btn" id="search-btn"><img src="./src/assets/menu.svg" alt="menu"
-                title="Search With Any S-Engin"></button>
+
+        <!-- Suggestion Container -->
+        <div id="suggestions" class="suggestions-container"></div>
+
+
         <div id="search-popup" class="pop-search">
-            <button id="bing-btn" class="search-btn" title="Search With Bing"><img src="./src/assets/bing.png"
-                    alt=""></button>
-            <button id="duckduck-btn" class="search-btn" title="Search With DuckDuckGo"><img
-                    src="./src/assets/DuckDuckGo.png"></button>
-            <button id="google-btn" class="search-btn" title="Search With Google"><img src="./src/assets/google.png"
-                    alt=""></button>
-            <button id="yahoo-btn" class="search-btn" title="Search With Yahoo"><img
-                    src="./src/assets/yahoo.png"></button>
-            <button id="yandex-btn" class="search-btn" title="Search With Yandex"><img
-                    src="./src/assets/yandex.png"></button>
+            <!-- We add data-engine attributes to identify them easily -->
+            <button id="bing-btn" data-engine="bing" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Bing">
+                <img src="./src/assets/bing.png">
+            </button>
+            <button id="duckduck-btn" data-engine="duckduck" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search DDG">
+                <img src="./src/assets/DuckDuckGo.png">
+            </button>
+            <button id="google-btn" data-engine="google" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Google">
+                <img src="./src/assets/google.png">
+            </button>
+            <button id="yahoo-btn" data-engine="yahoo" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Yahoo">
+                <img src="./src/assets/yahoo.png">
+            </button>
+            <button id="qwant-btn" data-engine="Qwant" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Qwant">
+                <img src="./src/assets/qwant.png">
+            </button>
+            <button id="brave-btn" data-engine="brave" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Brave">
+                <img src="./src/assets/brave.png">
+            </button>
+            <button id="startpage-btn" data-engine="startpage" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Startpage">
+                <img src="./src/assets/Startpage.png">
+            </button>
+            <button id="ecosia-btn" data-engine="Ecosia" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Ecosia">
+                <img src="./src/assets/Ecosia.png">
+            </button>
+            <button id="yandex-btn" data-engine="yandex" class="search-btn"
+                title="Left-click: Set Default | Right-click: Search Yandex">
+                <img src="./src/assets/yandex.png">
+            </button>
         </div>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->

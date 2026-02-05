@@ -62,6 +62,7 @@ function updateTaskIndexes() {
 // -----------------------------------------
 // CREATE SINGLE TASK
 // -----------------------------------------
+/*
 function createTask(task, save = true) {
   const li = document.createElement("li");
   li.dataset.created = task.created || new Date().toISOString();
@@ -163,7 +164,143 @@ function createTask(task, save = true) {
     scheduleReminder(task.reminder, task.created, task.text);
   }
 }
+*/
+function createTask(task, save = true) {
+  const li = document.createElement("li");
+  li.dataset.created = task.created || new Date().toISOString();
+  li.dataset.reminder = task.reminder || "";
 
+  // Controls Container
+  const ctrlDiv = document.createElement("div");
+  ctrlDiv.className = "ctrl-div";
+
+  const taskIndex = document.createElement("p");
+  taskIndex.className = "task-index";
+
+  const checkbox = document.createElement("div");
+  checkbox.className = "morph-checkbox";
+  if (task.completed) checkbox.classList.add("checked");
+
+  // --- NEW: Copy Button ---
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "copy-btn";
+  copyBtn.title = "Copy Task";
+
+  // --- NEW: Edit Button ---
+  const editBtn = document.createElement("button");
+  editBtn.className = "edit-btn";
+  editBtn.title = "Edit Task";
+
+  const delBtn = document.createElement("button");
+  delBtn.className = "delete-btn";
+
+  // Append buttons to control div
+  ctrlDiv.appendChild(taskIndex);
+  ctrlDiv.appendChild(checkbox);
+  ctrlDiv.appendChild(copyBtn); 
+  ctrlDiv.appendChild(editBtn);
+  ctrlDiv.appendChild(delBtn);
+  li.appendChild(ctrlDiv);
+
+  // Added date + reminder
+  const topDiv = document.createElement("div");
+  topDiv.className = "top";
+
+  const addedOnDiv = document.createElement("div");
+  addedOnDiv.style.display = "flex";
+
+  const addedText = document.createElement("p");
+  addedText.className = "added-on";
+  addedText.textContent = "added on ";
+
+  const addedDate = document.createElement("p");
+  addedDate.textContent = new Date(li.dataset.created).toLocaleString();
+
+  addedOnDiv.appendChild(addedText);
+  addedOnDiv.appendChild(addedDate);
+
+  const reminderTextDiv = document.createElement("div");
+  reminderTextDiv.textContent = task.reminder
+    ? `Reminder: ${new Date(task.reminder).toLocaleString()}`
+    : "Reminder: Not set";
+
+  topDiv.appendChild(addedOnDiv);
+  topDiv.appendChild(reminderTextDiv);
+  li.appendChild(topDiv);
+
+  li.appendChild(document.createElement("hr"));
+
+  // Task content
+  const taskContent = document.createElement("p");
+  taskContent.className = "todo-item-content";
+  taskContent.innerHTML = task.text;
+  taskContent.style.fontFamily = task.font;
+  taskContent.style.fontSize = task.size;
+
+  if (task.completed) {
+    taskContent.style.textDecoration = "line-through";
+    taskContent.style.color = "red";
+    taskContent.style.opacity = "0.6";
+  }
+
+  li.appendChild(taskContent);
+
+  // --- LOGIC: Copy Button ---
+  copyBtn.onclick = () => {
+    const textToCopy = taskContent.innerText;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+    });
+  };
+
+  // --- LOGIC: Edit Button ---
+  editBtn.onclick = () => {
+    // 1. Move content back to the main input
+    taskInput.innerHTML = taskContent.innerHTML;
+    
+    // 2. Set the formatting inputs back to what they were
+    fontSelect.value = task.font || "Arial";
+    fontSizeInput.value = parseInt(task.size) || 18;
+    reminderInput.value = task.reminder || "";
+
+    // 3. Remove the current item and save
+    li.remove();
+    updateTaskIndexes();
+    saveTasks();
+
+    // 4. Focus the input so you can start typing
+    taskInput.focus();
+  };
+
+  // Checkbox toggle
+  checkbox.onclick = () => {
+    checkbox.classList.toggle("checked");
+    if (checkbox.classList.contains("checked")) {
+      taskContent.style.textDecoration = "line-through";
+      taskContent.style.color = "red";
+      taskContent.style.opacity = "0.6";
+    } else {
+      taskContent.style.textDecoration = "none";
+      taskContent.style.color = "";
+      taskContent.style.opacity = "1";
+    }
+    saveTasks();
+  };
+
+  // Delete
+  delBtn.onclick = () => {
+    li.remove();
+    updateTaskIndexes();
+    saveTasks();
+  };
+
+  todoList.appendChild(li);
+  updateTaskIndexes();
+  if (save) saveTasks();
+
+  if (task.reminder) {
+    scheduleReminder(task.reminder, task.created, task.text);
+  }
+}
 // -----------------------------------------
 // REMINDER FUNCTIONS
 // -----------------------------------------

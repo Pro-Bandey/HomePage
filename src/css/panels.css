@@ -1,5 +1,5 @@
-
 @import url(./Pallet.css);
+
 .overlay {
     display: none;
     position: fixed;
@@ -18,11 +18,12 @@
     left: 0px;
     width: 400px;
     height: 92%;
-    background:var(--transulent-bg);
+    background: var(--transulent-bg);
     backdrop-filter: var(--panel-bkdrop);
-    border-radius: var(--radius-lg); /* Pixel Panel Radius */
+    border-radius: var(--radius-lg);
+    /* Pixel Panel Radius */
     z-index: 100;
-    box-shadow:var(--shadow-o);
+    box-shadow: var(--shadow-o);
     box-sizing: border-box;
     transform: translate(0, 0);
     animation: pop0 2s ease-in-out;
@@ -47,10 +48,11 @@
     width: 400px;
     height: 100%;
     background: var(--transulent-bg);
-    backdrop-filter:var(--panel-bkdrop);
-    border-radius: var(--radius-lg); /* Pixel Panel Radius */
+    backdrop-filter: var(--panel-bkdrop);
+    border-radius: var(--radius-lg);
+    /* Pixel Panel Radius */
     z-index: 100;
-    box-shadow:var(--shadow-o);
+    box-shadow: var(--shadow-o);
     box-sizing: border-box;
     transform: translate(0, 0);
     animation: pop1 2s ease-in-out;
@@ -73,7 +75,7 @@
     display: flex;
     flex-direction: row;
     height: 70px;
-    background:var(--gray-light);
+    background: var(--gray-light);
     color: var(--text);
     font-size: 16px;
     font-weight: 700;
@@ -113,7 +115,7 @@
     width: 20px;
     align-items: center;
     justify-content: center;
-    background:var(--green);
+    background: var(--green);
     border-radius: 100%;
     cursor: pointer;
     border: none;
@@ -155,35 +157,7 @@ hr {
 /*______________________________________*/
 
 /* Popup of search buttons */
-.pop-search {
-    display: none;
-    position: absolute;
-    flex-direction: row;
-    align-items: center;
-    top: -50px;
-    right: 0%;
-    width: 260px;
-    height: 50px;
-    background: var(--transulent-bg);
-    backdrop-filter: var(--panel-bkdrop);
-    border-radius: var(--radius-pill); /* Pill Shape */
-    z-index: 100;
-    box-shadow:var(--shadow-o);
-    animation: pop2 1s ease-out;
-    border: 1px solid var(--border);
-}
 
-@keyframes pop2 {
-    0% {
-        opacity: 0;
-        transform: translateY(50%);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}
 
 /* Links Popup */
 .pop-links {
@@ -194,7 +168,7 @@ hr {
     backdrop-filter: var(--panel-bkdrop);
     border-radius: var(--radius-lg);
     padding: 10px;
-    box-shadow:var(--shadow-o);
+    box-shadow: var(--shadow-o);
     z-index: 100;
     position: absolute;
     right: 50%;
@@ -237,7 +211,7 @@ hr {
     bottom: 50px;
     left: 10px;
     z-index: 100;
-    box-shadow:var(--shadow-o);
+    box-shadow: var(--shadow-o);
     animation: pop4 1s linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%);
     border: 1px solid var(--border);
 }
@@ -285,9 +259,11 @@ hr {
 .bar-Profile:hover {
     transform: scaleX(-1);
 }
-.bar-Profile:active{
+
+.bar-Profile:active {
     cursor: grabbing;
 }
+
 .info-bar a {
     color: var(--text);
 }
@@ -370,22 +346,25 @@ hr {
     border: none;
     font-size: 1.6rem;
     font-family: 'Times New Roman', Times, serif;
-    background:var(--bg);
+    background: var(--bg);
     color: var(--text);
     height: 40px;
     width: 40px;
-    border-radius: var(--radius-md); /* M3 Small Button */
+    border-radius: var(--radius-md);
+    /* M3 Small Button */
 }
 
 .toolbar button:hover {
-    background:var(--gray-mid);
+    background: var(--gray-mid);
 }
+
 .toolbar button:active {
-    background:var(--accent);
+    background: var(--accent);
     color: var(--white);
 }
+
 .fontSelect {
-    background:var(--bg);
+    background: var(--bg);
     color: var(--text);
     border-radius: var(--radius-md);
     height: 40px;
@@ -416,16 +395,19 @@ hr {
     width: 100%;
     max-width: 320px;
     min-height: 65px;
+    max-height: 100px;
+    overflow: hidden auto;
     margin-bottom: 10px;
     padding: 10px;
     border: none;
     outline: none;
     text-align: left;
-    background:var(--bg);
+    background: var(--bg);
     color: var(--text);
     border-radius: var(--radius-md);
     border: 1px solid var(--border);
 }
+
 .todo-inputbar:empty:before {
     content: attr(placeholder);
     color: var(--text);
@@ -435,6 +417,7 @@ hr {
     width: 64px;
     border-radius: var(--radius-sm);
 }
+
 .reminder-input {
     width: 40px;
     height: 40px;
@@ -448,7 +431,7 @@ hr {
 }
 
 .reminder-input:active {
-    background:var(--green);
+    background: var(--green);
 }
 
 .todo-add-btn {
@@ -483,8 +466,8 @@ hr {
 
 .todo-tools-cont h3 {
     font-size: 20px;
-    color:var(--text);
-    background:var(--bg);
+    color: var(--text);
+    background: var(--bg);
     width: fit-content;
     border-radius: var(--radius-xs);
     margin: auto;
@@ -503,23 +486,26 @@ hr {
 .todo-list li {
     display: flex;
     flex-direction: column;
-    background:var(--bg);
+    background: var(--bg);
     color: var(--text);
     margin: 5px;
     margin-bottom: 10px;
-    border-radius: var(--radius-md); /* M3 Card Shape */
-    box-shadow:var(--shadow-o);
+    border-radius: var(--radius-md);
+    /* M3 Card Shape */
+    box-shadow: var(--shadow-o);
     border: 1px solid var(--border);
 }
+
 .todo-list lli:hover {
     box-shadow: var(--shadow-h);
 }
+
 .ctrl-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    background:var(--border-c);
+    background: var(--border-c);
     color: var(--text);
     padding: 0 10px 0 10px;
     border-top-left-radius: inherit;
@@ -561,7 +547,7 @@ hr {
     transform: scale(1.1);
     border: none;
     align-self: start;
-    color:var(--green);
+    color: var(--green);
     font-weight: 500;
 }
 
@@ -570,28 +556,71 @@ hr {
     background: transparent;
 }
 
+.ctrl-div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.copy-btn,
+.edit-btn,
 .delete-btn {
     height: 20px;
     width: 20px;
-    background:var(--accent);
-    background-image: url(../assets/dlt.svg);
+    background: var(--accent);
     background-position: center;
     background-repeat: no-repeat;
-    border: none;
-    padding: 5px 10px;
     border-radius: var(--radius-xs);
+    border: none;
     cursor: pointer;
-    transition: background 0.3s;
+    font-size: 16px;
+    padding: 5px;
+    transition: transform 0.2s;
 }
 
+.copy-btn {
+    background-image: url(../assets/copy.svg);
+    background-size: contain;
+}
+
+.edit-btn {
+    background-image: url(../assets/pencil.svg);
+    background-size: contain;
+}
+
+.delete-btn {
+    background-image: url(../assets/dlt.svg);
+}
+
+.copy-btn:hover,
+.edit-btn:hover,
 .delete-btn:hover {
-    background:var(--accent-h);
-    background-image: url(../assets/dlt2.svg);
+    background: var(--accent-h);
     background-size: cover;
+    transform: scale(1.2);
+}
+.copy-btn:hover {
+    background-image: url(../assets/clipboard.svg);
+}
+.edit-btn:hover {
+    background-image: url(../assets/pencilbox.svg);
+}
+.delete-btn:hover {
+    background-image: url(../assets/dlt2.svg);
 }
 
+.copy-btn:active,
+.edit-btn:active,
 .delete-btn:active {
-    background-color:var(--accent-soft);
+    background-color: var(--accent-soft);
+}
+.copy-btn:active {
+    background-image: url(../assets/clipboard.svg);
+}
+.edit-btn:active {
+    background-image: url(../assets/pencilbox.svg);
+}
+.delete-btn:active {
     background-image: url(../assets/dlt2.svg);
 
 }
@@ -623,6 +652,7 @@ hr {
 .added-on {
     font-weight: bolder;
 }
+
 /* ----------------------------------------------------- */
 /* Media Queries for right-panels responsiveness */
 @media (max-width: 768px) {
@@ -745,14 +775,17 @@ hr {
     .panel-spons p {
         margin-bottom: 20px;
     }
+
     .fontSelect {
         width: 110px;
         font-size: 16px;
     }
+
     .fontSize {
-        width:60px;
+        width: 60px;
         font-size: 16px;
     }
+
     .pop-search {
         top: -43px;
         right: 0;
@@ -760,4 +793,10 @@ hr {
         height: 40px;
         width: 220px;
     }
+}
+
+.pop-links::-webkit-scrollbar {
+    display: none;
+    width: 2px;
+    height: 2px;
 }

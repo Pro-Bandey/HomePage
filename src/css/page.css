@@ -1,4 +1,3 @@
-
 @import url(./links.css);
 @import url(./panels.css);
 @import url(./Pallet.css);
@@ -33,7 +32,8 @@
 /* Body */
 body {
     background: #333;
-    font-family: 'Google Sans', Roboto, Arial, sans-serif; /* Adjusted font stack for Pixel feel */
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    /* Adjusted font stack for Pixel feel */
     text-align: center;
     background-size: cover;
     background-position-x: center;
@@ -56,13 +56,15 @@ body {
     position: fixed;
     width: 50%;
     z-index: 1001;
-    background: var(--transulent-bg); /* Use surface variant */
+    background: var(--transulent-bg);
+    /* Use surface variant */
     backdrop-filter: var(--panel-bkdrop);
     bottom: 5px;
     transform: translateX(50%);
     margin: auto;
     font-size: 1.2rem;
-    border-radius: var(--radius-pill); /* Pixel Navbar Pill */
+    border-radius: var(--radius-pill);
+    /* Pixel Navbar Pill */
     z-index: 0;
     border: 1px solid var(--border);
 }
@@ -84,14 +86,16 @@ body {
     font-size: 14px;
     font-weight: 600;
     padding-left: 5px;
-    border-left: 4px solid var(--accent); /* Thicker accent line */
+    border-left: 4px solid var(--accent);
+    /* Thicker accent line */
     width: fit-content;
     animation: ani0 3s ease-in-out forwards;
     border-bottom-right-radius: var(--radius-sm);
 }
 
 .branding span {
-    color: var(--text); /* Changed from white to text variable for theme consistency */
+    color: var(--text);
+    /* Changed from white to text variable for theme consistency */
     text-transform: capitalize;
 }
 
@@ -129,7 +133,8 @@ body {
     cursor: default;
     animation: ani1 3s ease-in-out forwards;
     border-radius: var(--radius-md);
-    padding: 5px 15px; /* Added padding for aesthetic */
+    padding: 5px 15px;
+    /* Added padding for aesthetic */
 }
 
 @keyframes ani1 {
@@ -157,8 +162,8 @@ body {
 .time {
     display: flex;
     flex-direction: row;
-    font-size: 6rem;
-    height: 80px;
+    font-size: 5.5rem;
+    height: 70px;
     text-align: justify;
     align-items: center;
 }
@@ -166,8 +171,8 @@ body {
 .blink-colon {
     font-size: 6rem;
     position: absolute;
-    top: 0px;
-    left: 103px;
+    bottom: 30px;
+    left: 110px;
     font-family: emoji;
     animation: blink 1s ease-in-out infinite;
 }
@@ -186,24 +191,25 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 2.6rem;
+    font-size: 2.2rem;
 }
 
 .day-date {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: center;
+
 }
 
 .day-date p {
     margin: 0;
-    font-size: 2.4rem;
+    font-size: 2rem;
     text-decoration-line: underline;
 }
 
 .day-date sup {
     font-size: 1.4rem;
     text-transform: uppercase;
-    backdrop-filter: invert(1);
 }
 
 .slideshow-container {
@@ -337,7 +343,7 @@ body {
     margin: auto;
     background: var(--transulent-bg);
     backdrop-filter: blur(10px);
-    border-radius: var(--radius-pill); /* Pixel Search Bar */
+    border-radius: var(--radius-pill);
     background-image: url(../assets/search.svg);
     background-position: left center;
     background-repeat: no-repeat;
@@ -348,7 +354,7 @@ body {
 }
 
 .search-box:hover {
-    outline: 2px solid var(--accent); /* Material focus ring */
+    outline: 2px solid var(--accent);
     background-color: var(--bg);
 }
 
@@ -382,37 +388,107 @@ body {
     line-height: 100%;
 }
 
-.drop-btn {
-    height: inherit;
-    width: 50px;
-    background: transparent;
-    border: none;
-    margin: auto;
-    margin-right: 5px;
+.suggestions-container {
+    position: absolute;
+    top: 120px;
+    max-height: 230px;
+    width: 70%;
+    left: 50%;
+    transform: translatex(-50%);
+    background: var(--transulent-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    z-index: 999;
+    overflow: hidden auto;
+    border: 1px solid var(--border);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.drop-btn img {
-    height: inherit;
-    content: url(../assets/menu.svg);
+.suggestions-container::-webkit-scrollbar {
+    display: none;
+    width: 2px;
+    height: 2px;
 }
 
+.suggestion-item {
+    width: -webkit-fill-available;
+    text-align: justify;
+    padding: 10px;
+    padding-left:50px;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 16px;
+    background-image: url(../assets/search.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.suggestion-item:hover {
+   backdrop-filter: contrast(0.5);
+}
+
+.pop-search {
+    display: none;
+    position: absolute;
+    flex-direction: row;
+    align-items: center;
+    top: -60px;
+    right: 0%;
+    width: fit-content;
+    height: 50px;
+    background: var(--transulent-bg);
+    backdrop-filter: var(--panel-bkdrop);
+    border-radius: var(--radius-pill);
+    z-index: 100;
+    box-shadow: var(--shadow-o);
+    animation: pop2 1s ease-out;
+    border: 1px solid var(--border);
+}
+
+@keyframes pop2 {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
 
 .search-btn {
     border: none;
-    background: none;
+    background: transparent;
     height: inherit;
     border-radius: var(--radius-pill);
 }
 
+.search-btn.active-engine {
+    background: var(--accent);
+}
+
+.search-btn:hover {
+    background: var(--accent);
+}
+
+
 .search-btn img {
+    filter: opacity(0.4);
     height: 40px;
     width: 40px;
     margin: auto;
     display: block;
 }
 
-.search-btn img:hover {
-    transform: translateY(-5px);
+.search-btn.active-engine img {
+    filter: none;
+}
+
+.search-btn:hover img {
+    filter: none;
 }
 
 /* Tiop 4 Links */
@@ -449,7 +525,8 @@ body {
     height: 50px;
     margin: 0;
     padding: 0;
-    border-radius: var(--radius-sm); /* M3 Icon Shape */
+    border-radius: var(--radius-sm);
+    /* M3 Icon Shape */
 }
 
 .links-btn img:hover,
@@ -491,7 +568,7 @@ body {
 
 .links-dropdown a:hover {
     background-color: var(--accent-h);
-    border-radius: var(--radius-xs);
+    border-radius: var(--radius-sm);
 }
 
 .links-content:hover .links-dropdown {
@@ -530,7 +607,8 @@ body {
     margin-left: 5px;
     background: var(--transulent-bg);
     border: 1px solid var(--border);
-    border-radius: var(--radius-md); /* Pixel Squared Circle shape */
+    border-radius: var(--radius-md);
+    /* Pixel Squared Circle shape */
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-o);
@@ -612,7 +690,8 @@ body {
     border: none;
     background: var(--alert-bg);
     backdrop-filter: blur(12px);
-    border-radius: var(--radius-lg); /* M3 Dialog Radius */
+    border-radius: var(--radius-lg);
+    /* M3 Dialog Radius */
     box-shadow: var(--shadow-o);
     z-index: 1001;
     padding-bottom: 10px;
@@ -628,7 +707,7 @@ body {
 .alert-box:hover,
 .reminder-box:hover,
 .delete-box:hover {
-    box-shadow: 0px 8px 16px 4px rgba(0,0,0,0.1);
+    box-shadow: 0px 8px 16px 4px rgba(0, 0, 0, 0.1);
 }
 
 .alert-box,
@@ -644,12 +723,13 @@ body {
 @keyframes fade2 {
     0% {
         opacity: 0;
-        transform: scale(.5),translateX(50%);
+        transform: scale(.5), translateX(50%);
         top: 13rem;
     }
+
     100% {
         opacity: 1;
-        transform: scale(1),translateX(50%);
+        transform: scale(1), translateX(50%);
 
 
     }
@@ -683,7 +763,8 @@ body {
     color: var(--bg);
     padding: 10px 24px;
     border: none;
-    border-radius: var(--radius-pill); /* M3 Button */
+    border-radius: var(--radius-pill);
+    /* M3 Button */
     cursor: pointer;
     font-size: 1em;
     transition: background 0.2s ease-out;
@@ -735,7 +816,6 @@ body {
 
 /* ______________________________________________________________________ */
 
-/* Media Queries for Mobile and Tablet responsiveness */
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
@@ -743,25 +823,25 @@ body {
 
     .blink-colon {
         font-size: 5rem;
-        top: 5px;
-        left: 88px;
+        bottom: 35px;
+        left: 90px;
     }
 
     .time {
-        font-size: 5rem;
+        font-size: 4.5rem;
         height: 70px;
     }
 
     .time-sec-ampm {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .day-date p {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
 
     .day-date sup {
-        font-size: 1.2rem;
+        font-size: 1rem;
 
     }
 

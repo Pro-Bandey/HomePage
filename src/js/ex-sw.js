@@ -97,86 +97,55 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
   // CONTEXT MENU LOGIC
   // ========================================================================
 
-  // ========================================================================
-  // CONTEXT MENU LOGIC
-  // ========================================================================
+  // 1. CREATE MENUS (Inside onInstalled to prevent duplicate errors)
+  chrome.runtime.onInstalled.addListener(() => {
+    // Define where menu appears
+    const MENU_1 = ["action", "page", "selection", "link", "image"];
+    const MENU_2 = ["page"];
+    const MENU_3 = ["action"];
 
-  // Define where menu appears (Browser + Extension Icon)
-  const MENU_1 = ["action", "page", "selection", "link", "image"];
-  const MENU_2 = ["page"];
-  const MENU_3 = ["action"];
+    const menuItems = [
+      { id: "newtab", title: "NewTab", contexts: MENU_2 },
+      { id: "online", title: "Online", contexts: MENU_1 },
+      { id: "info", title: "Info", contexts: MENU_1 },
+      { id: "privacy", title: "Privacy", contexts: MENU_3 },
+      { id: "terms", title: "Terms", contexts: MENU_3 },
+      { id: "license", title: "License", contexts: MENU_1 },
+      { id: "moreus", title: "More..", contexts: MENU_1 },
+    ];
 
-  // ---- EXISTING ----
-  chrome.contextMenus.create({
-    id: "newtab",
-    title: "NewTab",
-    contexts: MENU_2,
-  });
-  chrome.contextMenus.create({
-    id: "online",
-    title: "Online",
-    contexts: MENU_1,
-  });
+    menuItems.forEach(item => {
+      chrome.contextMenus.create({
+        id: item.id,
+        title: item.title,
+        contexts: item.contexts,
+      });
+    });
 
-  chrome.contextMenus.create({
-    id: "info",
-    title: "Info",
-    contexts: MENU_1,
-  });
-
-  chrome.contextMenus.create({
-    id: "privacy",
-    title: "Privacy",
-    contexts: MENU_3,
+    console.log("Context menus created successfully.");
   });
 
-  chrome.contextMenus.create({
-    id: "terms",
-    title: "Terms",
-    contexts: MENU_3,
-  });
-
-  chrome.contextMenus.create({
-    id: "license",
-    title: "License",
-    contexts: MENU_1,
-  });
-
-  chrome.contextMenus.create({
-    id: "moreus",
-    title: "More..",
-    contexts: MENU_1,
-  });
-
-  // ----------------------
-  // Menu Click Handler
-  // ----------------------
+  // 2. CLICK HANDLER (Must stay at top-level to catch events)
   chrome.contextMenus.onClicked.addListener((info) => {
     switch (info.menuItemId) {
       case "newtab":
         openNewTabPage();
         break;
-
       case "online":
         openOnlinePage();
         break;
-
       case "info":
         openInfoPage();
         break;
-
       case "privacy":
         openPrivacyPage();
         break;
-
       case "terms":
         opentermsPage();
         break;
-
       case "license":
         openlicensePage();
         break;
-
       case "moreus":
         openmoreusPage();
         break;
@@ -184,48 +153,34 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
   });
 
   // ----------------------
-  // Menu Functions
+  // Menu Functions (Keep these as they are)
   // ----------------------
   function openNewTabPage() {
-    chrome.tabs.create({
-      url: "chrome://newtab", // FIXED
-    });
+    chrome.tabs.create({ url: "chrome://newtab" });
   }
 
   function openOnlinePage() {
-    chrome.tabs.create({
-      url: "https://online-homepage.vercel.app/", // FIXED
-    });
+    chrome.tabs.create({ url: "https://online-homepage.vercel.app/" });
   }
 
   function openInfoPage() {
-    chrome.tabs.create({
-      url: chrome.runtime.getURL("src/info.html"), // FIXED
-    });
+    chrome.tabs.create({ url: chrome.runtime.getURL("src/info.html") });
   }
 
   function openPrivacyPage() {
-    chrome.tabs.create({
-      url: chrome.runtime.getURL("src/privacy.html"), // FIXED
-    });
+    chrome.tabs.create({ url: chrome.runtime.getURL("src/privacy.html") });
   }
 
   function opentermsPage() {
-    chrome.tabs.create({
-      url: chrome.runtime.getURL("src/terms.html"), // FIXED
-    });
+    chrome.tabs.create({ url: chrome.runtime.getURL("src/terms.html") });
   }
 
   function openlicensePage() {
-    chrome.tabs.create({
-      url: chrome.runtime.getURL("src/license.html"), // FIXED
-    });
+    chrome.tabs.create({ url: chrome.runtime.getURL("src/license.html") });
   }
 
   function openmoreusPage() {
-    chrome.tabs.create({
-      url: "https://mramzanch.blogspot.com/", // FIXED
-    });
+    chrome.tabs.create({ url: "https://mramzanch.blogspot.com/" });
   }
 }
 

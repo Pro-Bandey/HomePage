@@ -85,23 +85,6 @@ calOverlay.addEventListener("click", () => {
   calOverlay.style.display = "none";
 });
 
-
-// Elements for the 'Search' popup
-const openSearchPopupBtn = document.getElementById("search-btn");
-const searchPopup = document.getElementById("search-popup");
-const searchOverlay = document.getElementById("search-overlay");
-// Event listener to open the 'Search' popup.
-openSearchPopupBtn.addEventListener("click", () => {
-  searchPopup.style.display = "flex";
-  searchOverlay.style.display = "block";
-});
-// Event listener to close the 'Search' popup when clicking its overlay.
-searchOverlay.addEventListener("click", () => {
-  searchPopup.style.display = "none";
-  searchOverlay.style.display = "none";
-});
-
-
 // Elements for the 'Info Bar' popup
 const openInfoBarBtn = document.getElementById("info-btn");
 const closeInfoBtn = document.getElementById("info-close");
