@@ -1,10 +1,10 @@
 
 const backgrounds = [
-  'url("../src/assets/bg_001.jpg")', 'url("../src/assets/bg_002.jpg")', 'url("../src/assets/bg_003.jpg")',
-  'url("../src/assets/bg_004.jpg")', 'url("../src/assets/bg_005.jpg")', 'url("../src/assets/bg_006.jpg")',
-  'url("../src/assets/bg_007.jpg")', 'url("../src/assets/bg_008.jpg")', 'url("../src/assets/bg_009.jpg")',
-  'url("../src/assets/bg_010.jpg")', 'url("../src/assets/bg_011.jpg")', 'url("../src/assets/bg_012.jpg")',
-  'url("../src/assets/bg_013.jpg")'
+  'url("./src/assets/bg_001.jpg")', 'url("./src/assets/bg_002.jpg")', 'url("./src/assets/bg_003.jpg")',
+  'url("./src/assets/bg_004.jpg")', 'url("./src/assets/bg_005.jpg")', 'url("./src/assets/bg_006.jpg")',
+  'url("./src/assets/bg_007.jpg")', 'url("./src/assets/bg_008.jpg")', 'url("./src/assets/bg_009.jpg")',
+  'url("./src/assets/bg_010.jpg")', 'url("./src/assets/bg_011.jpg")', 'url("./src/assets/bg_012.jpg")',
+  'url("./src/assets/bg_013.jpg")'
 ];
 
 let currentIndex = Math.floor(Math.random() * backgrounds.length);
