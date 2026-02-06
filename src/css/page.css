@@ -35,7 +35,7 @@ body {
     font-family: 'Google Sans', Roboto, Arial, sans-serif;
     /* Adjusted font stack for Pixel feel */
     text-align: center;
-    background-size: cover;
+    background-size: auto;
     background-position-x: center;
     background-repeat: no-repeat;
     min-height: 100vh;
