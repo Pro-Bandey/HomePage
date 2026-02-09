@@ -10,20 +10,24 @@
     <meta content="HomePage" name="title" />
     <meta content="HomePage" name="name" />
     <meta content="M Ramzan Ch" name="author" />
-    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®." name="description" />
-    <meta content="M Ramzan Ch" name="copyright"  />
-    <meta content="M-RAMZAN, M Ramzan Ch, mspot, Website, Pro Bandey, MegaMind-Solution, rm4814691, MRamzanCh " name="keywords" />
+    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®."
+        name="description" />
+    <meta content="M Ramzan Ch" name="copyright" />
+    <meta content="M-RAMZAN, M Ramzan Ch, mspot, Website, Pro Bandey, MegaMind-Solution, rm4814691, MRamzanCh "
+        name="keywords" />
     <meta content="#F44234" name="theme-color" />
     <meta content="#333333" name="background-color" />
-    <meta content="website" property="og:type"/>
+    <meta content="website" property="og:type" />
     <meta content="https://online-homepage.vercel.app/" property="og:url" />
     <meta content="HomePage" property="og:title" />
-    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®." property="og:description" />
+    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®."
+        property="og:description" />
     <meta content="https://iili.io/f1XsLyN.png" property="og:image" />
     <meta content="summary_large_image" property="twitter:card" />
     <meta content="https://online-homepage.vercel.app/" property="twitter:url" />
     <meta content="HomePage" property="twitter:title" />
-    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®. "property="twitter:description" />
+    <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®. "
+        property="twitter:description" />
     <meta content="https://iili.io/f1XsLyN.png" property="twitter:image" />
     <!-- PWA Content -->
     <link href="../package.json" rel="manifest" />
@@ -35,23 +39,51 @@
     <link href="./assets/icon.png" rel="icon" sizes="16x16" />
     <link href="./assets/icon.png" rel="icon" />
     <!-- StyleSheets -->
-    <link rel="stylesheet" href="./css/license.css">
     <link rel="stylesheet" href="./css/Pallet.css">
+    <link rel="stylesheet" href="./css/fd.css">
 
     <title>FeedBack</title>
 </head>
 
 <body style="background-size: inherit;">
-    <nav class="inf-navbar">
-        <div class="inf-navbarl">
-            <a href="#">Up</a>
-            <!-- <a href="#Authority">Authority</a>
-            <a href="#changelog">ChangeLog</a> -->
-        </div>
-        <div class="inf-navbarr">
 
+    <div class="container">
+        <h1>Give Us FeedBack To Improve Our Product </h1>
+        <input type="text" class="title-input" placeholder="title..." id="issue-title">
+
+        <div class="toolbar">
+            <button data-command="formatBlock" data-value="h1">H1</button>
+            <button data-command="formatBlock" data-value="h2">H2</button>
+            <button data-command="formatBlock" data-value="h3">H3</button>
+            <button data-command="bold">B</button>
+            <button data-command="italic">I</button>
+            <button data-command="strikeThrough">S</button>
+            <button data-command="createLink">Link</button>
+            <button data-command="insertUnorderedList">UL</button>
+            <label>
+                Label:
+                <select id="label-select">
+                    <option value="bug">Bug</option>
+                    <option value="issue">Issue</option>
+                    <option value="suggestion">Suggestion</option>
+                    <option value="enhancement">Enhancement</option>
+                    <option value="question">Question</option>
+                </select>
+            </label>
         </div>
-    </nav>
+
+        <div class="editor-container">
+            <div class="editor" contenteditable="true" id="editor"></div>
+            <div class="preview" id="preview"></div>
+        </div>
+
+
+
+        <div class="controls">
+            <button class="toggle-preview" id="toggle-preview">Toggle Preview</button>
+            <button class="submit-btn" id="submit-btn">Create GitHub Issue</button>
+        </div>
+    </div>
     <div class="container">
         <div class="inf-navbar-bottom">
             <a href="../index.html">HomePage</a>
@@ -62,13 +94,13 @@
         </div>
 
     </div>
-    <hr>
+    <hr style="margin-bottom: 10px;">
     <footer>
-        &copy; 2025 MicroResearch Corporation®. All Rights Reserved.<br>
-        <br>
-        Made with ♥ by M Ramzan Ch
+        &copy; 2025 MicroResearch Corporation&REG;. All Rights Reserved.<br>
+        Made with &#10084;&#65039; by M Ramzan Ch
     </footer>
 </body>
 <script type="module" src="./js/bg.js"></script>
+<script type="module" src="./js/fd.js"></script>
 
 </html>

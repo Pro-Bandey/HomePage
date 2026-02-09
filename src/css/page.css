@@ -416,7 +416,7 @@ body {
     width: -webkit-fill-available;
     text-align: justify;
     padding: 10px;
-    padding-left:50px;
+    padding-left: 50px;
     color: var(--text);
     cursor: pointer;
     font-size: 16px;
@@ -426,7 +426,7 @@ body {
 }
 
 .suggestion-item:hover {
-   backdrop-filter: contrast(0.5);
+    backdrop-filter: contrast(0.5);
 }
 
 .pop-search {
@@ -960,9 +960,18 @@ body {
         font-size: 1.2rem;
     }
 
-    .drop-btn {
-        width: 40px;
-        margin-right: 3;
+    .pop-search {
+        width: -webkit-fill-available;
+        justify-content: center;
+    }
+
+    .search-btn {
+
+        height: inherit;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .search-btn img {

@@ -9,7 +9,7 @@ body {
     width: auto;
     height: 100vh;
     position: relative;
-    background-color:transparent;
+    background-color:transparent !important;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -231,10 +231,9 @@ button {
     cursor: pointer;
     padding: 6px 10px;
     color: var(--text);
-    background: var(--gray-light);
+    background: var(--accent-h);
     outline: none;
     border: none;
-    box-shadow: 0 0 10px 1px #444444a3;
 }
 
 .calc-button img {
@@ -243,7 +242,7 @@ button {
 }
 
 .calc-button:hover {
-    background: var(--gray-mid);
+    background: var(--accent-soft);
     transform: scale(1.03);
 }
 
@@ -288,7 +287,7 @@ button {
 }
 
 .converter-card {
-    background: var(--transulent-bg);
+    background: var(--accent-h);
     backdrop-filter: var(--panel-bkdrop);
     border-radius: 1rem;
     padding: 20px;

@@ -1,92 +1,80 @@
 :root {
-  /* ===== Shape System (Pixel UI) ===== */
   --radius-xs: 4px;
   --radius-sm: 12px;
   --radius-md: 16px;
-  --radius-lg: 28px; /* Standard Panel/Card radius */
-  --radius-pill: 9999px; /* For buttons/search */
+  --radius-lg: 28px;
+  --radius-pill: 9999px;
 
-  /* ===== Light Mode (Material 3 Defaults) ===== */
-  /* Primary Actions */
-  --accent: #9c413a;          /* MD3 Primary */
-  --accent-h: #ffdad6;        /* MD3 Primary Container (Highlight) */
+
+  --accent: #9c413a;
+  --accent-h: #ffdad6;
   --accent-soft: #9c413a99;
-  
-  /* Status/Utility */
+
+
   --border-c: #9c413a4d;
   --border-d: #3d666b4d;
-  --green: #4d6835;           /* Muted/Natural Green */
-  --red: #ba1a1a;             /* Error Red */
+
+  --green: #4d6835;
+  --red: #ba1a1a;
   --teal: #3d666b;
   --white: #ffffff;
-  --border: #e7e0df;          /* Surface Variant Outline */
-  
-  /* Glass/Blur Effects */
-  --panel-bkdrop: blur(20px); /* Heavier Pixel-style blur */
+  --border: #e7e0df;
 
-  /* Utility */
+  --panel-bkdrop: blur(20px);
+
   --highlight: #8c4f00;
   --muted: #76777a;
   --gray-soft: #7d7d7d22;
-  --gray-mid: #e7e0df88;      /* Surface Variant */
+  --gray-mid: #e7e0df88;
   --gray-light: #ffffff88;
 
-  /* Surfaces & Text */
-  --text: #201a19;            /* On Surface */
-  --bg: #fff8f6;              /* Surface */
-  --transulent-bg: #fff8f6cc; /* Surface with Alpha */
-  --overlay: #201a191a;
-  --img-invert: invert(0);    /* Icons darker in light mode */
 
-  /* Shadows (Pixel uses softer, larger shadows) */
-  --shadow-o: 0px 4px 8px 3px rgba(0, 0, 0, 0.05); 
+  --text: #201a19;
+  --bg: #fff8f6;
+  --transulent-bg: #fff8f6cc;
+  --overlay: #201a191a;
+  --img-invert: invert(1);
+
+  --shadow-o: 0px 4px 8px 3px rgba(0, 0, 0, 0.05);
   --shadow-h: inset 0 0 0px 1px #9c413a;
 
-  /* Alerts & Surfaces */
   --alert-bg: #fff8f6ee;
-  --alert-heading-bg: #ffdad6; /* Primary Container */
-  --alert-heading: #3b0906;    /* On Primary Container */
+  --alert-heading-bg: #ffdad6;
+  --alert-heading: #3b0906;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* ===== Dark Mode (Material 3 Defaults) ===== */
-    /* Primary Actions */
-    --accent: #ffb4ab;          /* MD3 Primary Inverse */
-    --accent-h: #72342e;        /* MD3 Primary Container */
+
+    --accent: #ffb4ab;
+    --accent-h: #72342e;
     --accent-soft: #ffb4ab99;
 
-    /* Surfaces & Text */
-    --text: #ede0de;            /* On Surface */
-    --bg: #1a1110;              /* Surface Dark */
-    --transulent-bg: #2b2120bb; /* Surface Variant Dark with Alpha */
+    --text: #ede0de;
+    --bg: #1a1110;
+    --transulent-bg: #2b2120bb;
     --overlay: #00000066;
-    --img-invert: invert(1);    /* Icons white in dark mode */
+    --img-invert: invert(0);
 
-    /* Status/Utility */
-    --border: #534341;          /* Outline Dark */
+    --border: #534341;
     --border-c: #ffb4ab4d;
     --border-d: #a6dce24d;
 
-    /* Shadows */
     --shadow-o: 0px 4px 12px 4px rgba(0, 0, 0, 0.4);
     --shadow-h: inset 0 0 0 1px #ffb4ab;
 
-    /* Alerts & Surfaces */
-    --alert-bg: #201a19ee;      /* Surface Container High */
-    --alert-heading-bg: #3b0906; /* On Primary Container */
+    --alert-bg: #201a19ee;
+    --alert-heading-bg: #3b0906;
     --alert-heading: #ffdad6;
-    
-    /* Grays adapted for Dark */
+
     --gray-mid: #53434188;
     --gray-light: #53434144;
   }
 }
 
-/* ===== Scrollbar (Pill Shaped) ===== */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -95,7 +83,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent); /* Uses Primary color */
+  background: var(--accent);
   border-radius: var(--radius-pill);
   cursor: grab;
 }

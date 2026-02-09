@@ -599,12 +599,15 @@ hr {
     background-size: cover;
     transform: scale(1.2);
 }
+
 .copy-btn:hover {
     background-image: url(../assets/clipboard.svg);
 }
+
 .edit-btn:hover {
     background-image: url(../assets/pencilbox.svg);
 }
+
 .delete-btn:hover {
     background-image: url(../assets/dlt2.svg);
 }
@@ -614,12 +617,15 @@ hr {
 .delete-btn:active {
     background-color: var(--accent-soft);
 }
+
 .copy-btn:active {
     background-image: url(../assets/clipboard.svg);
 }
+
 .edit-btn:active {
     background-image: url(../assets/pencilbox.svg);
 }
+
 .delete-btn:active {
     background-image: url(../assets/dlt2.svg);
 
@@ -784,14 +790,6 @@ hr {
     .fontSize {
         width: 60px;
         font-size: 16px;
-    }
-
-    .pop-search {
-        top: -43px;
-        right: 0;
-        flex-direction: row;
-        height: 40px;
-        width: 220px;
     }
 }
 

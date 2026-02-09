@@ -33,7 +33,8 @@ body {
     backdrop-filter: var(--panel-bkdrop);
     margin: 40px auto;
     padding: 40px 50px;
-    border-radius: var(--radius-lg); /* Large M3 Card */
+    border-radius: var(--radius-lg);
+    /* Large M3 Card */
     box-shadow: var(--shadow-o);
     border: 1px solid var(--border);
 }
@@ -64,7 +65,8 @@ h1 {
 
 pre {
     text-align: center;
-    background: var(--bg); /* Distinct surface */
+    background: var(--bg);
+    /* Distinct surface */
     padding: 20px;
     border-radius: var(--radius-md);
     overflow-x: auto;
@@ -99,7 +101,12 @@ ul {
 
 footer {
     text-align: center;
+    margin: auto 60px;
     color: var(--text);
+    background: var(--transulent-bg);
+    width: -webkit-fill-available;
+    padding: 10px 40px;
+    border-radius: var(--radius-md);
 }
 
 
