@@ -8,6 +8,14 @@
   "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
   "minimum_chrome_version": "130",
   "offline_enabled": true,
+  "homepage_url": "https://microresearch-corporation.github.io/",
+  "icons": {
+    "16": "./src/assets/icon16.png",
+    "48": "./src/assets/icon48.png",
+    "64": "./src/assets/icon64.png",
+    "128": "./src/assets/icon128.png",
+    "256": "./src/assets/icon.png"
+  },
   "chrome_url_overrides": {
     "newtab": "./index.html",
     "homepage": "./index.html"
@@ -35,13 +43,7 @@
   "background": {
     "service_worker": "./src/js/ex-sw.js"
   },
-  "icons": {
-    "16": "./src/assets/icon16.png",
-    "48": "./src/assets/icon48.png",
-    "64": "./src/assets/icon64.png",
-    "128": "./src/assets/icon128.png",
-    "256": "./src/assets/icon.png"
-  },
+
   "permissions": [
     "cookies",
     "tabs",
@@ -58,7 +60,6 @@
     "activeTab",
     "scripting"
   ],
-  "homepage_url": "https://github.com/MicroResearch-Corporation",
   "host_permissions": [
     "http://*/**",
     "https://*/**",
