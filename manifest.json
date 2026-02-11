@@ -45,6 +45,7 @@
   },
 
   "permissions": [
+    "sidePanel",
     "cookies",
     "tabs",
     "notifications",
@@ -53,13 +54,15 @@
     "unlimitedStorage",
     "declarativeNetRequest",
     "contextMenus",
-    "bookmarks",
     "favicon",
     "clipboardWrite",
     "clipboardRead",
     "activeTab",
     "scripting"
   ],
+  "side_panel": {
+    "default_path": "./src/open.html"
+  },
   "host_permissions": [
     "http://*/**",
     "https://*/**",
