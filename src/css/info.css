@@ -14,29 +14,6 @@ body {
   font-family: 'Google Sans', Roboto, sans-serif;
 }
 
-.inf-navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: sticky;
-  width: fit-content;
-  z-index: 1001;
-  background: var(--transulent-bg);
-  backdrop-filter: var(--panel-bkdrop);
-  top: 5px;
-  margin: auto;
-  padding: 5px 15px;
-  font-size: 1.2rem;
-  border-radius: var(--radius-pill);
-  /* Pixel Pill Navbar */
-  border: 1px solid var(--border);
-}
-
-.inf-navbar div a {
-  color: var(--text);
-  text-decoration: none;
-  margin: 10px;
-}
 
 .main-inf {
   width: 100%;
@@ -239,15 +216,6 @@ body {
   background: var(--gray-light);
   border-top-right-radius: var(--radius-md);
   border-bottom-right-radius: var(--radius-md);
-}
-
-.inf-desc-ul {
-  text-align: left;
-  margin: 0;
-}
-
-.inf-desc-ul li {
-  margin-top: 0.45rem;
 }
 
 /* ===== Images / Logos ===== */
