@@ -8,6 +8,9 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
 ![Version](https://img.shields.io/badge/version-2026.2.5-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Maintenance](https://img.shields.io/badge/maintained-yes-success)
+![Maintenance](https://img.shields.io/github/license/Pro-Bandey/homepage?color=db4d4d)
+![Maintenance](https://img.shields.io/github/repo-size/Pro-Bandey/homepage?color=008800)
+
 
 ### ✨ Core Features
 
