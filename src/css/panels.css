@@ -266,10 +266,16 @@ hr {
 
 .info-bar a {
     color: var(--text);
+    margin: auto auto 5px;
 }
 
 .info-bar a:hover {
     color: var(--accent-soft);
+    background: var(--accent);
+    border-radius: var(--radius-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-bar-p {
@@ -306,8 +312,8 @@ hr {
 }
 
 .links img {
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
     border-radius: var(--radius-sm);
 }
 
