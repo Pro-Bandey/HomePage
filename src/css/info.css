@@ -12,12 +12,15 @@ body {
   background-position-x: center;
   background-repeat: no-repeat;
   font-family: 'Google Sans', Roboto, sans-serif;
+  overflow: hidden;
 }
 
 
 .main-inf {
   width: 100%;
   max-width: 1300px;
+  overflow: hidden auto;
+  max-height: 100vh;
 }
 
 /* ===== Section Cards ===== */

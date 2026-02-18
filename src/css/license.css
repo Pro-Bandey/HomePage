@@ -8,11 +8,14 @@ body {
     background-position-x: center;
     background-repeat: no-repeat;
     margin: 0;
-    overflow: hidden auto;
+    overflow: hidden;
     padding: 0;
     line-height: 1.7;
 }
-
+.mainSection {
+    max-height: 100ch;
+    overflow: hidden auto;
+}
 .inf-navbar-bottom {
     display: flex;
     flex-direction: row;
