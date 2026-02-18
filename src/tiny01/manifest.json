@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "OmniTab Minimal",
+  "version": "8.0",
+  "chrome_url_overrides": { "newtab": "index.html" },
+  "permissions": ["tabs", "history", "favicon"],
+  "host_permissions": ["<all_urls>"]
+}

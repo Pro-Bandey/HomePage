@@ -429,6 +429,85 @@ body {
     backdrop-filter: contrast(0.5);
 }
 
+.historyListBox {
+    position: absolute;
+    top: 120px;
+    max-height: 230px;
+    width: 70%;
+    left: 50%;
+    transform: translatex(-50%);
+    background: var(--transulent-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    z-index: 999;
+    overflow: hidden auto;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.historyListBox::-webkit-scrollbar {
+    display: none;
+    width: 2px;
+    height: 2px;
+}
+
+.row { 
+    display: flex; 
+    align-items: center;
+    width: 100%;
+    padding: 12px; 
+    border-radius: 8px; 
+    cursor: default; 
+    margin-bottom: 2px;
+    transition: background 0.2s;
+}
+
+.row:hover {     backdrop-filter: contrast(0.5); }
+
+.icon { width: 18px; height: 18px; margin-right: 16px; border-radius: 2px; }
+.info { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.title { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+.meta { font-size: 0.75rem; color: var(--sec); margin-top: 2px; }
+
+.status { font-size: 1.1rem; margin-left: 12px; }
+.st-tab { color: #22c55e; }
+.st-recent { color: #fbbf24; }
+.st-old { color: var(--sec); opacity: 0.4; }
+
+/* Context Menu */
+.context-menu { 
+    position: fixed; 
+    display: none; 
+    background: #1e293b; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 8px; 
+    width: 170px; 
+    padding: 5px; 
+    z-index: 1000; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+}
+
+.ctx-item { padding: 8px 12px; font-size: 0.85rem; border-radius: 4px; cursor: pointer; }
+.ctx-item:hover { background: var(--accent); color: #000; }
+.divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+.danger { color: #f87171; }
+.drop-btn {
+    height: inherit;
+    width: 50px;
+    background: transparent;
+    border: none;
+    margin: auto;
+    margin-right: 5px;
+}
+
+.drop-btn img {
+    height: inherit;
+    content: url(../assets/menu.svg);
+
+}
+
 .pop-search {
     display: none;
     position: absolute;

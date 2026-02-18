@@ -1,4 +1,18 @@
+const openSearchPopupBtn = document.getElementById("showHistory-btn");
+const searchPopup = document.getElementById("historyListBox");
+const searchOverlay = document.getElementById("historyBox-overlay");
 
+// Event listener to open the 'SearchHistory Box' popup.
+openSearchPopupBtn.addEventListener("click", () => {
+  searchPopup.style.display = "flex";
+  searchOverlay.style.display = "block";
+});
+
+// Event listener to close the 'History Box' popup when clicking its overlay.
+searchOverlay.addEventListener("click", () => {
+  searchPopup.style.display = "none";
+  searchOverlay.style.display = "none";
+});
 
 // Elements for the 'Calc' popup
 const calcBtn = document.getElementById("calc-btn");

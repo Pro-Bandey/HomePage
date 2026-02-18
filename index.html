@@ -54,8 +54,10 @@
     <div class="branding">
         <span>Product Of :</span> MicroResearch <span>Corporation<sup>&reg;</sup></span>
         <br>
-        <span>Maintain By :</span> <a aria-label="Visit M Ramzan Ch" href="https://mramzanch.blogspot.com/" title="M Ramzan Ch Blog" style="text-decoration:none; color:var(--accent); "> M Ramzan Ch</a> <span>at <a style="color: #fff;; text-decoration: none;"
-                href="https://github/com/Pro-Bandey" target="_blank">Pro-Bandey</a></span>
+        <span>Maintain By :</span> <a aria-label="Visit M Ramzan Ch" href="https://mramzanch.blogspot.com/"
+            title="M Ramzan Ch Blog" style="text-decoration:none; color:var(--accent); "> M Ramzan Ch</a> <span>at <a
+                style="color: #fff;; text-decoration: none;" href="https://github/com/Pro-Bandey"
+                target="_blank">Pro-Bandey</a></span>
     </div>
     <nav class="inf-navbar">
         <div class="inf-navbarr">
@@ -100,11 +102,17 @@
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Search Box -->
+     
+    <div id="historyBox-overlay" class="overlay"></div>
     <div class="search-box">
         <input type="text" id="search" class="search" autocomplete="off" placeholder="Search or type a URL">
+        <button class="drop-btn" id="showHistory-btn">
+            <img src="./src/assets/menu.svg" alt="menu" title="Search With Any S-Engin">
+        </button>
 
         <!-- Suggestion Container -->
         <div id="suggestions" class="suggestions-container"></div>
+        <div id="historyListBox" class="historyListBox">this historyListBox</div>
 
 
         <div id="search-popup" class="pop-search">
@@ -146,6 +154,14 @@
                 <img src="./src/assets/yandex.png">
             </button>
         </div>
+    </div>
+    <!-- Context Menu -->
+    <div id="ctx" class="context-menu">
+        <div class="ctx-item" id="ctxOpen">Open</div>
+        <div class="ctx-item" id="ctxNew">Open in New Tab</div>
+        <div class="ctx-item" id="ctxIncog">Open Incognito</div>
+        <div class="divider"></div>
+        <div class="ctx-item danger" id="ctxDel">Remove</div>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Favorite Links Section -->
@@ -379,6 +395,7 @@
             </div>
         </div>
     </div>
+    
     <!-- Delete Box -->
     <div id="delete-box" class="delete-box">
         <h2 class="alert-box-heading">Delete Shortcut</h2>
@@ -402,6 +419,7 @@
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Link to External Scripts-->
+    <script src="./src/js/history.js" type="module"></script>
     <script src="./src/js/links.js " type="module"></script>
     <script src="./src/js/page.js " type="module"></script>
     <script src="./src/js/todo.js " type="module"></script>
