@@ -1,4 +1,4 @@
-const openSearchPopupBtn = document.getElementById("showHistory-btn");
+const openSearchPopupBtn = document.getElementById("historyListBoxBtn");
 const searchPopup = document.getElementById("historyListBox");
 const searchOverlay = document.getElementById("historyBox-overlay");
 

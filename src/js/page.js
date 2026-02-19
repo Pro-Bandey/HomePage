@@ -294,10 +294,10 @@ showSlides();
 setInterval(showSlides, 5000);
 
 
-const searchInput = document.getElementById("search");
-const searchPopup = document.getElementById("search-popup");
-const suggestionsBox = document.getElementById("suggestions");
-const engineBtns = document.querySelectorAll(".search-btn");
+const searchInput = document.getElementById("searchBar");
+const searchPopup = document.getElementById("searchEnginBox");
+const suggestionsBox = document.getElementById("searchSuggestionsBox");
+const engineBtns = document.querySelectorAll(".searchEnginBoxBtn");
 
 // Configuration
 let defaultEngine = localStorage.getItem("defaultEngine") || "google";

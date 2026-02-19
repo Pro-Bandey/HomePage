@@ -102,66 +102,69 @@
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Search Box -->
-     
+
     <div id="historyBox-overlay" class="overlay"></div>
-    <div class="search-box">
-        <input type="text" id="search" class="search" autocomplete="off" placeholder="Search or type a URL">
-        <button class="drop-btn" id="showHistory-btn">
-            <img src="./src/assets/menu.svg" alt="menu" title="Search With Any S-Engin">
+    <div class="searchBox">
+        <input type="text" id="searchBar" class="searchBar" autocomplete="off" placeholder="Search or type a URL">
+        <button class="historyListBoxBtn" id="historyListBoxBtn">
+            <img src="./src/assets/recentOld.svg" alt="Button" title="See Web  History">
         </button>
 
         <!-- Suggestion Container -->
-        <div id="suggestions" class="suggestions-container"></div>
-        <div id="historyListBox" class="historyListBox">this historyListBox</div>
+        <div id="searchSuggestionsBox" class="suggestions-container"></div>
+        <div id="historyListBox" class="historyListBox">
+            <p style="font-size: 20px;color: var(--accent);text-align: center;width: -webkit-fill-available;">
+                HistoryListBox Not Work in Web Version
+            </p>
+        </div>
 
 
-        <div id="search-popup" class="pop-search">
-            <!-- We add data-engine attributes to identify them easily -->
-            <button id="bing-btn" data-engine="bing" class="search-btn"
+        <div id="searchEnginBox" class="searchEnginBox">
+            <button id="bing-btn" data-engine="bing" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Bing">
                 <img src="./src/assets/bing.png">
             </button>
-            <button id="duckduck-btn" data-engine="duckduck" class="search-btn"
+            <button id="duckduck-btn" data-engine="duckduck" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search DDG">
                 <img src="./src/assets/DuckDuckGo.png">
             </button>
-            <button id="google-btn" data-engine="google" class="search-btn"
+            <button id="google-btn" data-engine="google" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Google">
                 <img src="./src/assets/google.png">
             </button>
-            <button id="yahoo-btn" data-engine="yahoo" class="search-btn"
+            <button id="yahoo-btn" data-engine="yahoo" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Yahoo">
                 <img src="./src/assets/yahoo.png">
             </button>
-            <button id="qwant-btn" data-engine="Qwant" class="search-btn"
+            <button id="qwant-btn" data-engine="Qwant" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Qwant">
                 <img src="./src/assets/qwant.png">
             </button>
-            <button id="brave-btn" data-engine="brave" class="search-btn"
+            <button id="brave-btn" data-engine="brave" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Brave">
                 <img src="./src/assets/brave.png">
             </button>
-            <button id="startpage-btn" data-engine="startpage" class="search-btn"
+            <button id="startpage-btn" data-engine="startpage" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Startpage">
                 <img src="./src/assets/Startpage.png">
             </button>
-            <button id="ecosia-btn" data-engine="Ecosia" class="search-btn"
+            <button id="ecosia-btn" data-engine="Ecosia" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Ecosia">
                 <img src="./src/assets/Ecosia.png">
             </button>
-            <button id="yandex-btn" data-engine="yandex" class="search-btn"
+            <button id="yandex-btn" data-engine="yandex" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Yandex">
                 <img src="./src/assets/yandex.png">
             </button>
         </div>
     </div>
     <!-- Context Menu -->
-    <div id="ctx" class="context-menu">
-        <div class="ctx-item" id="ctxOpen">Open</div>
-        <div class="ctx-item" id="ctxNew">Open in New Tab</div>
-        <div class="ctx-item" id="ctxIncog">Open Incognito</div>
-        <div class="divider"></div>
-        <div class="ctx-item danger" id="ctxDel">Remove</div>
+    <div id="historyListItemMenu" class="historyListItemMenu">
+        <div class="historyListItemMenuItem" id="historyListItemMenuOpen">Open</div>
+        <div class="historyListItemMenuItem" id="historyListItemMenuNew">Open in New Tab</div>
+        <div class="historyListItemMenuItem" id="historyListItemMenuIncog">Open Incognito</div>
+        <div class="historyListItemMenuItemDivider"></div>
+        <div class="historyListItemMenuItem removeBtn" id="historyListItemMenuDel">Remove</div>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Favorite Links Section -->
@@ -395,7 +398,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Delete Box -->
     <div id="delete-box" class="delete-box">
         <h2 class="alert-box-heading">Delete Shortcut</h2>

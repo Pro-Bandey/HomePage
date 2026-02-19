@@ -8,8 +8,8 @@
 }
 
 @media (prefers-color-scheme:light) {
-    .drop-btn img:active {
-        content: url(../assets/menu1.svg);
+    .historyListBoxBtn img:active {
+        content: url(../assets/recentOld.svg);
     }
 
     .links-a img,
@@ -19,8 +19,8 @@
 }
 
 @media (prefers-color-scheme:dark) {
-    .drop-btn img:active {
-        content: url(../assets/menu2.svg);
+    .historyListBoxBtn img:active {
+        content: url(../assets/recent.svg);
     }
 
     .links-a img,
@@ -332,7 +332,7 @@ body {
 }
 
 /* Search Box */
-.search-box {
+.searchBox {
     display: flex;
     position: relative;
     align-items: center;
@@ -353,7 +353,7 @@ body {
     border: 1px solid var(--border);
 }
 
-.search-box:hover {
+.searchBox:hover {
     outline: 2px solid var(--accent);
     background-color: var(--bg);
 }
@@ -370,7 +370,7 @@ body {
     }
 }
 
-.search-box input {
+.searchBox input {
     border: none;
     font-size: 20px;
     color: var(--text);
@@ -382,13 +382,28 @@ body {
     padding: 0;
 }
 
-.search-box input::-webkit-input-placeholder,
+.searchBox input::-webkit-input-placeholder,
 .send-area input::-webkit-input-placeholder {
     color: var(--muted);
     line-height: 100%;
 }
 
-.suggestions-container {
+.historyListBoxBtn {
+    height: inherit;
+    width: 50px;
+    background: transparent;
+    border: none;
+    margin: auto;
+    margin-right: 5px;
+}
+
+.historyListBoxBtn img {
+    height: inherit;
+    content: url(../assets/recentOld.svg);
+
+}
+
+.searchSuggestionsBox {
     position: absolute;
     top: 120px;
     max-height: 230px;
@@ -406,7 +421,7 @@ body {
     align-items: flex-start;
 }
 
-.suggestions-container::-webkit-scrollbar {
+.searchSuggestionsBox::-webkit-scrollbar {
     display: none;
     width: 2px;
     height: 2px;
@@ -442,73 +457,122 @@ body {
     z-index: 999;
     overflow: hidden auto;
     border: 1px solid var(--border);
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .historyListBox::-webkit-scrollbar {
-    display: none;
     width: 2px;
     height: 2px;
 }
 
-.row { 
-    display: flex; 
+
+.historyListItem {
+    display: flex;
     align-items: center;
-    width: 100%;
-    padding: 12px; 
-    border-radius: 8px; 
-    cursor: default; 
-    margin-bottom: 2px;
+    width: -webkit-fill-available;
+    padding: 5px 15px;
+    border-radius: 8px;
+    cursor: default;
     transition: background 0.2s;
 }
 
-.row:hover {     backdrop-filter: contrast(0.5); }
-
-.icon { width: 18px; height: 18px; margin-right: 16px; border-radius: 2px; }
-.info { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
-.title { font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
-.meta { font-size: 0.75rem; color: var(--sec); margin-top: 2px; }
-
-.status { font-size: 1.1rem; margin-left: 12px; }
-.st-tab { color: #22c55e; }
-.st-recent { color: #fbbf24; }
-.st-old { color: var(--sec); opacity: 0.4; }
-
-/* Context Menu */
-.context-menu { 
-    position: fixed; 
-    display: none; 
-    background: #1e293b; 
-    border: 1px solid rgba(255,255,255,0.1); 
-    border-radius: 8px; 
-    width: 170px; 
-    padding: 5px; 
-    z-index: 1000; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+.historyListItem:hover {
+    backdrop-filter: contrast(0.5);
 }
 
-.ctx-item { padding: 8px 12px; font-size: 0.85rem; border-radius: 4px; cursor: pointer; }
-.ctx-item:hover { background: var(--accent); color: #000; }
-.divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
-.danger { color: #f87171; }
-.drop-btn {
-    height: inherit;
-    width: 50px;
-    background: transparent;
-    border: none;
-    margin: auto;
-    margin-right: 5px;
+.historyListItemIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
 }
 
-.drop-btn img {
-    height: inherit;
-    content: url(../assets/menu.svg);
-
+.historyListItemInfo {
+    text-align: justify;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
 }
 
-.pop-search {
+.historyListItemInfoTitle {
+    font-size: 0.9rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    margin: 0;
+}
+
+.historyListItemInfoTitleMeta {
+    font-size: 0.75rem;
+    color: var(--highlight);
+    margin-top: 2px;
+}
+
+.historyListItemInfoStatus {
+    font-size: 1.1rem;
+    margin-left: 12px;
+}
+
+.historyListItemInfoStatusOpened {
+    content: url(../assets/check.svg);
+    color: #22c55e;
+}
+
+.historyListItemInfoStatusRecent {
+    content: url(../assets/recent.svg);
+    color: #fbbf24;
+}
+
+.historyListItemInfoStatusRecentOld {
+    content: url(../assets/recentOld.svg);
+    fill: var(--muted);
+    opacity: 0.4;
+}
+
+.historyListItemMenu {
+    position: fixed;
+    display: none;
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 130px;
+    z-index: 1000;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.historyListItemMenuItem {
+    color: var(--accent);
+    text-align: justify;
+    padding: 8px 5px;
+    font-size: 0.85rem;
+    border-radius: inherit;
+    cursor: pointer;
+}
+
+
+.historyListItemMenuItemDivider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
+}
+
+.historyListItemMenuItem.removeBtn {
+    color: #f87171;
+}
+
+.historyListItemMenuItem:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+
+
+.searchEnginBox {
     display: none;
     position: absolute;
     flex-direction: row;
@@ -931,12 +995,12 @@ body {
         border-bottom-right-radius: var(--radius-lg);
     }
 
-    .search-box {
+    .searchBox {
         width: 80%;
         height: 50px;
     }
 
-    .drop-btn {
+    .historyListBoxBtn {
         width: 50px;
     }
 
@@ -1030,16 +1094,16 @@ body {
         width: 95%;
     }
 
-    .search-box {
+    .searchBox {
         width: 90%;
         height: 40px;
     }
 
-    .search-box input {
+    .searchBox input {
         font-size: 1.2rem;
     }
 
-    .pop-search {
+    .searchEnginBox {
         width: -webkit-fill-available;
         justify-content: center;
     }

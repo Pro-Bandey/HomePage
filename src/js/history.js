@@ -31,50 +31,57 @@ function render(data) {
 
     data.forEach(item => {
         const row = document.createElement('li');
-        row.className = 'row';
+        row.className = 'historyListItem';
 
         const img = document.createElement('img');
-        img.className = 'icon';
+        img.className = 'historyListItemIcon';
         let hostname;
-
+        let protocol;
         try {
             const urlObj = new URL(item.url);
+            protocol = urlObj.protocol;
 
-            // Only allow http/https
-            if (urlObj.protocol === "http:" || urlObj.protocol === "https:") {
+            if (protocol === "http:" || protocol === "https:") {
                 hostname = urlObj.hostname;
             }
         } catch (e) {
             console.warn("Invalid URL:", item.url);
         }
+        if (protocol === "chrome:") {
 
-        if (hostname) {
-            img.src = `https://s2.googleusercontent.com/s2/favicons?domain=${hostname}&sz=32`;
+            if (item.url === "chrome://newtab/") {
+                img.src = "../src/assets/icon48.png";
+            } else {
+                img.src = "../src/assets/chrome.svg";
+            }
+        } else if (protocol === "file:") {
+            img.src = "../src/assets/file.svg";
+        } else if (hostname) {
+            img.src = `https://www.google.com/s2/favicons?sz=64&domain=${hostname}`;
+
         } else {
-            // fallback icon
-            img.src = '../assets/logo.svg.svg';
+            img.src = "../src/assets/globe.svg";
         }
 
 
         const info = document.createElement('div');
-        info.className = 'info';
-        info.innerHTML = `<p class="title">${esc(item.title)}</p><span class="meta">${smartDate(item.ts)} • ${new URL(item.url).hostname}</span>`;
+        info.className = 'historyListItemInfo';
+        info.innerHTML = `<p class="historyListItemInfoTitle">${esc(item.title)}</p><span class="historyListItemInfoTitleMeta">${smartDate(item.ts)} • ${new URL(item.url).hostname}</span>`;
 
         const status = document.createElement('span');
-        status.className = 'material-icons-round status';
+        status.className = 'material-icons-round historyListItemInfoStatus';
 
         if (item.type === 'tab') {
-            status.textContent = 'check_circle';
-            status.classList.add('st-tab');
+            status.textContent = 'ok';
+            status.classList.add('historyListItemInfoStatusOpened');
         } else {
             const isRec = (Date.now() - item.ts) < 14400000; // < 24h
-            status.textContent = isRec ? 'error' : 'history';
-            status.classList.add(isRec ? 'st-recent' : 'st-old');
+            status.textContent = isRec ? 'Recent' : 'RecentOld';
+            status.classList.add(isRec ? 'historyListItemInfoStatusRecent' : 'historyListItemInfoStatusRecentOld');
         }
 
         row.append(img, info, status);
 
-        // Context Menu Trigger
         row.oncontextmenu = (e) => {
             e.preventDefault();
             showMenu(e.pageX, e.pageY, item);
@@ -96,23 +103,23 @@ function setupActions() {
     window.onclick = hide;
 
     // Menu Item Logic
-    document.getElementById('ctxOpen').onclick = () => {
+    document.getElementById('historyListItemMenuOpen').onclick = () => {
         if (!contextItem) return;
         if (contextItem.type === 'tab') chrome.tabs.update(contextItem.id, { active: true });
         else chrome.tabs.getCurrent(t => chrome.tabs.update(t.id, { url: contextItem.url }));
     };
 
-    document.getElementById('ctxNew').onclick = () => {
+    document.getElementById('historyListItemMenuNew').onclick = () => {
         if (contextItem) chrome.tabs.create({ url: contextItem.url });
     };
 
-    document.getElementById('ctxIncog').onclick = () => {
+    document.getElementById('historyListItemMenuIncog').onclick = () => {
         if (contextItem && !contextItem.url.startsWith('chrome')) {
             chrome.windows.create({ url: contextItem.url, incognito: true });
         }
     };
 
-    document.getElementById('ctxDel').onclick = () => {
+    document.getElementById('historyListItemMenuDel').onclick = () => {
         if (contextItem.type === 'tab') chrome.tabs.remove(contextItem.id, loadData);
         else chrome.history.deleteUrl({ url: contextItem.url }, loadData);
     };
@@ -120,23 +127,21 @@ function setupActions() {
 
 function showMenu(x, y, item) {
     contextItem = item;
-    const m = document.getElementById('ctx');
+    const m = document.getElementById('historyListItemMenu');
     m.style.display = 'block';
 
-    // Position check
     if (x + 180 > window.innerWidth) x -= 180;
     if (y + 150 > window.innerHeight) y -= 150;
 
     m.style.left = x + 'px';
     m.style.top = y + 'px';
 
-    // Auto-hide after 10 seconds
     clearTimeout(menuTimer);
     menuTimer = setTimeout(hideMenu, 5000);
 }
 
 function hideMenu() {
-    document.getElementById('ctx').style.display = 'none';
+    document.getElementById('historyListItemMenu').style.display = 'none';
 }
 
 function esc(t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
