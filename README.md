@@ -5,7 +5,7 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
 ![Chrome Users](https://img.shields.io/badge/Chrome%20Users-1k+-brightgreen)
 ![Total Downloads](https://img.shields.io/badge/Downloads-2500+-blue)
 ![Daily Installs](https://img.shields.io/badge/Daily%20Repo%20Visitor-70-orange)
-![Version](https://img.shields.io/badge/version-2026.2.5-green)
+![Version](https://img.shields.io/badge/version-2026.2.20-green)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Maintenance](https://img.shields.io/badge/maintained-yes-success)
 ![Maintenance](https://img.shields.io/github/license/Pro-Bandey/homepage?color=db4d4d)
