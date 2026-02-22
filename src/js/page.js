@@ -443,7 +443,7 @@ engineBtns.forEach(btn => {
 
 function updateEngineUI() {
   engineBtns.forEach(btn => {
-    btn.classList.toggle("active-engine", btn.dataset.engine === defaultEngine);
+    btn.classList.toggle("searchEnginBoxBtnActive", btn.dataset.engine === defaultEngine);
   });
 }
 
