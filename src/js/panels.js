@@ -1,16 +1,16 @@
-const openSearchPopupBtn = document.getElementById("historyListBoxBtn");
-const searchPopup = document.getElementById("historyListBox");
+const openhistoryListBoxBtnBtn = document.getElementById("historyListBoxBtn");
+const historyListBoxBtn = document.getElementById("historyListBox");
 const searchOverlay = document.getElementById("historyBox-overlay");
 
 // Event listener to open the 'SearchHistory Box' popup.
-openSearchPopupBtn.addEventListener("click", () => {
-  searchPopup.style.display = "flex";
+openhistoryListBoxBtnBtn.addEventListener("click", () => {
+  historyListBoxBtn.style.display = "flex";
   searchOverlay.style.display = "block";
 });
 
 // Event listener to close the 'History Box' popup when clicking its overlay.
 searchOverlay.addEventListener("click", () => {
-  searchPopup.style.display = "none";
+  historyListBoxBtn.style.display = "none";
   searchOverlay.style.display = "none";
 });
 

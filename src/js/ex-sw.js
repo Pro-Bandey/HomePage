@@ -193,27 +193,30 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
 // ----------------------
 self.addEventListener("install", (event) => {
   const urlsToCache = [
-    "./src/assets/icon16.png",
-    "./src/assets/icon48.png",
-    "./src/assets/icon64.png",
-    "./src/assets/icon128.png",
-    "./src/assets/icon.png",
-    "./index.html",
-    "./wel.html",
-
-    "./calc/calc.html",
-    "./calc/calc.css",
-    "./calc/calc.js",
-
-    "./chat/MRi.html",
-    "./chat/MRi.css",
-    "./chat/MRi.js",
-
-    "/src/css/page.css",
-    "/src/css/panels.css",
-    "/src/js/page.js",
-    "/src/js/menu.js",
-    "/src/js/panels.js",
+    // Icons
+    "../../icons/16.png",
+    "../../icons/32.png",
+    "../../icons/48.png",
+    "../../icons/128.png",
+    "../../icons/512.png",
+    // Root files
+    "../../../index.html",
+    "../../../wel.html",
+    // Calc
+    "../../../calc/calc.html",
+    "../../../calc/calc.css",
+    "../../../calc/calc.js",
+    // Chat
+    "../../../chat/MRi.html",
+    "../../../chat/MRi.css",
+    "../../../chat/MRi.js",
+    // CSS
+    "../../css/page.css",
+    "../../css/panels.css",
+    // JS
+    "../../js/page.js",
+    "../../js/menu.js",
+    "../../js/panels.js",
   ];
 
   // Filter invalid URLs (avoid chrome-extension://)

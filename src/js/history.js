@@ -50,7 +50,7 @@ function render(data) {
         if (protocol === "chrome:") {
 
             if (item.url === "chrome://newtab/") {
-                img.src = "../src/assets/icon48.png";
+                img.src = "../assets/icons/48.png";
             } else {
                 img.src = "../src/assets/chrome.svg";
             }
