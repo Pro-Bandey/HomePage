@@ -76,7 +76,7 @@ jobs:
         id: tagcheck
         if: steps.decide.outputs.release == 'true'
         run: |
-          TAG="v${DATE}"
+          TAG="Release${DATE}"
           if git rev-parse "$TAG" >/dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
@@ -92,7 +92,7 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         run: |
           REPO_URL="https://github.com/${{ github.repository }}"
-          TODAY_TAG="v${DATE}"
+          TODAY_TAG="Release${DATE}"
 
           if [ -n "${{ steps.latest.outputs.tag }}" ]; then
             CHANGELOG_URL="$REPO_URL/compare/${{ steps.latest.outputs.tag }}...$TODAY_TAG"
@@ -142,7 +142,7 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         run: |
           cat <<EOF > notes.txt
-          Release v${DATE}
+          Release Release${DATE}
 
           Author: M Ramzan Ch
           Company: MicroResearch Corporation
@@ -168,7 +168,7 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         uses: ncipollo/release-action@v1
         with:
-          tag: v${{ env.DATE }}
+          tag: Release${{ env.DATE }}
           name: v${{ env.DATE }}
           body: ${{ env.NOTES }}
           files: ${{ env.ZIP }}
