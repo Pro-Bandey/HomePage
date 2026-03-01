@@ -22,10 +22,10 @@
       "name": "Info",
       "short_name": "Info",
       "description": "Jump to Info",
-      "url": "src/info.html",
+      "url": "./src/info.html",
       "icons": [
         {
-          "src": "src/assets/icons/48.png",
+          "src": "./src/assets/icons/48.png",
           "sizes": "192x192"
         }
       ]
@@ -34,34 +34,34 @@
   "icons": [
     {
       "sizes": "16x16",
-      "src": "src/assets/icons/16.png"
+      "src": "./src/assets/icons/16.png"
     },
     {
       "sizes": "32x32",
-      "src": "src/assets/icons/32.png"
+      "src": "./src/assets/icons/32.png"
     },
     {
       "sizes": "48x48",
-      "src": "src/assets/icons/48.png"
+      "src": "./src/assets/icons/48.png"
     },
     {
       "sizes": "128x128",
-      "src": "src/assets/icons/128.png"
+      "src": "./src/assets/icons/128.png"
     },
     {
       "sizes": "128x128",
-      "src": "src/assets/icons/128.png"
+      "src": "./src/assets/icons/128.png"
     },
     {
       "sizes": "144x144",
-      "src": "src/assets/icons/pwa-144.png"
+      "src": "./src/assets/icons/pwa-144.png"
     },
     {
       "sizes": "180x180",
-      "src": "src/assets/icons/180.png"
+      "src": "./src/assets/icons/180.png"
     },
     {
-      "src": "src/assets/icons/512.png",
+      "src": "./src/assets/icons/logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

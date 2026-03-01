@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.innerHTML = `
         <div class="icon" style="background:${bg};color:${textColor};">${fallback}</div>
         <p class="link-label">${e.name}</p>
-        <button class="menu-btn" data-index="${t}">⋮</button>
+        <button class="menu-btn" data-index="${t}">&#8942;</button>
       `;
 
       // Left-click: open link
@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.innerHTML = `
         <div class="icon" style="background:${bg};color:${color};">${fallback}</div>
         <div class="name">${link.name}</div>
-        <div class="menu-btn">⋮</div>
+        <div class="menu-btn">&#8942;</div>
       `;
 
       // Left-click: open link

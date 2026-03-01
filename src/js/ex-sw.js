@@ -198,7 +198,7 @@ self.addEventListener("install", (event) => {
     "../../icons/32.png",
     "../../icons/48.png",
     "../../icons/128.png",
-    "../../icons/512.png",
+    "../../icons/logo.png",
     // Root files
     "../../../index.html",
     "../../../wel.html",

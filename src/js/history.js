@@ -50,17 +50,17 @@ function render(data) {
         if (protocol === "chrome:") {
 
             if (item.url === "chrome://newtab/") {
-                img.src = "../assets/icons/48.png";
+                img.src = "./src/assets/icons/48.png";
             } else {
-                img.src = "../src/assets/chrome.svg";
+                img.src = "./src/assets/chrome.svg";
             }
         } else if (protocol === "file:") {
-            img.src = "../src/assets/file.svg";
+            img.src = "./src/assets/file.svg";
         } else if (hostname) {
             img.src = `https://www.google.com/s2/favicons?sz=64&domain=${hostname}`;
 
         } else {
-            img.src = "../src/assets/globe.svg";
+            img.src = "./src/assets/globe.svg";
         }
 
 

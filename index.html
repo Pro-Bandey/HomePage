@@ -31,20 +31,21 @@
     <meta content="https://iili.io/f1XsLyN.png" property="twitter:image" />
     <!-- PWA Content -->
     <link href="manfest.webmanifest" rel="manifest" />
-    <link href="src/assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
-    <link href="src/assets/icons/pwa-192.png" rel="android-chrome-192x192" sizes="192x192" />
-    <link href="src/assets/icons/maskable.png" rel="android-chrome-512x512" sizes="512x512" />
-    <link href="src/assets/icons/32.png" rel="icon" sizes="32x32" />
-    <link href="src/assets/icons/16.png" rel="icon" sizes="16x16" />
-    <link href="src/assets/icons/icon.ico" rel="image/x-icon" />
+    <link href="./src/assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="./src/assets/icons/pwa-192.png" rel="android-chrome-192x192" sizes="192x192" />
+    <link href="./src/assets/icons/maskable.png" rel="android-chrome-512x512" sizes="512x512" />
+    <link href="./src/assets/icons/32.png" rel="icon" sizes="32x32" />
+    <link href="./src/assets/icons/16.png" rel="icon" sizes="16x16" />
+    <link href="./src/assets/icons/icon.ico" rel="image/x-icon" />
     <!-- StyleSheets -->
-    <link rel="stylesheet" href="src/css/page.css">
-    <link rel="stylesheet" href="src/css/Pallet.css">
+    <link rel="stylesheet" href="./src/css/page.css">
+    <link rel="stylesheet" href="./src/css/Pallet.css">
     <!-- Service Worker -->
-    <script type="module" src="src/js/web-sw.js"></script>
+     <script src="./src/js/workbox-sw.js"></script>
+    <script type="module" src="./src/js/web-sw.js"></script>
 
 
-    <title>HomePage</title>
+<link rel="manifest" href="manifest.json" />    <title>HomePage</title>
 </head>
 
 <body>
@@ -59,11 +60,11 @@
     </div>
     <nav class="inf-navbar">
         <div class="inf-navbarr">
-            <a href="src/info.html" target="_blank">About Us</a>
-            <a href="src/license.html" target="_blank">License</a>
-            <a href="src/terms.html" target="_blank">Terms &amp; Conditions</a>
-            <a href="src/privacy.html" target="_blank">Privacy Policy</a>
-            <a href="src/feed.html" target="_blank">FeedBack</a>
+            <a href="./src/info.html" target="_blank">About Us</a>
+            <a href="./src/license.html" target="_blank">License</a>
+            <a href="./src/terms.html" target="_blank">Terms &amp; Conditions</a>
+            <a href="./src/privacy.html" target="_blank">Privacy Policy</a>
+            <a href="./src/feed.html" target="_blank">FeedBack</a>
         </div>
     </nav>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
@@ -84,17 +85,17 @@
         <div class="slideshow-container">
             <!-- Slides (images) -->
             <a href="https://microresearch-corporation.github.io/" target="_blank">
-                <img class="slide fade" src="src/assets/slide_01.png" />
+                <img class="slide fade" src="./src/assets/slide_01.png" />
             </a>
             <a href="https://microresearch-corporation.github.io/mrd/" target="_blank">
-                <img class="slide slide-ltr" src="src/assets/slide_02.png" />
+                <img class="slide slide-ltr" src="./src/assets/slide_02.png" />
             </a>
             <a href="https://www.google.com/search?q=About+most+power+Search+Engines+like+%28Yahoo+Brave+DuckDuckGo+Ecosia+Google+Qwant+Yandex+Startpage+and+Bing&source=homepage"
                 target="_blank">
-                <img class="slide slide-rtl" src="src/assets/slide_03.png" />
+                <img class="slide slide-rtl" src="./src/assets/slide_03.png" />
             </a>
             <a href="https://google.com/" target="_blank">
-                <img class="slide zoom-i" src="src/assets/slide_04.png" />
+                <img class="slide zoom-i" src="./src/assets/slide_04.png" />
             </a>
         </div>
     </div>
@@ -105,7 +106,7 @@
     <div class="searchBox">
         <input type="text" id="searchBar" class="searchBar" autocomplete="off" placeholder="Search or type a URL">
         <button class="historyListBoxBtn" id="historyListBoxBtn">
-            <img src="src/assets/recentOld.svg" alt="Button" title="See Web  History">
+            <img src="./src/assets/recentOld.svg" alt="Button" title="See Web  History">
         </button>
 
         <!-- Suggestion Container -->
@@ -120,39 +121,39 @@
         <div id="searchEnginBox" class="searchEnginBox">
             <button id="bing-btn" data-engine="bing" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Bing">
-                <img src="src/assets/bing.png">
+                <img src="./src/assets/bing.png">
             </button>
             <button id="duckduck-btn" data-engine="duckduck" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search DDG">
-                <img src="src/assets/DuckDuckGo.png">
+                <img src="./src/assets/DuckDuckGo.png">
             </button>
             <button id="google-btn" data-engine="google" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Google">
-                <img src="src/assets/google.png">
+                <img src="./src/assets/google.png">
             </button>
             <button id="yahoo-btn" data-engine="yahoo" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Yahoo">
-                <img src="src/assets/yahoo.png">
+                <img src="./src/assets/yahoo.png">
             </button>
             <button id="qwant-btn" data-engine="Qwant" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Qwant">
-                <img src="src/assets/qwant.png">
+                <img src="./src/assets/qwant.png">
             </button>
             <button id="brave-btn" data-engine="brave" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Brave">
-                <img src="src/assets/brave.png">
+                <img src="./src/assets/brave.png">
             </button>
             <button id="startpage-btn" data-engine="startpage" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Startpage">
-                <img src="src/assets/Startpage.png">
+                <img src="./src/assets/Startpage.png">
             </button>
             <button id="ecosia-btn" data-engine="Ecosia" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Ecosia">
-                <img src="src/assets/Ecosia.png">
+                <img src="./src/assets/Ecosia.png">
             </button>
             <button id="yandex-btn" data-engine="yandex" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Yandex">
-                <img src="src/assets/yandex.png">
+                <img src="./src/assets/yandex.png">
             </button>
         </div>
     </div>
@@ -168,32 +169,32 @@
     <!-- Favorite Links Section -->
     <div class="links-container">
         <div class="links-content">
-            <button class="links-btn"><img src="src/assets/FB.png" title="Facebook"></button>
+            <button class="links-btn"><img src="./src/assets/FB.png" title="Facebook"></button>
             <div class="links-dropdown"><a class="links-a" href="https://www.facebook.com"><img
-                        src="src/assets/open.svg">Open</a><a class="links-ab" href="https://www.facebook.com"
-                    target="_blank"><img src="src/assets/openin.svg">Open In New Tab</a></div>
+                        src="./src/assets/open.svg">Open</a><a class="links-ab" href="https://www.facebook.com"
+                    target="_blank"><img src="./src/assets/openin.svg">Open In New Tab</a></div>
         </div>
         <div class="links-content">
-            <button class="links-btn"><img src="src/assets/instagram.png" title="Instagram"></button>
+            <button class="links-btn"><img src="./src/assets/instagram.png" title="Instagram"></button>
             <div class="links-dropdown"><a class="links-a" href="https://www.instagram.com"><img
-                        src="src/assets/open.svg">Open</a><a class="links-ab" href="https://www.instagram.com"
-                    target="_blank"><img src="src/assets/openin.svg">Open In New Tab</a></div>
+                        src="./src/assets/open.svg">Open</a><a class="links-ab" href="https://www.instagram.com"
+                    target="_blank"><img src="./src/assets/openin.svg">Open In New Tab</a></div>
         </div>
         <div class="links-content">
-            <button class="links-btn"><img src="src/assets/youtube.png" title="YouTube"></button>
+            <button class="links-btn"><img src="./src/assets/youtube.png" title="YouTube"></button>
             <div class="links-dropdown"><a class="links-a" href="https://www.youtube.com"><img
-                        src="src/assets/open.svg">Open</a><a class="links-ab" href="https://www.youtube.com"
-                    target="_blank"><img src="src/assets/openin.svg">Open In New Tab</a></div>
+                        src="./src/assets/open.svg">Open</a><a class="links-ab" href="https://www.youtube.com"
+                    target="_blank"><img src="./src/assets/openin.svg">Open In New Tab</a></div>
         </div>
         <div class="links-content">
-            <button class="links-btn"><img src="src/assets/GitHub.png" title="Facebook"></button>
+            <button class="links-btn"><img src="./src/assets/GitHub.png" title="Facebook"></button>
             <div class="links-dropdown"><a class="links-a" href="https://www.github.com"><img
-                        src="src/assets/open.svg">Open</a><a class="links-ab" href="https://www.github.com"
-                    target="_blank"><img src="src/assets/openin.svg">Open In New Tab</a></div>
+                        src="./src/assets/open.svg">Open</a><a class="links-ab" href="https://www.github.com"
+                    target="_blank"><img src="./src/assets/openin.svg">Open In New Tab</a></div>
         </div>
         <div class="links-content">
             <button class="more-shortcuts" style="border: none; padding: inherit;" id="more"><img
-                    src="src/assets/link.png" alt="Link-Bar" title="More Links...."></button>
+                    src="./src/assets/link.png" alt="Link-Bar" title="More Links...."></button>
         </div>
     </div>
     <!-- =+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+= -->
@@ -224,17 +225,17 @@
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Floating Button -->
     <div class="float-btnL">
-        <button class="info-btn" id="info-btn" title="Chrome App Launcher"><img src="src/assets/info.svg" alt="CAL"
+        <button class="info-btn" id="info-btn" title="Chrome App Launcher"><img src="./src/assets/info.svg" alt="CAL"
                 title="Chrome App Launcher"></button>
-        <button class="calc-btn" id="calc-btn" title="Chrome App Launcher"><img src="src/assets/calc.png" alt="CAL"
+        <button class="calc-btn" id="calc-btn" title="Chrome App Launcher"><img src="./src/assets/calc.png" alt="CAL"
                 title="Chrome App Launcher"></button>
-        <button class="todo-btn" id="todo-btn" title="MRi Chatbot"><img src="src/assets/Todo.png" alt="🤖"
+        <button class="todo-btn" id="todo-btn" title="MRi Chatbot"><img src="./src/assets/Todo.png" alt="🤖"
                 title="MRi AI Assistant"></button>
     </div>
     <div class="float-btnR">
-        <button class="cal-btn" id="cal-btn" title="Chrome App Launcher"><img src="src/assets/Chrome App Launcher.png"
+        <button class="cal-btn" id="cal-btn" title="Chrome App Launcher"><img src="./src/assets/Chrome App Launcher.png"
                 alt="CAL" title="Chrome App Launcher"></button>
-        <button class="mri-btn" id="mri-btn" title="MRi Chatbot"><img src="src/assets/mri.png" alt="🤖"
+        <button class="mri-btn" id="mri-btn" title="MRi Chatbot"><img src="./src/assets/mri.png" alt="🤖"
                 title="MRi AI Assistant"></button>
         <a href="/module/icons.htm" target="_blank"><button class="ico-btn" id="ico-btn" title="Icons Module"><img
                     src="module/fav.ico" alt="MRc" title="Material Icons By MRc"></button></a>
@@ -243,20 +244,20 @@
     <!-- Info Bar -->
     <div id="info-overlay" class="overlay"></div>
     <div id="info-bar" class="info-bar" style="display:flex;">
-        <button class="panel-close" id="info-close"><img src="src/assets/clse.svg" alt=""></button>
+        <button class="panel-close" id="info-close"><img src="./src/assets/clse.svg" alt=""></button>
         <div class="info-bar-profile">
-            <img src="src/assets/icons/logo.png" class="bar-Profile">
+            <img src="./src/assets/icons/logo.png" class="bar-Profile">
             <h1 class="bar-Profile-Name">HomePage <sup style="font-size: 10px; font-weight: 600;">v2026.2.20</sup></h1>
         </div>
         <p class="info-bar-p">Follow Us</p>
         <div class="info-links">
-            <a class="links" href="https://www.facebook.com/rm4814591" target="_blank"><img src="src/assets/FB.png"
+            <a class="links" href="https://www.facebook.com/rm4814591" target="_blank"><img src="./src/assets/FB.png"
                     title="Facebook"></a>
             <a class="links" href="https://www.instagram.com/@rm4814591" target="_blank"><img
-                    src="src/assets/instagram.png" title="Instagram"></a>
-            <a class="links" href="https://pk.linkedin.com/in/mramzanch" target="_blank"><img src="src/assets/LnK.png"
+                    src="./src/assets/instagram.png" title="Instagram"></a>
+            <a class="links" href="https://pk.linkedin.com/in/mramzanch" target="_blank"><img src="./src/assets/LnK.png"
                     title="LinkedIn"></a>
-            <a class="links" href="https://www.github.com/Pro-Bandey" target="_blank"><img src="src/assets/GitHub.png"
+            <a class="links" href="https://www.github.com/Pro-Bandey" target="_blank"><img src="./src/assets/GitHub.png"
                     title="GitHub"></a>
         </div>
     </div>
@@ -265,11 +266,11 @@
     <div id="calc-overlay" class="overlay"></div>
     <div id="calc-pan" class="left-panel">
         <div class="panel-header">
-            <div><img src="src/assets/calc.png"></div>
-            <button class="panel-close" id="calc-close"><img src="src/assets/clse.svg" alt=""></button>
+            <div><img src="./src/assets/calc.png"></div>
+            <button class="panel-close" id="calc-close"><img src="./src/assets/clse.svg" alt=""></button>
         </div>
         <hr>
-        <iframe src="calc/calc.html" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
+        <iframe src="./calc/calc.html" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- To-Do List Section -->
@@ -277,10 +278,10 @@
     <div class="left-panel" id="todo-pan">
         <div class="panel-header">
             <div>
-                <img src="src/assets/Todo.png">
+                <img src="./src/assets/Todo.png">
             </div>
             <h1>YDT ToDo</h1>
-            <button class="panel-close" id="todo-close"><img src="src/assets/clse.svg" alt=""></button>
+            <button class="panel-close" id="todo-close"><img src="./src/assets/clse.svg" alt=""></button>
         </div>
         <hr>
         <div class="todo-tools-cont">
@@ -316,7 +317,7 @@
                 </div>
                 <div class="todo-addbar" style="flex-direction:column;align-items:center;">
                     <input type="datetime-local" class="reminder-input" id="reminder-input">
-                    <button class="todo-add-btn" id="todo-add-btn"><img src="src/assets/add.svg" alt="add"></button>
+                    <button class="todo-add-btn" id="todo-add-btn"><img src="./src/assets/add.svg" alt="add"></button>
                 </div>
             </div>
             <hr style=" margin: 5px 0; width: 100%; height: 3px; background: #f00; border: none;">
@@ -329,14 +330,14 @@
     <div id="cal-overlay" class="overlay"></div>
     <div id="cal-popup" class="right-panel">
         <div class="panel-header">
-            <div><img src="src/assets/Chrome App Launcher.png"></div>
+            <div><img src="./src/assets/Chrome App Launcher.png"></div>
             <h1>
                 <span style="color:red; border-bottom: 0.7px dotted red;">Chrom</span>
                 <span style="color: green; border-bottom: 0.7px dotted green;">eApp</span>
                 <span style="color: yellow; border-bottom: 0.7px dotted yellow;">Laun</span>
                 <span style="color: blue; border-bottom: 0.7px dotted blue;">cher</span>
             </h1>
-            <button class="panel-close" id="cal-close"><img src="src/assets/clse.svg" title="Close"
+            <button class="panel-close" id="cal-close"><img src="./src/assets/clse.svg" title="Close"
                     alt="close"></button>
         </div>
         <!-- <iframe src="cal.html" style="width: 105%; height:90%; border: none;"></iframe> -->
@@ -347,7 +348,7 @@
             <button id="cal-export-btn">Export</button>
             <input type="file" id="cal-import-file" accept="application/json" hidden>
             <button id="cal-import-btn">Import</button>
-            <a href="src/js/products.json" target="_blank"><button>More Pr..</button></a>
+            <a href="./src/js/products.json" target="_blank"><button>More Pr..</button></a>
         </div>
     </div>
     <!-- Context Menu of Cal -->
@@ -375,14 +376,14 @@
     <div id="popup" class="right-panel">
         <div class="panel-header">
             <div>
-                <img src="src/assets/mri.png">
+                <img src="./src/assets/mri.png">
             </div>
             <h1 style="color: var(--red);">Micro<span style="color:#008800;">Research</span>&nbsp;<Span
                     style="color:#ff9800;">Intelligence</Span> </h1>
-            <button class="panel-close" id="mri-close"><img src="src/assets/clse.svg" alt=""></button>
+            <button class="panel-close" id="mri-close"><img src="./src/assets/clse.svg" alt=""></button>
         </div>
         <hr>
-        <iframe src="chat/MRi.html" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
+        <iframe src="./chat/MRi.html" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Alert Box -->
@@ -420,11 +421,11 @@
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Link to External Scripts-->
-    <script src="src/js/history.js"></script>
-    <script src="src/js/links.js "></script>
-    <script src="src/js/page.js "></script>
-    <script src="src/js/todo.js "></script>
-    <script src="src/js/panels.js"></script>
+    <script src="./src/js/history.js"></script>
+    <script src="./src/js/links.js "></script>
+    <script src="./src/js/page.js "></script>
+    <script src="./src/js/todo.js "></script>
+    <script src="./src/js/panels.js"></script>
 
 </body>
 
