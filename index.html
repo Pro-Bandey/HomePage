@@ -6,6 +6,8 @@
     <meta content="IE=7,8,edge" http-equiv="X-UA-Compatible" />
     <meta content="text/html;charset=UTF-8" http-equiv="refresh" />
     <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta http-equiv="Content-Security-Policy"
+        content="script-src 'self' 'nonce-EDN21869CNWEH27' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:* http://127.0.0.1:*;">
     <!-- Seo Meta Tags -->
     <meta content="HomePage" name="title" />
     <meta content="HomePage" name="name" />
@@ -30,22 +32,22 @@
         property="twitter:description" />
     <meta content="https://iili.io/f1XsLyN.png" property="twitter:image" />
     <!-- PWA Content -->
-    <link href="manfest.webmanifest" rel="manifest" />
+    <link href="./manfest.webmanifest" rel="manifest" />
     <link href="./src/assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
     <link href="./src/assets/icons/pwa-192.png" rel="android-chrome-192x192" sizes="192x192" />
-    <link href="./src/assets/icons/maskable.png" rel="android-chrome-512x512" sizes="512x512" />
+    <link href="./src/assets/icons/pwa-144.png" rel="android-chrome-144x144" sizes="144x144" />
+    <link href="./src/assets/icons/logo.png" rel="android-chrome-512x512" sizes="512x512" />
+    <link href="./src/assets/icons/48.png" rel="icon" sizes="48x48" />
     <link href="./src/assets/icons/32.png" rel="icon" sizes="32x32" />
     <link href="./src/assets/icons/16.png" rel="icon" sizes="16x16" />
-    <link href="./src/assets/icons/icon.ico" rel="image/x-icon" />
+    <link rel="shortcut icon" href="./src/assets/icons/icon.ico" type="image/x-icon">
     <!-- StyleSheets -->
     <link rel="stylesheet" href="./src/css/page.css">
-    <link rel="stylesheet" href="./src/css/Pallet.css">
     <!-- Service Worker -->
-     <script src="./src/js/workbox-sw.js"></script>
-    <script type="module" src="./src/js/web-sw.js"></script>
+    <script src="./src/js/register-sw.js"></script>
 
 
-<link rel="manifest" href="manifest.json" />    <title>HomePage</title>
+    <title>HomePage</title>
 </head>
 
 <body>
@@ -246,7 +248,7 @@
     <div id="info-bar" class="info-bar" style="display:flex;">
         <button class="panel-close" id="info-close"><img src="./src/assets/clse.svg" alt=""></button>
         <div class="info-bar-profile">
-            <img src="./src/assets/icons/logo.png" class="bar-Profile">
+            <img src="./src/assets/icons.png" class="bar-Profile">
             <h1 class="bar-Profile-Name">HomePage <sup style="font-size: 10px; font-weight: 600;">v2026.2.20</sup></h1>
         </div>
         <p class="info-bar-p">Follow Us</p>
@@ -421,11 +423,11 @@
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Link to External Scripts-->
-    <script src="./src/js/history.js"></script>
-    <script src="./src/js/links.js "></script>
-    <script src="./src/js/page.js "></script>
-    <script src="./src/js/todo.js "></script>
-    <script src="./src/js/panels.js"></script>
+    <script src="./src/js/history.js" type="module"></script>
+    <script src="./src/js/links.js " type="module"></script>
+    <script src="./src/js/page.js " type="module"></script>
+    <script src="./src/js/todo.js " type="module"></script>
+    <script src="./src/js/panels.js" type="module"></script>
 
 </body>
 
