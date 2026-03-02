@@ -10,11 +10,11 @@
   "offline_enabled": true,
   "homepage_url": "https://microresearch-corporation.github.io/",
   "icons": {
-    "16": "./src/assets/icon16.png",
-    "48": "./src/assets/icon48.png",
-    "64": "./src/assets/icon64.png",
-    "128": "./src/assets/icon128.png",
-    "256": "./src/assets/icon.png"
+    "16": "./src/assets/icons/16.png",
+    "32": "./src/assets/icons/32.png",
+    "48": "./src/assets/icons/48.png",
+    "128": "./src/assets/icons/128.png",
+    "512": "./src/assets/icons/512.png"
   },
   "chrome_url_overrides": {
     "newtab": "./index.html",
@@ -25,11 +25,11 @@
     "default_title": "StartPage",
     "browser_style": true,
     "default_icon": {
-      "16": "./src/assets/icon16.png",
-      "48": "./src/assets/icon48.png",
-      "64": "./src/assets/icon64.png",
-      "128": "./src/assets/icon128.png",
-      "256": "./src/assets/icon.png"
+      "16": "./src/assets/icons/16.png",
+      "32": "./src/assets/icons/32.png",
+      "48": "./src/assets/icons/48.png",
+      "128": "./src/assets/icons/128.png",
+      "512": "./src/assets/icons/512.png"
     }
   },
   "content_scripts": [
@@ -65,6 +65,7 @@
     "default_path": "./src/open.html"
   },
   "host_permissions": [
+    "<all_urls>",
     "http://*/**",
     "https://*/**",
     "https://v6.exchangerate-api.com/*",

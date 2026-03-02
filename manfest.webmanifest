@@ -2,6 +2,7 @@
   "name": "HomePage",
   "short_name": "HomePage",
   "lang": "en",
+  "dir": "ltr",
   "orientation": "any",
   "author": "M Ramzan Ch",
   "publisher": "MicroResearch Corporation®",
@@ -10,6 +11,7 @@
   "display": "standalone",
   "theme_color": "#f44234",
   "background_color": "#333333",
+  "prefer_related_applications": false,
   "protocol_handlers": [
     {
       "protocol": "mailto",
@@ -27,31 +29,91 @@
       "url": "./src/info.html",
       "icons": [
         {
-          "src": "./src/assets/icon48.png",
+          "src": "./src/assets/icons/pwa-192.png",
           "sizes": "192x192"
         }
       ]
     }
   ],
+  "categories": [
+    "productivity",
+    "tool",
+    "personalization",
+    "utilities"
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "icons": [
     {
-      "purpose": "maskable",
-      "sizes": "512x512",
-      "src": "./src/assets/icon128.png",
-      "type": "image/png"
+      "purpose": "any",
+      "sizes": "16x16",
+      "src": "./src/assets/icons/16.png"
     },
     {
       "purpose": "any",
+      "sizes": "32x32",
+      "type": "image/png",
+      "src": "./src/assets/icons/32.png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "48x48",
+      "type": "image/png",
+      "src": "./src/assets/icons/48.png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "128x128",
+      "type": "image/png",
+      "src": "./src/assets/icons/128.png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "128x128",
+      "type": "image/png",
+      "src": "./src/assets/icons/128.png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "144x144",
+      "type": "image/png",
+      "src": "./src/assets/icons/pwa-144.png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "180x180",
+      "type": "image/png",
+      "src": "./src/assets/icons/180.png"
+    },
+    {
+      "purpose": "any",
+      "src": "./src/assets/icons/logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "purpose": "maskable",
       "sizes": "512x512",
-      "src": "./src/assets/icon.png",
+      "src": "./src/assets/icons/maskable.png",
       "type": "image/png"
     }
   ],
   "screenshots": [
     {
-      "src": "./src/assets/shot.png",
+      "src": "https://iili.io/qqaBClI.png",
       "type": "image/png",
       "description": "Home Screen"
+    },
+    {
+      "src": "https://iili.io/qqa1fsV.png",
+      "type": "image/png",
+      "description": "Suggestion Shot"
+    },
+    {
+      "src": "https://iili.io/qqa1k7e.png",
+      "type": "image/png",
+      "description": "Info Authority"
     }
   ]
 }

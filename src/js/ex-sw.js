@@ -197,7 +197,7 @@ self.addEventListener("install", (event) => {
     "./src/assets/icon48.png",
     "./src/assets/icon64.png",
     "./src/assets/icon128.png",
-    "./src/assets/icon.png",
+    "./src/assets/logo.png",
     "./index.html",
     "./wel.html",
 
