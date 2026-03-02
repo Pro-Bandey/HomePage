@@ -14,7 +14,7 @@
     "32": "./src/assets/icons/32.png",
     "48": "./src/assets/icons/48.png",
     "128": "./src/assets/icons/128.png",
-    "512": "./src/assets/icons/512.png"
+    "512": "./src/assets/icons/logo.png"
   },
   "chrome_url_overrides": {
     "newtab": "./index.html",
@@ -29,7 +29,7 @@
       "32": "./src/assets/icons/32.png",
       "48": "./src/assets/icons/48.png",
       "128": "./src/assets/icons/128.png",
-      "512": "./src/assets/icons/512.png"
+      "512": "./src/assets/icons/logo.png"
     }
   },
   "content_scripts": [
