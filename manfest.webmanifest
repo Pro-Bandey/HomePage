@@ -7,7 +7,7 @@
   "author": "M Ramzan Ch",
   "publisher": "MicroResearch Corporation®",
   "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MicroResearch Corporation®.",
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#f44234",
   "background_color": "#333333",
