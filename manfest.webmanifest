@@ -18,29 +18,8 @@
       "url": "/newEmail?to=%s"
     }
   ],
-  "display_override": [
-    "window-controls-overlay"
-  ],
-  "shortcuts": [
-    {
-      "name": "Info",
-      "short_name": "Info",
-      "description": "Jump to Info",
-      "url": "./src/info.html",
-      "icons": [
-        {
-          "src": "./src/assets/icons/pwa-192.png",
-          "sizes": "192x192"
-        }
-      ]
-    }
-  ],
-  "categories": [
-    "productivity",
-    "tool",
-    "personalization",
-    "utilities"
-  ],
+  "display_override": ["window-controls-overlay"],
+  "categories": ["productivity", "tool", "personalization", "utilities"],
   "launch_handler": {
     "client_mode": "navigate-existing"
   },
@@ -114,6 +93,54 @@
       "src": "https://iili.io/qqa1k7e.png",
       "type": "image/png",
       "description": "Info Authority"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Info",
+      "short_name": "Info",
+      "description": "Jump to Info",
+      "url": "./src/info.html",
+      "icons": [
+        {
+          "src": "./src/assets/icons/48.png",
+          "sizes": "48x48"
+        }
+      ]
+    },
+    {
+      "name": "License",
+      "short_name": "MIT",
+      "description": "See License",
+      "url": "./src/license.html",
+      "icons": [
+        {
+          "src": "./src/assets/icons/48.png",
+          "sizes": "48x48"
+        }
+      ]
+    },
+    {
+      "name": "Devloper",
+      "short_name": "Dev",
+      "description": "See Devloper",
+      "url": "./src/rdrt/mr.html",
+      "icons": [
+        {
+          "src": "./src/assets/icons/48.png",
+          "sizes": "48x48"
+        }
+      ]
+    },
+    {
+      "name": "View repo",
+      "url": "./src/rdrt/rp.html",
+      "description": "view repo to give us a star"
+    },
+    {
+      "name": "Download Extension",
+      "url": "./src/rdrt/ext.html",
+      "description": "download extension from github.com"
     }
   ]
 }
