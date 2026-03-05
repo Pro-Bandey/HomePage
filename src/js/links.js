@@ -105,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
         cm.id = "dynamic-menu-" + t;
         cm.innerHTML = `
           <button class="menu-item" data-action="open-link" data-index="${t}">Open</button>
-          <button class="menu-item" data-action="open--link-new-tab" data-index="${t}">Open in New Tab</button>
+          <button class="menu-item" data-action="open-link-new-tab" data-index="${t}">Open in New Tab</button>
+          <button class="menu-item" data-action="open-link-incognito-tab" data-index="${t}">In Incognito</button>
           <button class="menu-item" data-action="edit-link" data-index="${t}">Edit</button>
           <button class="menu-item" data-action="delete-link" data-index="${t}">Delete</button>
         `;
@@ -131,7 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const action = evt.target.dataset.action,
               idx = parseInt(evt.target.dataset.index);
             if (action === "open-link") w(idx, !1);
-            else if (action === "open--link-new-tab") w(idx, !0);
+            else if (action === "open-link-new-tab") w(idx, !0);
+            else if (action === "open-link-incognito-tab") {
+              chrome?.windows?.create({ url: y[idx].url, incognito: true });
+            }
             else if (action === "edit-link") {
               f = idx;
               o.value = y[idx].name;
@@ -160,7 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
         menu.id = "dynamic-menu-" + t;
         menu.innerHTML = `
           <button class="menu-item" data-action="open-link" data-index="${t}">Open</button>
-          <button class="menu-item" data-action="open--link-new-tab" data-index="${t}">Open in New Tab</button>
+          <button class="menu-item" data-action="open-link-new-tab" data-index="${t}">Open in New Tab</button>
+          <button class="menu-item" data-action="open-link-incognito-tab" data-index="${t}">In Incognito</button>
           <button class="menu-item" data-action="edit-link" data-index="${t}">Edit</button>
           <button class="menu-item" data-action="delete-link" data-index="${t}">Delete</button>
         `;
@@ -184,7 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const action = evt.target.dataset.action,
               idx = parseInt(evt.target.dataset.index);
             if (action === "open-link") w(idx, !1);
-            else if (action === "open--link-new-tab") w(idx, !0);
+            else if (action === "open-link-new-tab") w(idx, !0);
+            else if (action === "open-link-incognito-tab") {
+              chrome?.windows?.create({ url: y[idx].url, incognito: true });
+            }
             else if (action === "edit-link") {
               f = idx;
               o.value = y[idx].name;
@@ -561,6 +569,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const action = e.target.dataset.action;
     if (action === "cal-open") openLink(currentIndex, false);
     else if (action === "cal-Newtab") openLink(currentIndex, true);
+    else if (action === "cal-incognito") openLink(currentIndex, false, true);
     else if (action === "cal-edit") {
       editingIndex = currentIndex;  // store exact item being edited
       openModal(true);
@@ -589,9 +598,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===== Open Link =====
-  function openLink(index, newTab = false) {
+  function openLink(index, newTab = false, incognito = false) {
     if (index < 0 || index >= launcherLinks.length) return;
     const url = launcherLinks[index].url;
+
+    // Handle Incognito
+    if (incognito && chrome?.windows) {
+      chrome.windows.create({ url: url, incognito: true });
+      contextMenu.style.display = "none";
+      return;
+    }
+
+    // Existing Logic
     if (chrome.tabs) {
       newTab ? chrome.tabs.create({ url }) : chrome.tabs.query({ active: true, currentWindow: true }, t => { chrome.tabs.update(t[0].id, { url }); });
     } else {
@@ -599,7 +617,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     contextMenu.style.display = "none";
   }
-
   // ===== Modal =====
   function openModal(edit = false) {
     popupBox.style.display = "flex";

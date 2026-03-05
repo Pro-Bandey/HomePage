@@ -315,7 +315,7 @@ function getSearchUrl(engine, term) {
     startpage: `https://www.startpage.com/sp/search?query=${query}&source=homepage`,
     ecosia: `https://www.ecosia.com/search?q=${query}&source=homepage`,
     bing: `https://www.bing.com/search?q=${query}&source=homepage`,
-    qwant: `https://www.qwant.com/?q=${query}&t==homepage`,
+    googleai: `https://www.google.com/search?q=${query}&udm=50&aep=48&sourceid=homepage&source=homepage`,
     duckduck: `https://duckduckgo.com/?q=${query}&ia=homepage`,
     yahoo: `https://search.yahoo.com/search?p=${query}`,
     yandex: `https://www.yandex.com/search/?text=${query}&lr=13184814691&search_source=homepage`
@@ -326,15 +326,44 @@ function getSearchUrl(engine, term) {
 // ---------------------------------------------------------
 // 2. Combined Suggestion Logic (Google, YT, DDG, Wiki Only)
 // ---------------------------------------------------------
+// --- URL Detection Logic ---
 
+function isValidUrl(string) {
+  // 1. If it contains spaces, it's a search query (e.g., "eg .com")
+  if (string.includes(" ")) return false;
+
+  // 2. If it starts with http:// or https://, it's a URL
+  if (/^https?:\/\//i.test(string)) return true;
+
+  // 3. If it has no protocol but looks like a domain (e.g., "eg.com", "google.co.uk")
+  // Regex: String + Dot + String (at least 2 chars)
+  return /^[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{2,}/.test(string);
+}
+
+function handleSearchOrNavigate(input) {
+  const term = input.trim();
+  if (!term) return;
+
+  if (isValidUrl(term)) {
+    // If it's a URL, ensure it has a protocol
+    let url = term;
+    if (!/^https?:\/\//i.test(url)) {
+      url = "https://" + url;
+    }
+    window.location.href = url;
+  } else {
+    // If it's text/search query, perform search
+    window.location.href = getSearchUrl(defaultEngine, term);
+  }
+}
 // Helper: Process and Add suggestions
 function processSuggestions(items) {
   if (!items || !items.length) return;
-  
+
   items.forEach(item => {
     // Extract text (some APIs return strings, some objects)
     const text = (typeof item === 'object' && item.text) ? item.text : item;
-    
+
     // Deduplicate: Add only if unique
     if (text && !combinedSuggestions.some(existing => existing.toLowerCase() === text.toLowerCase())) {
       combinedSuggestions.push(text);
@@ -353,7 +382,7 @@ async function fetchSuggestions(term) {
 
   // Reset list
   combinedSuggestions = [];
-  
+
   // Fire requests (Google, YouTube, DDG, Wiki)
   fetchGoogle(term);
   fetchYouTube(term);
@@ -410,13 +439,13 @@ function displaySuggestions(list) {
     suggestionsBox.style.display = "none";
     return;
   }
-  
+
   // Limit to 10 items
   suggestionsBox.innerHTML = list
-    .slice(0, 10) 
+    .slice(0, 10)
     .map(item => `<div class="suggestion-item">${item}</div>`)
     .join("");
-    
+
   suggestionsBox.style.display = "flex";
 }
 
@@ -447,11 +476,11 @@ function updateEngineUI() {
   });
 }
 
-searchInput.addEventListener("input", function() {
+searchInput.addEventListener("input", function () {
   const val = this.value.trim();
   searchPopup.style.display = val !== "" ? "flex" : "none";
   clearTimeout(debounceTimer);
-  
+
   if (val === "") {
     suggestionsBox.style.display = "none";
     return;
@@ -463,17 +492,19 @@ searchInput.addEventListener("input", function() {
   }, 300);
 });
 
+// --- Updated Event Listeners ---
+
 suggestionsBox.addEventListener("click", (e) => {
   if (e.target.classList.contains("suggestion-item")) {
     searchInput.value = e.target.innerText;
-    window.location.href = getSearchUrl(defaultEngine, searchInput.value);
+    // Suggestions are usually search terms, but we run it through the handler to be safe
+    handleSearchOrNavigate(searchInput.value);
   }
 });
 
 searchInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    const term = searchInput.value.trim();
-    if (term) window.location.href = getSearchUrl(defaultEngine, term);
+    handleSearchOrNavigate(searchInput.value);
   }
 });
 

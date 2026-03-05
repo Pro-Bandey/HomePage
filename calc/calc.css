@@ -380,7 +380,7 @@ button {
 }
 
 .last-updated-info {
-    background-color: var(--alert-bg);
+    background-color: var(--accent-h);
     backdrop-filter: blur(5px);
     border-radius: 1rem;
     padding: 16px;
@@ -388,7 +388,7 @@ button {
 }
 
 .last-updated-info p {
-    color: var(--gray-light);
+    color: var(--accent);
     font-size: 1rem;
     text-align: center;
 }

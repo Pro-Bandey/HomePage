@@ -92,7 +92,7 @@
             <a href="https://microresearch-corporation.github.io/mrd/" target="_blank">
                 <img class="slide slide-ltr" src="./src/assets/slide_02.png" />
             </a>
-            <a href="https://www.google.com/search?q=About+most+power+Search+Engines+like+%28Yahoo+Brave+DuckDuckGo+Ecosia+Google+Qwant+Yandex+Startpage+and+Bing&source=homepage"
+            <a href="https://www.google.com/search?q=About+most+power+Search+Engines+like+%28Yahoo+Brave+DuckDuckGo+Ecosia+Google+GoogleAi+Yandex+Startpage+and+Bing&source=homepage"
                 target="_blank">
                 <img class="slide slide-rtl" src="./src/assets/slide_03.png" />
             </a>
@@ -121,39 +121,39 @@
 
 
         <div id="searchEnginBox" class="searchEnginBox">
-            <button id="bing-btn" data-engine="bing" class="searchEnginBoxBtn"
+            <button data-engine="bing" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Bing">
                 <img src="./src/assets/bing.png">
             </button>
-            <button id="duckduck-btn" data-engine="duckduck" class="searchEnginBoxBtn"
+            <button data-engine="duckduck" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search DDG">
                 <img src="./src/assets/DuckDuckGo.png">
             </button>
-            <button id="google-btn" data-engine="google" class="searchEnginBoxBtn"
+            <button data-engine="google" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Google">
                 <img src="./src/assets/google.png">
             </button>
-            <button id="yahoo-btn" data-engine="yahoo" class="searchEnginBoxBtn"
+            <button data-engine="googleai" class="searchEnginBoxBtn"
+                title="Left-click: Set Default | Right-click: Search Google Ai">
+                <img src="./src/assets/gsai.png">
+            </button>
+            <button data-engine="yahoo" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Yahoo">
                 <img src="./src/assets/yahoo.png">
             </button>
-            <button id="qwant-btn" data-engine="Qwant" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Qwant">
-                <img src="./src/assets/qwant.png">
-            </button>
-            <button id="brave-btn" data-engine="brave" class="searchEnginBoxBtn"
+            <button data-engine="brave" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Brave">
                 <img src="./src/assets/brave.png">
             </button>
-            <button id="startpage-btn" data-engine="startpage" class="searchEnginBoxBtn"
+            <button data-engine="startpage" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Startpage">
                 <img src="./src/assets/Startpage.png">
             </button>
-            <button id="ecosia-btn" data-engine="Ecosia" class="searchEnginBoxBtn"
+            <button data-engine="ecosia" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Ecosia">
                 <img src="./src/assets/Ecosia.png">
             </button>
-            <button id="yandex-btn" data-engine="yandex" class="searchEnginBoxBtn"
+            <button data-engine="yandex" class="searchEnginBoxBtn"
                 title="Left-click: Set Default | Right-click: Search Yandex">
                 <img src="./src/assets/yandex.png">
             </button>
@@ -357,6 +357,7 @@
     <div id="cal-contextMenu" class="context-menu">
         <button class="menu-item" data-action="cal-open">Open</button>
         <button class="menu-item" data-action="cal-Newtab">Open in New Tab</button>
+         <button class="menu-item" data-action="cal-incognito" data-index="${t}">In Incognito</button> 
         <button class="menu-item" data-action="cal-edit">Edit</button>
         <button class="menu-item" data-action="cal-delete">Delete</button>
     </div>

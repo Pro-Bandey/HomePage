@@ -94,7 +94,7 @@
     border-radius: var(--radius-sm); /* M3 Menu Shape */
     box-shadow:var(--shadow-o);
     z-index: 101;
-    max-width: 130px;
+    max-width: 140px;
     animation: fade5 1s ease-in-out;
     padding: 5px 0;
 }
