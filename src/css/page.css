@@ -709,14 +709,15 @@ body {
     padding: 5px;
     white-space: nowrap;
     text-decoration: none;
+    border-radius: inherit;
     display: block;
     text-align: left;
 }
 
 
 .links-dropdown a:hover {
-    background-color: var(--accent-h);
-    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: #000;
 }
 
 .links-content:hover .links-dropdown {

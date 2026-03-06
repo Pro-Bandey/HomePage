@@ -108,7 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <button class="menu-item" data-action="open-link-new-tab" data-index="${t}">Open in New Tab</button>
           <button class="menu-item" data-action="open-link-incognito-tab" data-index="${t}">In Incognito</button>
           <button class="menu-item" data-action="edit-link" data-index="${t}">Edit</button>
-          <button class="menu-item" data-action="delete-link" data-index="${t}">Delete</button>
+          <div class="historyListItemMenuItemDivider"></div>
+          <button class="menu-item danger" data-action="delete-link" data-index="${t}">Delete</button>
         `;
         document.body.appendChild(cm);
         h = cm;
@@ -167,7 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <button class="menu-item" data-action="open-link-new-tab" data-index="${t}">Open in New Tab</button>
           <button class="menu-item" data-action="open-link-incognito-tab" data-index="${t}">In Incognito</button>
           <button class="menu-item" data-action="edit-link" data-index="${t}">Edit</button>
-          <button class="menu-item" data-action="delete-link" data-index="${t}">Delete</button>
+          <div class="historyListItemMenuItemDivider"></div>
+          <button class="menu-item danger" data-action="delete-link" data-index="${t}">Delete</button>
         `;
         document.body.appendChild(menu);
         h = menu;

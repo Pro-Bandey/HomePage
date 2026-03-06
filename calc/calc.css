@@ -110,12 +110,14 @@ button {
     background: transparent;
     transition: background-color 150ms ease-in-out;
     display: flex;
+    border-radius: 15px;
     align-items: center;
     gap: 12px;
 }
 
 .menu-item-button:hover {
-    background: var(--gray-mid);
+    background: var(--accent);
+    color: #000000;
 }
 
 .menu-item-button:active {
