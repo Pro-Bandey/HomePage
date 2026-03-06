@@ -32,6 +32,7 @@ function render(data) {
     data.forEach(item => {
         const row = document.createElement('li');
         row.className = 'historyListItem';
+        row.title  = 'Right to on it';
 
         const img = document.createElement('img');
         img.className = 'historyListItemIcon';

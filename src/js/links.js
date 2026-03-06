@@ -269,6 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const add = document.createElement("div");
     add.className = "link-card add-card";
+    add.title = "Click Add New Shortcut";
     add.innerHTML = "<p>＋</p>";
     add.addEventListener("click", B);
     n.appendChild(add);

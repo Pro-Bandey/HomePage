@@ -53,20 +53,21 @@
 <body>
     <!-- Branding & Info Bar -->
     <div class="branding">
-        <span>Product Of :</span> MicroResearch <span>Corporation<sup>&reg;</sup></span>
+        <span>Give Us Star :</span>
+        <a href="https://github.com/Pro-Bandey/HomePage" title="Give a star to Support us"
+            style="text-decoration:none; color:var(--accent); ">HomePage</a>
         <br>
-        <span>Maintain By :</span> <a aria-label="Visit M Ramzan Ch" href="https://mramzanch.blogspot.com/"
-            title="M Ramzan Ch Blog" style="text-decoration:none; color:var(--accent); "> M Ramzan Ch</a> <span>at <a
-                style="color: #fff;; text-decoration: none;" href="https://github/com/Pro-Bandey"
-                target="_blank">Pro-Bandey</a></span>
+        <span>Maintain By :</span>
+        <a href="https://github.com/Pro-Bandey" title="Visit Pro Bandey"
+            style="text-decoration:none; color:var(--accent); ">Pro-Bandey</a>
     </div>
     <nav class="inf-navbar">
         <div class="inf-navbarr">
-            <a href="./src/info.html" target="_blank">About Us</a>
-            <a href="./src/license.html" target="_blank">License</a>
-            <a href="./src/terms.html" target="_blank">Terms &amp; Conditions</a>
-            <a href="./src/privacy.html" target="_blank">Privacy Policy</a>
-            <a href="./src/feed.html" target="_blank">FeedBack</a>
+            <a href="./src/info.html" title="See About Us" target="_blank">About Us</a>
+            <a href="./src/license.html" title="See License" target="_blank">License</a>
+            <a href="./src/terms.html" title="See Terms &amp; Conditions" target="_blank">Terms &amp; Conditions</a>
+            <a href="./src/privacy.html" title="See Privacy Policy" target="_blank">Privacy Policy</a>
+            <a href="./src/feed.html" title="Give Us FeedBack to improve" target="_blank">FeedBack</a>
         </div>
     </nav>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
@@ -74,10 +75,10 @@
     <div class="Time-SideShow">
         <!-- Time Date -->
         <div class="date-time">
-            <div id="uptime" class="uptime"></div>
+            <div title="Usage time of age" id="uptime" class="uptime"></div>
             <span class="blink-colon">:</span>
-            <div id="time" class="time"></div>
-            <div class="day-date">
+            <div title="Current time" id="time" class="time"></div>
+            <div title="Current date" class="day-date">
                 <p id="day"></p>
                 <p>&NonBreakingSpace;</p>
                 <p id="date"></p>
@@ -86,18 +87,21 @@
         <!-- Slideshow images -->
         <div class="slideshow-container">
             <!-- Slides (images) -->
-            <a href="https://microresearch-corporation.github.io/" target="_blank">
-                <img class="slide fade" src="./src/assets/slide_01.png" />
+            <a title="This Product is powerd by MicroResearch Corporation&reg;"
+                href="https://microresearch-corporation.github.io/" target="_blank">
+                <img class="slide fade" src="./src/assets/slide_01.png" alt="MRc" />
             </a>
-            <a href="https://microresearch-corporation.github.io/mrd/" target="_blank">
-                <img class="slide slide-ltr" src="./src/assets/slide_02.png" />
+            <a title="All visual and assets are provided by MindRise Designs"
+                href="https://microresearch-corporation.github.io/mrd/" target="_blank">
+                <img class="slide slide-ltr" src="./src/assets/slide_02.png" alt="MRd" />
             </a>
-            <a href="https://www.google.com/search?q=About+most+power+Search+Engines+like+%28Yahoo+Brave+DuckDuckGo+Ecosia+Google+GoogleAi+Yandex+Startpage+and+Bing&source=homepage"
+            <a title="Search the most popular search engines"
+                href="https://www.google.com/search?q=About+most+power+Search+Engines+like+%28Yahoo+Brave+DuckDuckGo+Ecosia+Google+GoogleAi+Yandex+Startpage+and+Bing&source=homepage"
                 target="_blank">
-                <img class="slide slide-rtl" src="./src/assets/slide_03.png" />
+                <img class="slide slide-rtl" src="./src/assets/slide_03.png" alt="search engines" />
             </a>
-            <a href="https://google.com/" target="_blank">
-                <img class="slide zoom-i" src="./src/assets/slide_04.png" />
+            <a title="This Product is inspired by Google" href="https://google.com/" target="_blank">
+                <img class="slide zoom-i" src="./src/assets/slide_04.png" alt="inspired" />
             </a>
         </div>
     </div>
@@ -115,46 +119,38 @@
         <div id="searchSuggestionsBox" class="searchSuggestionsBox"></div>
         <div id="historyListBox" class="historyListBox">
             <p style="font-size: 20px;color: var(--accent);text-align: center;width: -webkit-fill-available;">
-                HistoryListBox Not Work in Web Version
+                History List Box Not Work in Web Version
             </p>
         </div>
 
 
-        <div id="searchEnginBox" class="searchEnginBox">
-            <button data-engine="bing" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Bing">
+        <div title="click On Any Engine Icon To Set Default | Right-click To Search" id="searchEnginBox"
+            class="searchEnginBox">
+            <button data-engine="bing" class="searchEnginBoxBtn" title="Search With Bing">
                 <img src="./src/assets/bing.png">
             </button>
-            <button data-engine="duckduck" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search DDG">
+            <button data-engine="duckduck" class="searchEnginBoxBtn" title="Search With DuckDuckGo">
                 <img src="./src/assets/DuckDuckGo.png">
             </button>
-            <button data-engine="google" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Google">
+            <button data-engine="google" class="searchEnginBoxBtn" title="Search With Google">
                 <img src="./src/assets/google.png">
             </button>
-            <button data-engine="googleai" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Google Ai">
+            <button data-engine="googleai" class="searchEnginBoxBtn" title="Search With Google Ai">
                 <img src="./src/assets/gsai.png">
             </button>
-            <button data-engine="yahoo" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Yahoo">
+            <button data-engine="yahoo" class="searchEnginBoxBtn" title="Search With Yahoo">
                 <img src="./src/assets/yahoo.png">
             </button>
-            <button data-engine="brave" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Brave">
+            <button data-engine="brave" class="searchEnginBoxBtn" title="Search With Brave">
                 <img src="./src/assets/brave.png">
             </button>
-            <button data-engine="startpage" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Startpage">
+            <button data-engine="startpage" class="searchEnginBoxBtn" title="Search With Startpage">
                 <img src="./src/assets/Startpage.png">
             </button>
-            <button data-engine="ecosia" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Ecosia">
+            <button data-engine="ecosia" class="searchEnginBoxBtn" title="Search With Ecosia">
                 <img src="./src/assets/Ecosia.png">
             </button>
-            <button data-engine="yandex" class="searchEnginBoxBtn"
-                title="Left-click: Set Default | Right-click: Search Yandex">
+            <button data-engine="yandex" class="searchEnginBoxBtn" title="Search With Yandex">
                 <img src="./src/assets/yandex.png">
             </button>
         </div>
@@ -211,12 +207,13 @@
     <div id="add-link-box" class="add-link-box">
         <div class="add-link-box-content">
             <h2 id="add-link-heading">Add Or Edit Shortcut</h2>
-            <input type="text" id="linkName" placeholder="Shortcut Name">
-            <input type="url" id="linkURL" placeholder="Shortcut URL (e.g., google.com)">
+            <input title="type name here" type="text" id="linkName" placeholder="Shortcut Name">
+            <input title="type or past url" type="url" id="linkURL" placeholder="Shortcut URL (e.g., google.com)">
             <div class="input-optional">
-                <p>Optional:<span style="font-size: 14px;">Past link or Choose From Local</span></p>
-                <input type="text" id="linkFavicon" placeholder="https://example.com/icon.png">
-                <input type="file" id="linkFaviconFile" accept="image/*" style="width:45px;padding: 0px;">
+                <p>Optional</p>
+                <input title="past url here" type="text" id="linkFavicon" placeholder="https://example.com/icon.png">
+                <input title="or choose from local" type="file" id="linkFaviconFile" accept="image/*"
+                    style="width:45px;padding: 0px;">
             </div>
             <div class="add-link-box-buttons">
                 <button id="save-link-btn" class="add">Save</button>
@@ -227,29 +224,39 @@
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Floating Button -->
     <div class="float-btnL">
-        <button class="info-btn" id="info-btn" title="Chrome App Launcher"><img src="./src/assets/info.svg" alt="CAL"
-                title="Chrome App Launcher"></button>
-        <button class="calc-btn" id="calc-btn" title="Chrome App Launcher"><img src="./src/assets/calc.png" alt="CAL"
-                title="Chrome App Launcher"></button>
-        <button class="todo-btn" id="todo-btn" title="MRi Chatbot"><img src="./src/assets/Todo.png" alt="🤖"
-                title="MRi AI Assistant"></button>
+        <button class="info-btn" id="info-btn">
+            <img src="./src/assets/info.svg" alt="CAL" title="See Info">
+        </button>
+        <button class="calc-btn" id="calc-btn">
+            <img src="./src/assets/calc.png" alt="CAL" title="Quantix Muly Calculator">
+        </button>
+        <button class="todo-btn" id="todo-btn">
+            <img src="./src/assets/Todo.png" alt="🤖" title="YDT Your Daily Task">
+        </button>
     </div>
     <div class="float-btnR">
-        <button class="cal-btn" id="cal-btn" title="Chrome App Launcher"><img src="./src/assets/Chrome App Launcher.png"
-                alt="CAL" title="Chrome App Launcher"></button>
-        <button class="mri-btn" id="mri-btn" title="MRi Chatbot"><img src="./src/assets/mri.png" alt="🤖"
-                title="MRi AI Assistant"></button>
-        <a href="/module/icons.htm" target="_blank"><button class="ico-btn" id="ico-btn" title="Icons Module"><img
-                    src="module/fav.ico" alt="MRc" title="Material Icons By MRc"></button></a>
+        <button class="cal-btn" id="cal-btn">
+            <img src="./src/assets/Chrome App Launcher.png" alt="CAL" title="Chrome App Launcher">
+        </button>
+        <button class="mri-btn" id="mri-btn">
+            <img src="./src/assets/mri.png" alt="🤖" title="MRi AI Assistant">
+        </button>
+        <a href="/module/icons.htm" target="_blank">
+            <button class="ico-btn" id="ico-btn" title="Icons Module">
+                <img src="module/fav.ico" alt="MRc" title="Material Icons By MRc">
+            </button>
+        </a>
     </div>
     <!-- =+=+=+=+=+=+=+=+=+=+=+=+=+=\(>"-"<)/=+=+=+=+=+=+=+=+=+=+=+=+=+= -->
     <!-- Info Bar -->
     <div id="info-overlay" class="overlay"></div>
     <div id="info-bar" class="info-bar" style="display:flex;">
-        <button class="panel-close" id="info-close"><img src="./src/assets/clse.svg" alt=""></button>
+        <button class="panel-close" id="info-close">
+            <img src="./src/assets/clse.svg" alt="close">
+        </button>
         <div class="info-bar-profile">
             <img src="./src/assets/icons/logo.png" class="bar-Profile">
-            <h1 class="bar-Profile-Name">HomePage <sup style="font-size: 10px; font-weight: 600;">v2026.2.20</sup></h1>
+            <h1 class="bar-Profile-Name">HomePage <sup title="Latest Version is v2026.2.20" style="font-size: 10px; font-weight: 600;">v2026.2.20</sup></h1>
         </div>
         <p class="info-bar-p">Follow Us</p>
         <div class="info-links">
@@ -357,7 +364,7 @@
     <div id="cal-contextMenu" class="context-menu">
         <button class="menu-item" data-action="cal-open">Open</button>
         <button class="menu-item" data-action="cal-Newtab">Open in New Tab</button>
-         <button class="menu-item" data-action="cal-incognito" data-index="${t}">In Incognito</button> 
+        <button class="menu-item" data-action="cal-incognito" data-index="${t}">In Incognito</button>
         <button class="menu-item" data-action="cal-edit">Edit</button>
         <button class="menu-item" data-action="cal-delete">Delete</button>
     </div>
@@ -429,6 +436,7 @@
     <script src="./src/js/page.js " type="module"></script>
     <script src="./src/js/todo.js " type="module"></script>
     <script src="./src/js/panels.js" type="module"></script>
+    <script src="./src/js/toaster.js" type="module"></script>
 
 </body>
 
