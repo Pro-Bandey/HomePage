@@ -602,7 +602,7 @@ body {
 
 .searchEnginBox::before {
     position: fixed;
-    content: "\2754;";
+    content: "\2754";
     left: -14px;
     font-size: 20px;
 }

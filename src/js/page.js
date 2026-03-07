@@ -294,6 +294,10 @@ showSlides();
 setInterval(showSlides, 5000);
 
 
+
+
+
+
 const searchInput = document.getElementById("searchBar");
 const searchPopup = document.getElementById("searchEnginBox");
 const suggestionsBox = document.getElementById("searchSuggestionsBox");
@@ -340,21 +344,67 @@ function isValidUrl(string) {
   return /^[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{2,}/.test(string);
 }
 
-function handleSearchOrNavigate(input) {
+
+// NEW: Helper to handle opening URLs based on modifiers
+function openUrl(url, mode) {
+  if (mode === "incognito") {
+    // Check if running as a Chrome/Browser Extension
+    if (typeof chrome !== "undefined" && chrome.windows && chrome.windows.create) {
+      chrome.windows.create({ url: url, incognito: true });
+    } else {
+      // Fallback for Web environment (Websites can't force incognito) -> New Tab
+      window.open(url, "_blank");
+    }
+  } else if (mode === "newtab") {
+    window.open(url, "_blank");
+  } else {
+    // Default: Current Tab
+    window.location.href = url;
+  }
+}
+
+// NEW: Determine mode from Event Object (Ctrl/Shift)
+function getOpenMode(e) {
+  if (e.ctrlKey && e.shiftKey) return "incognito";
+  if (e.ctrlKey || e.metaKey) return "newtab"; // metaKey for Mac Command key
+  return "current";
+}
+
+//function handleSearchOrNavigate(input) {
+//  const term = input.trim();
+//  if (!term) return;
+
+//  if (isValidUrl(term)) {
+// If it's a URL, ensure it has a protocol
+//    let url = term;
+//    if (!/^https?:\/\//i.test(url)) {
+//      url = "https://" + url;
+//    }
+//    window.location.href = url;
+//  } else {
+// If it's text/search query, perform search
+//    window.location.href = getSearchUrl(defaultEngine, term);
+//  }
+// }
+
+// UPDATED: Now accepts openMode ('current', 'newtab', 'incognito')
+function handleSearchOrNavigate(input, openMode = "current") {
   const term = input.trim();
   if (!term) return;
 
+  let targetUrl;
+
   if (isValidUrl(term)) {
-    // If it's a URL, ensure it has a protocol
-    let url = term;
-    if (!/^https?:\/\//i.test(url)) {
-      url = "https://" + url;
+    targetUrl = term;
+    if (!/^https?:\/\//i.test(targetUrl)) {
+      targetUrl = "https://" + targetUrl;
     }
-    window.location.href = url;
   } else {
-    // If it's text/search query, perform search
-    window.location.href = getSearchUrl(defaultEngine, term);
+    targetUrl = getSearchUrl(defaultEngine, term);
   }
+
+  // Use the new helper to open the link
+  openUrl(targetUrl, openMode);
 }
 // Helper: Process and Add suggestions
 function processSuggestions(items) {
@@ -443,7 +493,7 @@ function displaySuggestions(list) {
   // Limit to 10 items
   suggestionsBox.innerHTML = list
     .slice(0, 10)
-    .map(item => `<div class="suggestion-item">${item}</div>`)
+    .map(item => `<div title="Click To Search| crtl+click In NewTab |crtl+shift+click In Incognito" class="suggestion-item">${item}</div>`)
     .join("");
 
   suggestionsBox.style.display = "flex";
@@ -453,20 +503,53 @@ function displaySuggestions(list) {
 // 4. Click & Input Logic
 // ---------------------------------------------------------
 
+//engineBtns.forEach(btn => {
+//  const engine = btn.getAttribute("data-engine");
+// Left Click
+//  btn.addEventListener("click", (e) => {
+//    e.preventDefault();
+//    defaultEngine = engine;
+//    localStorage.setItem("defaultEngine", engine);
+//    updateEngineUI();
+//  });
+// Right Click
+//  btn.addEventListener("contextmenu", (e) => {
+//    e.preventDefault();
+//    const term = searchInput.value.trim();
+//    if (term) window.location.href = getSearchUrl(engine, term);
+//  });
+//});
+// ---------------------------------------------------------
+// 4. Click & Input Logic
+// ---------------------------------------------------------
+
 engineBtns.forEach(btn => {
   const engine = btn.getAttribute("data-engine");
-  // Left Click
+
+  // UPDATED: Left Click -> Search (supports Ctrl + Shift)
   btn.addEventListener("click", (e) => {
+    e.preventDefault(); // Prevent form submission if inside a form
+
+    const term = searchInput.value.trim();
+
+    // If input is empty, maybe focus it, otherwise search
+    if (term) {
+      const mode = getOpenMode(e); // Detect Ctrl/Shift
+      // Note: Buttons force search on *that* specific engine, not the default
+      openUrl(getSearchUrl(engine, term), mode);
+    } else {
+      searchInput.focus();
+    }
+  });
+
+  // UPDATED: Right Click -> Select Default Engine
+  btn.addEventListener("contextmenu", (e) => {
     e.preventDefault();
     defaultEngine = engine;
     localStorage.setItem("defaultEngine", engine);
     updateEngineUI();
-  });
-  // Right Click
-  btn.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-    const term = searchInput.value.trim();
-    if (term) window.location.href = getSearchUrl(engine, term);
+    // Optional: Visual feedback or log
+    console.log(`Default engine set to: ${engine}`);
   });
 });
 
@@ -494,22 +577,33 @@ searchInput.addEventListener("input", function () {
 
 // --- Updated Event Listeners ---
 
+// suggestionsBox.addEventListener("click", (e) => { if (e.target.classList.contains("suggestion-item")) { searchInput.value = e.target.innerText; handleSearchOrNavigate(searchInput.value); } });
+
+// Locate this section in your code (at the bottom) and replace it:
+
 suggestionsBox.addEventListener("click", (e) => {
   if (e.target.classList.contains("suggestion-item")) {
+    // 1. Update the search bar text
     searchInput.value = e.target.innerText;
-    // Suggestions are usually search terms, but we run it through the handler to be safe
-    handleSearchOrNavigate(searchInput.value);
+
+    // 2. Detect if Ctrl or Shift was held during the click
+    const mode = getOpenMode(e);
+
+    // 3. Navigate with the correct mode
+    handleSearchOrNavigate(searchInput.value, mode);
   }
 });
 
-searchInput.addEventListener("keypress", (e) => {
+
+// suggestionsBox.addEventListener("click", (e) => {  if (e.target.classList.contains("suggestion-item")) {    searchInput.value = e.target.innerText;    const mode = getOpenMode(e);    handleSearchOrNavigate(searchInput.value, mode);  }});
+
+// UPDATED: Use 'keydown' instead of 'keypress' to detect Ctrl/Shift reliably
+searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    handleSearchOrNavigate(searchInput.value);
+    e.preventDefault(); // Stop default form submit
+    const mode = getOpenMode(e);
+    handleSearchOrNavigate(searchInput.value, mode);
   }
 });
 
-document.addEventListener("click", (e) => {
-  if (!e.target.closest(".search-box")) {
-    suggestionsBox.style.display = "none";
-  }
-});
+// ... existing document.addEventListener click ...
