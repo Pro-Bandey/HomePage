@@ -32,7 +32,8 @@ function render(data) {
     data.forEach(item => {
         const row = document.createElement('li');
         row.className = 'historyListItem';
-        row.title  = 'Right to on it';
+        row.title = `&fw=700;Click or Right Click On &fw; &cl=var(--accent);${new URL(item.url).hostname}&cl;`;
+        // row.title = 'Right Click to Open | ' + new URL(item.url);
 
         const img = document.createElement('img');
         img.className = 'historyListItemIcon';
