@@ -1,13 +1,3 @@
-/**
-* Universal Toaster
-* A lightweight, zero-dependency tooltip script.
-* 
-* Features:
-* - Replaces native browser tooltips
-* - Smart positioning (viewport awareness)
-* - Auto-color adaptation (Dark/Light mode)
-* - Single-line display
-*/
 
 window.UniversalToasterConfig = {
     // COLORS
@@ -28,156 +18,250 @@ window.UniversalToasterConfig = {
 };
 
 
+/**
+ * Universal Toaster (v2.0 - Stability Fixes)
+ * ------------------------------------------------------------------
+ * Fixed: Tooltips sticking when scrolling, clicking, or changing tabs.
+ * ------------------------------------------------------------------
+ */
+
+/**
+ * Universal Toaster (v3.0 - Rich Text & Styles)
+ * ------------------------------------------------------------------
+ * Features:
+ * - HTML Safe (Prevents XSS while allowing custom styling)
+ * - Custom Shortcodes: Color, Bg, Font, Weight
+ * - Dynamic Google Fonts Loader
+ * - Character Truncation Logic
+ * ------------------------------------------------------------------
+ */
+
 (function () {
-    // 1. Load User Configuration (or use empty defaults)
-    const config = window.UniversalToasterConfig || {};
+    const userConfig = window.UniversalToasterConfig || {};
 
-    // 2. CSS Variables & Injection
-    const style = document.createElement('style');
+    // --- 1. SETUP STYLES ---
+    const settings = {
+        bg: userConfig.backgroundColor || null,
+        text: userConfig.textColor || null,
+        font: userConfig.fontFamily || 'inherit',
+        size: userConfig.fontSize || '13px',
+        radius: userConfig.borderRadius || '6px',
+        padding: userConfig.padding || '8px 12px',
+        shadow: userConfig.boxShadow || '0 4px 12px rgba(0,0,0,0.2)'
+    };
 
-    // Default values if config is missing
-    const borderRadius = config.borderRadius || '6px';
-    const fontSize = config.fontSize || '13px';
-    const fontTransform = config.fontTransform || 'capitalize';
-    const fontWeight = config.fontWeight || 'normal';
-    const padding = config.padding || '8px 12px';
-    const fontFamily = config.fontFamily || 'inherit'; // Inherit uses the page's font
-
-    style.innerHTML = `
+    const css = `
         .universal-toaster-popup {
             position: fixed;
-            z-index: 2147483647; /* Max Safe Integer */
+            z-index: 2147483647;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.15s ease-out;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.05);
+            transition: opacity 0.1s ease-out;
+            visibility: hidden;
             
-            /* User Configured Styles */
-            border-radius: ${borderRadius};
-            font-size: ${fontSize};
-            font-weight: ${fontWeight};
-            padding: ${padding};
-            font-family: ${fontFamily};
-            text-transform: ${fontTransform};
+            /* Visuals */
+            border-radius: ${settings.radius};
+            font-size: ${settings.size};
+            font-family: ${settings.font};
+            padding: ${settings.padding};
+            box-shadow: ${settings.shadow};
+            border: 1px solid rgba(255,255,255,0.1);
             
-            /* Force Single Line Logic */
-            white-space: nowrap; 
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 90vw; /* Prevent screen overflow on mobile */
+            /* Layout */
+            white-space: pre-wrap; /* Changed to allow flexibility with formatting */
+            max-width: 90vw;
+            line-height: 1.4;
         }
         .universal-toaster-popup.visible {
             opacity: 1;
+            visibility: visible;
+        }
+        /* Inner spans for custom styling */
+        .universal-toaster-popup span {
+            display: inline-block;
         }
     `;
-    document.head.appendChild(style);
 
-    // 3. Create the Toaster Element
-    const toaster = document.createElement('div');
-    toaster.className = 'universal-toaster-popup';
-    document.body.appendChild(toaster);
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = css;
+    document.head.appendChild(styleSheet);
 
-    // 4. State Management
+    const tooltip = document.createElement('div');
+    tooltip.className = 'universal-toaster-popup';
+    document.body.appendChild(tooltip);
+
+    // --- 2. HELPERS & PARSERS ---
+
     let activeElement = null;
-    const offset = 15; // Distance from cursor
+    const loadedFonts = new Set(); // Track loaded fonts to avoid duplicates
 
-    // --- Helper: Auto-Contrast Logic ---
-    function getTheme() {
-        // A. User Override: If defined in config, use it.
-        if (config.backgroundColor && config.textColor) {
-            return { bg: config.backgroundColor, text: config.textColor };
-        }
-
-        // B. Auto-Detect: Check underlying page background
-        let computedStyle = window.getComputedStyle(document.body);
-        let bgColor = computedStyle.backgroundColor;
-
-        // Handle transparent backgrounds (assume white page)
-        if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') {
-            bgColor = 'rgb(255, 255, 255)';
-        }
-
-        // Calculate YIQ Brightness
-        const rgb = bgColor.match(/\d+/g);
-        let isLight = true;
-        if (rgb) {
-            const brightness = Math.round(((parseInt(rgb[0]) * 299) + (parseInt(rgb[1]) * 587) + (parseInt(rgb[2]) * 114)) / 1000);
-            if (brightness < 128) isLight = false; // Page is dark
-        }
-
-        // Return High Contrast Opposites
-        return {
-            bg: config.backgroundColor ? config.backgroundColor : (isLight ? '#222222' : '#ffffff'),
-            text: config.textColor ? config.textColor : (isLight ? '#ffffff' : '#000000')
-        };
+    // A. Sanitize HTML (Security First)
+    function escapeHtml(text) {
+        if (!text) return "";
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
-    // 5. Event: Mouse Enter
-    document.addEventListener('mouseover', function (e) {
-        // Find closest element with title or already converted title
+    // B. Google Fonts Loader
+    function loadGoogleFont(fontName) {
+        if (!fontName || loadedFonts.has(fontName)) return;
+
+        const link = document.createElement('link');
+        link.href = `https://fonts.googleapis.com/css?family=${fontName.replace(/\s+/g, '+')}&display=swap`;
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+
+        loadedFonts.add(fontName);
+    }
+
+    // C. The Magic Parser (Converts &cmd=val; into HTML)
+    function parseCustomSyntax(rawText) {
+        // 1. First, Escape HTML to prevent script injection
+        // note: We temporarily unescape ampersands used in OUR commands afterward
+        let text = escapeHtml(rawText);
+
+        // 2. Decode our specific command ampersands so regex works
+        // (Because escapeHtml turns '&cl=' into '&amp;cl=')
+        text = text.replace(/&amp;(fz|cl|bgcl|fw|fn|chr)=/g, "&$1=");
+        text = text.replace(/&amp;(fz|cl|bgcl|fw|fn|chr);/g, "&$1;");
+
+        // 3. Process Character Limits (&chr=10; text &chr;)
+        text = text.replace(/&chr=(\d+);(.*?)&chr;/g, (match, limit, content) => {
+            if (content.length > parseInt(limit)) {
+                return content.substring(0, parseInt(limit)) + '...';
+            }
+            return content;
+        });
+
+        // 4. Process Google Fonts (&fn=Roboto; text &fn;)
+        text = text.replace(/&fn=(.*?);/g, (match, fontName) => {
+            loadGoogleFont(fontName);
+            return `<span style="font-family:'${fontName}', sans-serif">`;
+        });
+        text = text.replace(/&fn;/g, '</span>');
+
+        // 5. Process Colors & Weights
+        // Replaces &tag=value; with <span style="...">
+        const replacers = [
+            { tag: 'fz', css: 'font-size' },
+            { tag: 'cl', css: 'color' },
+            { tag: 'bgcl', css: 'background-color' },
+            { tag: 'fw', css: 'font-weight' }
+        ];
+
+        replacers.forEach(item => {
+            // Replace Opener: &cl=red; -> <span style="color:red">
+            const openerRegex = new RegExp(`&${item.tag}=(.*?);`, 'g');
+            text = text.replace(openerRegex, `<span style="${item.css}:$1">`);
+
+            // Replace Closer: &cl; -> </span>
+            const closerRegex = new RegExp(`&${item.tag};`, 'g');
+            text = text.replace(closerRegex, '</span>');
+        });
+
+        return text;
+    }
+
+    // D. Auto Contrast Theme
+    function applyTheme() {
+        // User overrides
+        if (settings.bg && settings.text) {
+            tooltip.style.backgroundColor = settings.bg;
+            tooltip.style.color = settings.text;
+            return;
+        }
+
+        // Auto-detect
+        let computedStyle = window.getComputedStyle(document.body);
+        let bgColor = computedStyle.backgroundColor;
+        if (bgColor === 'rgba(0, 0, 0, 0)' || bgColor === 'transparent') bgColor = 'rgb(255, 255, 255)';
+
+        const rgb = bgColor.match(/\d+/g);
+        let isLightPage = true;
+        if (rgb) {
+            const brightness = Math.round(((parseInt(rgb[0]) * 299) + (parseInt(rgb[1]) * 587) + (parseInt(rgb[2]) * 114)) / 1000);
+            if (brightness < 125) isLightPage = false;
+        }
+
+        if (isLightPage) {
+            tooltip.style.backgroundColor = '#222222';
+            tooltip.style.color = '#ffffff';
+        } else {
+            tooltip.style.backgroundColor = '#ffffff';
+            tooltip.style.color = '#000000';
+        }
+    }
+
+    // --- 3. EVENT LISTENERS ---
+
+    const hideTooltip = () => {
+        if (activeElement) {
+            tooltip.classList.remove('visible');
+            activeElement = null;
+        }
+    };
+
+    document.addEventListener('mouseover', (e) => {
         const target = e.target.closest('[title], [data-toaster-title]');
 
         if (target) {
-            // Swap native 'title' to 'data-toaster-title' to suppress browser default
             if (target.hasAttribute('title')) {
-                const text = target.getAttribute('title');
-                if (text && text.trim() !== "") {
-                    target.setAttribute('data-toaster-title', text);
+                const raw = target.getAttribute('title');
+                if (raw && raw.trim()) {
+                    target.setAttribute('data-toaster-title', raw);
                     target.removeAttribute('title');
                 }
             }
 
-            const text = target.getAttribute('data-toaster-title');
-
-            if (text) {
+            const rawText = target.getAttribute('data-toaster-title');
+            if (rawText) {
                 activeElement = target;
-                toaster.textContent = text;
 
-                // Apply Dynamic Colors
-                const theme = getTheme();
-                toaster.style.backgroundColor = theme.bg;
-                toaster.style.color = theme.text;
+                // PARSE THE TEXT HERE
+                tooltip.innerHTML = parseCustomSyntax(rawText);
 
-                toaster.classList.add('visible');
+                applyTheme();
+                tooltip.classList.add('visible');
             }
         }
     });
 
-    // 6. Event: Mouse Move (Smart Positioning)
-    document.addEventListener('mousemove', function (e) {
-        if (!toaster.classList.contains('visible')) return;
+    document.addEventListener('mousemove', (e) => {
+        if (!activeElement || !activeElement.isConnected) {
+            hideTooltip();
+            return;
+        }
+        if (!tooltip.classList.contains('visible')) return;
 
-        const rect = toaster.getBoundingClientRect();
+        const rect = tooltip.getBoundingClientRect();
         const winW = window.innerWidth;
         const winH = window.innerHeight;
+        const offset = 15;
 
         let x = e.clientX + offset;
         let y = e.clientY + offset;
 
-        // Collision Detection: Right Edge
-        // If tooltip hits right side, flip to left of cursor
-        if (x + rect.width > winW) {
-            x = e.clientX - rect.width - offset;
-        }
+        if (x + rect.width > winW) x = e.clientX - rect.width - offset;
+        if (y + rect.height > winH) y = e.clientY - rect.height - offset;
 
-        // Collision Detection: Bottom Edge
-        // If tooltip hits bottom, flip to above cursor
-        if (y + rect.height > winH) {
-            y = e.clientY - rect.height - offset;
-        }
-
-        toaster.style.left = x + 'px';
-        toaster.style.top = y + 'px';
+        tooltip.style.left = `${x}px`;
+        tooltip.style.top = `${y}px`;
     });
 
-    // 7. Event: Mouse Leave
-    document.addEventListener('mouseout', function (e) {
+    document.addEventListener('mouseout', (e) => {
         const target = e.target.closest('[data-toaster-title]');
         if (target && target === activeElement) {
-            toaster.classList.remove('visible');
-            activeElement = null;
+            hideTooltip();
         }
     });
+
+    // Safety triggers
+    window.addEventListener('mousedown', hideTooltip);
+    window.addEventListener('scroll', hideTooltip, true);
+    window.addEventListener('blur', hideTooltip);
 
 })();
