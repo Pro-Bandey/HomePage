@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sources = [
               (d) => `https://www.google.com/s2/favicons?sz=64&domain=${d}`,
               (d) => `https://icons.duckduckgo.com/ip2/${d}.ico`,
-              (d) => `https://logo.clearbit.com/${d}`,
+              (d) => `https://favicon.run/favicon?domain=${d}&sz=48`,
             ];
           let idx = 0;
           const img = document.createElement("img");
@@ -271,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const add = document.createElement("div");
     add.className = "link-card add-card";
-    add.title = "Click Add New Shortcut";
+    add.title = "Click To Add New Shortcut";
     add.innerHTML = "<p>＋</p>";
     add.addEventListener("click", B);
     n.appendChild(add);
@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sources = [
       e => `https://www.google.com/s2/favicons?sz=64&domain=${e}`,
       e => `https://icons.duckduckgo.com/ip2/${e}.ico`,
-      e => `https://logo.clearbit.com/${e}`
+      e => `https://favicon.run/favicon?domain=${d}&sz=48`
     ];
     let i = 0;
     function tryNext() {

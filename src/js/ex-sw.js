@@ -12,7 +12,7 @@ const CACHE_KEY = "HomePage";
 const API_URLS = [
   "google.com/s2/favicons",
   "icons.duckduckgo.com",
-  "logo.clearbit.com",
+  "https://favicon.run/",
 ];
 
 // ============================================================================
