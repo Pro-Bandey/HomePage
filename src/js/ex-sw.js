@@ -206,10 +206,6 @@ self.addEventListener("install", (event) => {
     "../../../calc/calc.html",
     "../../../calc/calc.css",
     "../../../calc/calc.js",
-    // Chat
-    "../../../chat/MRi.html",
-    "../../../chat/MRi.css",
-    "../../../chat/MRi.js",
     // CSS
     "../../css/page.css",
     "../../css/panels.css",

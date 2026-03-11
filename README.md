@@ -29,9 +29,6 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
 - **📦 CAL – Chrome App Launcher**  
   A dedicated launcher for Google apps, modeled like the link popup.
 
-- **🤖 MRI – AI Chatbot**  
-  Your intelligent assistant for questions, tasks, and quick help.
-
 - **🕒 Responsive Header Clock**  
   A sleek dynamic clock positioned above the search bar.
 
@@ -76,7 +73,6 @@ Unlockable milestones as users explore more of the extension:
 - **IndexedDB / LocalStorage**
 - **Web Workers**
 - **Manifest v3**
-- **AI / NLP Model Integration**
 - **Responsive Design Framework**
 
 ---

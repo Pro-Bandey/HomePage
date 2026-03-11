@@ -56,28 +56,6 @@ todoverlay.addEventListener("click", () => {
   todoverlay.style.display = "none";
 });
 
-// Elements for the 'MRi' popup
-const mriBtn = document.getElementById("mri-btn");
-const mriCloseBtn = document.getElementById("mri-close");
-const mriPopup = document.getElementById("popup");
-const overlay = document.getElementById("overlay");
-// Event listener to open the 'MRi' popup.
-mriBtn.addEventListener("click", () => {
-  mriPopup.style.display = "block";
-  overlay.style.display = "block";
-});
-// Event listener to close the 'More Info' popup.
-mriCloseBtn.addEventListener("click", () => {
-  mriPopup.style.display = "none";
-  overlay.style.display = "none";
-});
-// Event listener to close the 'MRi' popup when clicking the overlay.
-overlay.addEventListener("click", () => {
-  mriPopup.style.display = "none";
-  overlay.style.display = "none";
-});
-
-
 // Elements for the 'Cal' popup
 const openCalBtn = document.getElementById("cal-btn");
 const closeCalBtn = document.getElementById("cal-close");

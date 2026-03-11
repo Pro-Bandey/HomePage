@@ -745,7 +745,6 @@ body {
 .info-btn,
 .calc-btn,
 .todo-btn,
-.mri-btn,
 .ico-btn,
 .cal-btn {
     display: flex;
@@ -782,8 +781,7 @@ body {
     }
 }
 
-.calc-btn img,
-.mri-btn img {
+.calc-btn img {
     height: 40px;
 }
 
@@ -808,7 +806,6 @@ body {
 .info-btn img:hover,
 .calc-btn img:hover,
 .todo-btn img:hover,
-.mri-btn img:hover,
 .ico-btn img:hover,
 .cal-btn img:hover {
     position: relative;
@@ -1041,7 +1038,6 @@ body {
     .info-btn,
     .calc-btn,
     .todo-btn,
-    .mri-btn,
     .ico-btn,
     .cal-btn {
         height: 40px;
@@ -1049,12 +1045,6 @@ body {
         bottom: 5px;
     }
 
-    /* .info-btn img {}
-    .calc-btn img {}
-    .todo-btn img {} */
-    .mri-btn img {
-        height: 30px;
-    }
 
     .ico-btn img {
         height: 38px;
@@ -1190,7 +1180,6 @@ body {
     .info-btn,
     .calc-btn,
     .todo-btn,
-    .mri-btn,
     .ico-btn,
     .cal-btn {
         height: 45px;
@@ -1198,12 +1187,7 @@ body {
         margin-top: 3px;
     }
 
-    /* .info-btn img {}
-    .calc-btn img {}
-    .todo-btn img {} */
-    .mri-btn img {
-        height: 35px;
-    }
+
 
     .ico-btn img {
         height: 45px;
