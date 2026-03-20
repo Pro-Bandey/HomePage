@@ -54,8 +54,7 @@ jobs:
           DATE=$(date -u +'%Y.%m.%d')
           echo "DATE=$DATE" >> $GITHUB_ENV
 
-          # FIXED: Added space between 'if' and '['
-          if [ -z "${{ steps.latest.outputs.published_at }}" ]; then
+          if[ -z "${{ steps.latest.outputs.published_at }}" ]; then
             echo "release=true" >> $GITHUB_OUTPUT
             exit 0
           fi
@@ -64,7 +63,7 @@ jobs:
           NOW=$(date +%s)
           DAYS=$(( (NOW - LAST) / 86400 ))
 
-          if[ "$DAYS" -ge 1 ]; then
+          if [ "$DAYS" -ge 1 ]; then
             echo "release=true" >> $GITHUB_OUTPUT
           else
             echo "release=false" >> $GITHUB_OUTPUT
@@ -95,7 +94,6 @@ jobs:
           REPO_URL="https://github.com/${{ github.repository }}"
           TODAY_TAG="r${DATE}"
 
-          # FIXED: Added space between 'if' and '['
           if[ -n "${{ steps.latest.outputs.tag }}" ]; then
             CHANGELOG_URL="$REPO_URL/compare/${{ steps.latest.outputs.tag }}...$TODAY_TAG"
           else
