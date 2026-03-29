@@ -54,7 +54,7 @@ jobs:
           DATE=$(date -u +'%Y.%m.%d')
           echo "DATE=$DATE" >> $GITHUB_ENV
 
-          if [ -z "${{ steps.latest.outputs.published_at }}" ]; then
+          if[ -z "${{ steps.latest.outputs.published_at }}" ]; then
             echo "release=true" >> $GITHUB_OUTPUT
             exit 0
           fi
@@ -76,7 +76,7 @@ jobs:
         id: tagcheck
         if: steps.decide.outputs.release == 'true'
         run: |
-          TAG="Release${DATE}"
+          TAG="r${DATE}"
           if git rev-parse "$TAG" >/dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
@@ -92,9 +92,9 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         run: |
           REPO_URL="https://github.com/${{ github.repository }}"
-          TODAY_TAG="Release${DATE}"
+          TODAY_TAG="r${DATE}"
 
-          if [ -n "${{ steps.latest.outputs.tag }}" ]; then
+          if[ -n "${{ steps.latest.outputs.tag }}" ]; then
             CHANGELOG_URL="$REPO_URL/compare/${{ steps.latest.outputs.tag }}...$TODAY_TAG"
           else
             CHANGELOG_URL="$REPO_URL/commits/main"
@@ -130,13 +130,11 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         run: |
           ZIP="release_${DATE}.zip"
-<<<<<<< HEAD
+          # (IMPROVEMENT) Navigating into the release folder prevents 
+          # extracting an unwanted top-level 'release' directory
           cd release
           zip -qr "../$ZIP" .
           cd ..
-=======
-          zip -qr "$ZIP" release
->>>>>>> parent of 818b076 (Update auto‑release.yml)
           echo "ZIP=$ZIP" >> $GITHUB_ENV
 
       # -------------------------------------------------
@@ -148,12 +146,11 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         run: |
           cat <<EOF > notes.txt
-          Release Release${DATE}
+          Release r${DATE}
 
-          Author: M Ramzan Ch
-          Company: MicroResearch Corporation
-          Released By: MR Intelligence
-          Published By: Pro Badney
+          Author: Pro Bandey
+          Organization: MicroResearch Corporation
+          Released By: MR Releaser
 
           ────────────────────────
           Full Changelog
@@ -174,16 +171,9 @@ jobs:
           steps.tagcheck.outputs.exists == 'false'
         uses: ncipollo/release-action@v1
         with:
-<<<<<<< HEAD
-          tag: r${{ env.DATE }}
-          name: r${{ env.DATE }}
+          tag: r${{ env.DATE }}         # FIX: Generates rYYYY.MM.DD
+          name: r${{ env.DATE }}        # FIX: Matches description
           body: ${{ env.NOTES }}
-          artifacts: ${{ env.ZIP }}
-=======
-          tag: Release${{ env.DATE }}
-          name: v${{ env.DATE }}
-          body: ${{ env.NOTES }}
-          files: ${{ env.ZIP }}
->>>>>>> parent of 818b076 (Update auto‑release.yml)
+          artifacts: ${{ env.ZIP }}     # FIX: `ncipollo/release-action` relies on `artifacts` parameter
           draft: false
           prerelease: false
