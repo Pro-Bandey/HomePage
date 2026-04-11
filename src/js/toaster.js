@@ -12,7 +12,7 @@ window.UniversalToasterConfig = {
     fontTransform: "capitalize",  // e.g. "uppercase", "lowercase", "capitalize"  or null
 
     // SHAPE
-    borderRadius: "var(--radius-sm)",
+    borderRadius: "var(--radius-pill)",
     padding: "8px 12px",
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
 };
