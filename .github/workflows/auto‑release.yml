@@ -3,7 +3,7 @@ name: Auto Releaser By MicroResearch Corporation
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 1,4' # Daily at 00:00 UTC
+    - cron: '0 0 * * 1,4' # Twice a week
 
 permissions:
   contents: write
@@ -18,15 +18,15 @@ jobs:
 
     steps:
       # -------------------------------------------------
-      # 1. Checkout repository (full history required)
+      # 1. Checkout repository (default main branch)
       # -------------------------------------------------
-      - name: Checkout repository
+      - name: Checkout main repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       # -------------------------------------------------
-      # 2. Get latest release info safely
+      # 2. Get latest release info (for changelog purposes)
       # -------------------------------------------------
       - name: Get latest Release
         id: latest
@@ -46,69 +46,21 @@ jobs:
             }
 
       # -------------------------------------------------
-      # 3. Decide whether a release should run (daily)
+      # 3. Checkout or Create the "release" branch
       # -------------------------------------------------
-      - name: Decide Release
-        id: decide
+      - name: Checkout "release" branch
         run: |
-          DATE=$(date -u +'%Y.%m.%d')
-          echo "DATE=$DATE" >> $GITHUB_ENV
-
-          if [ -z "${{ steps.latest.outputs.published_at }}" ]; then
-            echo "release=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          LAST=$(date -d "${{ steps.latest.outputs.published_at }}" +%s)
-          NOW=$(date +%s)
-          DAYS=$(( (NOW - LAST) / 86400 ))
-
-          if [ "$DAYS" -ge 1 ]; then
-            echo "release=true" >> $GITHUB_OUTPUT
+          git fetch origin release || true
+          if [ $(git branch --list release) ]; then
+            git checkout release
           else
-            echo "release=false" >> $GITHUB_OUTPUT
+            git checkout -b release
           fi
 
       # -------------------------------------------------
-      # 4. Prevent duplicate tag creation
+      # 4. Prepare files for ZIP
       # -------------------------------------------------
-      - name: Check if tag exists
-        id: tagcheck
-        if: steps.decide.outputs.release == 'true'
-        run: |
-          TAG="r${DATE}"
-          if git rev-parse "$TAG" >/dev/null 2>&1; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
-
-      # -------------------------------------------------
-      # 5. Build official Full Changelog URL
-      # -------------------------------------------------
-      - name: Build changelog URL
-        if: |
-          steps.decide.outputs.release == 'true' &&
-          steps.tagcheck.outputs.exists == 'false'
-        run: |
-          REPO_URL="https://github.com/${{ github.repository }}"
-          TODAY_TAG="r${DATE}"
-
-          if [ -n "${{ steps.latest.outputs.tag }}" ]; then
-            CHANGELOG_URL="$REPO_URL/compare/${{ steps.latest.outputs.tag }}...$TODAY_TAG"
-          else
-            CHANGELOG_URL="$REPO_URL/commits/main"
-          fi
-
-          echo "CHANGELOG_URL=$CHANGELOG_URL" >> $GITHUB_ENV
-
-      # -------------------------------------------------
-      # 6. Prepare release package
-      # -------------------------------------------------
-      - name: Prepare files
-        if: |
-          steps.decide.outputs.release == 'true' &&
-          steps.tagcheck.outputs.exists == 'false'
+      - name: Prepare release package
         run: |
           rm -rf release
           mkdir release
@@ -117,41 +69,54 @@ jobs:
             --exclude='.github' \
             --exclude='.vscode' \
             --exclude='.gitignore' \
-            --exclude='package.json' \
-            --exclude='Structure.md' \
             ./ release/
 
       # -------------------------------------------------
-      # 7. Zip package
+      # 5. Create the ZIP file
       # -------------------------------------------------
-      - name: Create ZIP
-        if: |
-          steps.decide.outputs.release == 'true' &&
-          steps.tagcheck.outputs.exists == 'false'
+      - name: Create ZIP in "release" branch
         run: |
-          ZIP="r_${DATE}.zip"
-          zip -qr "$ZIP" release
+          DATE=$(date -u +'%Y-%m-%d')
+          ZIP="release_${DATE}.zip"
+          rm -f release/*.zip || true # Remove old zips if exist
+          cd release && zip -qr "../$ZIP" .
+
+          # Move ZIP to "release" folder
+          mv "../$ZIP" .
           echo "ZIP=$ZIP" >> $GITHUB_ENV
 
       # -------------------------------------------------
-      # 8. Build final release notes
+      # 6. Commit ZIP to "release" branch
       # -------------------------------------------------
-      - name: Build Release notes
-        if: |
-          steps.decide.outputs.release == 'true' &&
-          steps.tagcheck.outputs.exists == 'false'
+      - name: Commit ZIP to release branch
         run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+
+          git add .
+          git commit -m "Update release package with ${{ env.ZIP }}"
+          git push origin release --force
+
+      # -------------------------------------------------
+      # 7. Build full release notes
+      # -------------------------------------------------
+      - name: Build release notes
+        run: |
+          DATE=$(date -u +'%Y-%m-%d')
+          REPO_URL="https://github.com/${{ github.repository }}"
+
+          if [ -n "${{ steps.latest.outputs.tag }}" ]; then
+            CHANGELOG_URL="$REPO_URL/compare/${{ steps.latest.outputs.tag }}...release"
+          else
+            CHANGELOG_URL="$REPO_URL/commits/main"
+          fi
+
           cat <<EOF > notes.txt
-          Release r${DATE}
+          Release: ${DATE}
 
-          Author: M Ramzan Ch
-          Company: MicroResearch Corporation
-          Released By: MR Intelligence
-
-          ────────────────────────
-          Full Changelog
-          ────────────────────────
-          ${CHANGELOG_URL}
+          Author: Pro Bandey
+          Released By: MR Intelligence via GitHub Action
+          Changelog: $CHANGELOG_URL
           EOF
 
           echo "NOTES<<EOF" >> $GITHUB_ENV
@@ -159,17 +124,22 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
 
       # -------------------------------------------------
-      # 9. Publish GitHub release
+      # 8. Fetch the ZIP from Release Branch for GitHub Release
       # -------------------------------------------------
-      - name: Publish Release
-        if: |
-          steps.decide.outputs.release == 'true' &&
-          steps.tagcheck.outputs.exists == 'false'
+      - name: Fetch the ZIP from release branch
+        run: |
+          ls -l release/
+          echo "Using ZIP: ${{ env.ZIP }}"
+
+      # -------------------------------------------------
+      # 9. Create GitHub Release
+      # -------------------------------------------------
+      - name: Publish GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          tag: r${{ env.DATE }}
-          name: r${{ env.DATE }}
+          tag: r${{ github.run_number }}
+          name: Release r${{ github.run_number }}
           body: ${{ env.NOTES }}
-          files: ${{ env.ZIP }}
+          files: release/${{ env.ZIP }}
           draft: false
           prerelease: false
