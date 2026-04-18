@@ -2,14 +2,15 @@
 
 A powerful, modern, and feature-packed home page enhancement built for productivity, speed, and customization.
 
-![Chrome Users](https://img.shields.io/badge/Chrome%20Users-1k+-brightgreen)
-![Total Downloads](https://img.shields.io/badge/Downloads-2500+-blue)
-![Daily Installs](https://img.shields.io/badge/Daily%20Visitor-70-orange)
-![Version](https://img.shields.io/badge/version-2026.3.7-f44234)
+![Chrome Users](https://img.shields.io/badge/Chrome%20Users-1.2k+-yellow)
+![Online Users](https://img.shields.io/badge/Online%20Users-3.4k+-darkgray)
+![Total Downloads](https://img.shields.io/badge/Downloads-3000+-blue)
+![Daily Installs](https://img.shields.io/badge/Daily%20Visitor-35--40-orange)
+![Version](https://img.shields.io/github/v/release/Pro-Bandey/HomePage?color=f44234)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Maintenance](https://img.shields.io/badge/maintained-yes-success)
-![Maintenance](https://img.shields.io/github/license/Pro-Bandey/homepage?color=db4d4d)
-![Maintenance](https://img.shields.io/github/repo-size/Pro-Bandey/homepage?color=008800)
+![Licence](https://img.shields.io/github/license/Pro-Bandey/homepage?color=db4d4d)
+![Repo Size](https://img.shields.io/github/repo-size/Pro-Bandey/homepage?color=008800)
 
 
 ### ✨ Core Features
