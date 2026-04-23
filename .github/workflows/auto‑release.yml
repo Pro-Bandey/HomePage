@@ -1,4 +1,4 @@
-name: Auto Releaser By MicroResearch Corporation
+name: Auto Releaser By MainRoute Core
 
 on:
   workflow_dispatch:
