@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Html meta tags -->
+  <meta content="IE=7,8,edge" http-equiv="X-UA-Compatible" />
+  <meta content="text/html;charset=UTF-8" http-equiv="refresh" />
+  <meta content="width=device-width,initial-scale=1" name="viewport" />
+  <!-- Seo Meta Tags -->
+  <meta content="HomePage" name="title" />
+  <meta content="HomePage" name="name" />
+  <meta content="M Ramzan Ch" name="author" />
+  <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MainRoute Core."
+    name="description" />
+  <meta content="M Ramzan Ch" name="copyright" />
+  <meta content="M-RAMZAN, M Ramzan Ch, mspot, Website, Pro Bandey, MegaMind-Solution, rm4814691, MRamzanCh "
+    name="keywords" />
+  <meta content="#F44234" name="theme-color" />
+  <meta content="#333333" name="background-color" />
+  <meta content="website" property="og:type" />
+  <meta content="https://online-homepage.vercel.app/" property="og:url" />
+  <meta content="HomePage" property="og:title" />
+  <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MainRoute Core."
+    property="og:description" />
+  <meta content="https://iili.io/f1XsLyN.png" property="og:image" />
+  <meta content="summary_large_image" property="twitter:card" />
+  <meta content="https://online-homepage.vercel.app/" property="twitter:url" />
+  <meta content="HomePage" property="twitter:title" />
+  <meta content="A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MainRoute Core. "
+    property="twitter:description" />
+  <meta content="https://iili.io/f1XsLyN.png" property="twitter:image" />
+  <!-- PWA Content -->
+  <link href="./manfest.webmanifest" rel="manifest" />
+  <link href="./src/assets/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
+  <link href="./src/assets/icons/pwa-192.png" rel="android-chrome-192x192" sizes="192x192" />
+  <link href="./src/assets/icons/pwa-144.png" rel="android-chrome-144x144" sizes="144x144" />
+  <link href="./src/assets/icons/logo.png" rel="android-chrome-512x512" sizes="512x512" />
+  <link href="./src/assets/icons/48.png" rel="icon" sizes="48x48" />
+  <link href="./src/assets/icons/32.png" rel="icon" sizes="32x32" />
+  <link href="./src/assets/icons/16.png" rel="icon" sizes="16x16" />
+  <link rel="shortcut icon" href="./src/assets/icons/icon.ico" type="image/x-icon">
+  <!-- StyleSheets -->
+  <title>HomePage Extension Wizard</title>
+  <style>
+    body {
+      background: 50% / cover no-repeat rgb(51, 51, 51);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 450px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .progress-container::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #ddd;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .progress {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 4px;
+      background: #007bff;
+      transform: translateY(-50%);
+      z-index: 2;
+      transition: width 0.3s ease;
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      background: #ddd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      position: relative;
+      font-size: 14px;
+      font-weight: bold;
+      color: #555;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .circle.active {
+      background: #007bff;
+      color: white;
+    }
+
+    /* Steps */
+    .step {
+      display: none;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .step.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      margin: 0 5px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    button.skip {
+      background: #dc3545;
+    }
+
+    button.skip:hover {
+      background: #a71d2a;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="progress-container" class="progress-container">
+      <div id="progress" class="progress" style="width:0%"></div>
+    </div>
+
+    <div class="steps-wrapper">
+      <div class="step active">
+        <h3>Step 1</h3>
+        <p>Content for step 1.</p>
+        <div class="buttons">
+          <button data-action="skip" class="skip">Skip</button>
+          <button data-action="prev" class="prev" disabled>Previous</button>
+          <button data-action="next" class="next">Next</button>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Step 2</h3>
+        <p>Content for step 2.</p>
+        <div class="buttons">
+          <button data-action="skip" class="skip">Skip</button>
+          <button data-action="prev" class="prev">Previous</button>
+          <button data-action="next" class="next">Next</button>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Step 3</h3>
+        <p>Content for step 3.</p>
+        <div class="buttons">
+          <button data-action="skip" class="skip">Skip</button>
+          <button data-action="prev" class="prev">Previous</button>
+          <button data-action="next" class="next">Next</button>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Step 4</h3>
+        <p>Content for step 4.</p>
+        <div class="buttons">
+          <button data-action="skip" class="skip">Skip</button>
+          <button data-action="prev" class="prev">Previous</button>
+          <button data-action="next" class="next">Next</button>
+        </div>
+      </div>
+
+      <div class="step">
+        <h3>Step 5</h3>
+        <p>Final step content.</p>
+        <div class="buttons">
+          <button data-action="skip" class="skip">Skip</button>
+          <button data-action="prev" class="prev">Previous</button>
+          <button data-action="finish" class="finish">Finish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/js/page.js"></script>
+  <script src="./src/js/wel.js"></script>
+</body>
+
+</html>
