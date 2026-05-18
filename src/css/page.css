@@ -704,14 +704,16 @@ body {
 }
 
 .links-a,
-.links-ab {
+.links-ab {    
     color: var(--text);
     padding: 5px;
     white-space: nowrap;
     text-decoration: none;
     border-radius: inherit;
-    display: block;
-    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
