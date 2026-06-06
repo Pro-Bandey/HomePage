@@ -1,34 +1,18 @@
-// ============================================================================
-// service-worker.js (2025-safe version)
-// Everything preserved including commented code
-// ============================================================================
 
-// ============================================================================
-// CONSTANTS
-// ============================================================================
 const CACHE_KEY = "HomePage";
 
-// Domains to always fetch fresh
 const API_URLS = [
   "google.com/s2/favicons",
   "icons.duckduckgo.com",
   "https://favicon.run/",
 ];
 
-// ============================================================================
-// CHROME EXTENSION LOGIC
-// ============================================================================
+
 if (typeof chrome !== "undefined" && chrome.runtime) {
-  // ----------------------
-  // Uninstall feedback page (Chromium only)
-  // ----------------------
   if (chrome.runtime.setUninstallURL) {
-    chrome.runtime.setUninstallURL("https://Pro-Bandey.github.io/help/");
+    chrome.runtime.setUninstallURL("https://Pro-Bandey.github.io/HomePage/src/feed.html");
   }
 
-  // ----------------------
-  // Open homepage when extension icon clicked
-  // ----------------------
   if (chrome.action && chrome.tabs) {
     chrome.action.onClicked.addListener(() => {
       const url = chrome.runtime.getURL("./index.html");
@@ -36,20 +20,6 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
     });
   }
 
-  /*
-    // Open homepage on first install  
-    chrome.runtime.onInstalled.addListener((details) => {
-      console.log('Homepage Extension with Context Menu Installed');
-      if (details.reason === 'install') {
-        const url = chrome.runtime.getURL('./wel.html');
-        chrome.tabs.create({ url });
-      }
-    });
-  */
-
-  // ----------------------
-  // Reminder alarm handling
-  // ----------------------
   chrome.alarms.onAlarm.addListener((alarm) => {
     chrome.storage.local.get(alarm.name, (result) => {
       const reminder = result[alarm.name];
@@ -72,34 +42,9 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
     });
   });
 
-  // ----------------------
-  // Handle messages from popup or background
-  // ----------------------
-  /*
-  chrome.runtime.onMessage.addListener((msg, sender) => {
-    if (msg.action === 'openReadingMode' && chrome.sidePanel) {
-      chrome.sidePanel.open({ windowId: sender.tab.windowId });
-      chrome.sidePanel.setOptions({
-        tabId: sender.tab.id,
-        path: './index.html.html',
-        enabled: true
-      });
-    }
 
-    if (msg.action === 'viewSource' && msg.url) {
-      const viewSourceUrl = 'view-source:' + msg.url;
-      chrome.tabs.create({ url: viewSourceUrl });
-    }
-  });
-  */
-
-  // ========================================================================
-  // CONTEXT MENU LOGIC
-  // ========================================================================
-
-  // 1. CREATE MENUS (Inside onInstalled to prevent duplicate errors)
   chrome.runtime.onInstalled.addListener(() => {
-    // Define where menu appears
+
     const MENU_1 = ["action", "page", "selection", "link", "image"];
     const MENU_2 = ["page"];
     const MENU_3 = ["action"];
@@ -125,7 +70,6 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
     console.log("Context menus created successfully.");
   });
 
-  // 2. CLICK HANDLER (Must stay at top-level to catch events)
   chrome.contextMenus.onClicked.addListener((info) => {
     switch (info.menuItemId) {
       case "newtab":
@@ -151,71 +95,49 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
         break;
     }
   });
-
-  // ----------------------
-  // Menu Functions (Keep these as they are)
-  // ----------------------
   function openNewTabPage() {
-    chrome.tabs.create({ url: "chrome://newtab" });
+    chrome.tabs.create({ url: "chrome://newtab" } || {url: "about:home"});
   }
-
   function openOnlinePage() {
     chrome.tabs.create({ url: "https://online-homepage.vercel.app/" });
   }
-
   function openInfoPage() {
     chrome.tabs.create({ url: chrome.runtime.getURL("src/info.html") });
   }
-
   function openPrivacyPage() {
     chrome.tabs.create({ url: chrome.runtime.getURL("src/privacy.html") });
   }
-
   function opentermsPage() {
     chrome.tabs.create({ url: chrome.runtime.getURL("src/terms.html") });
   }
-
   function openlicensePage() {
     chrome.tabs.create({ url: chrome.runtime.getURL("src/license.html") });
   }
-
   function openmoreusPage() {
     chrome.tabs.create({ url: "https://mramzanch.blogspot.com/" });
   }
 }
 
-// ============================================================================
-// PWA-STYLE CACHING LOGIC
-// ============================================================================
 
-// ----------------------
-// INSTALL
-// ----------------------
 self.addEventListener("install", (event) => {
   const urlsToCache = [
-    // Icons
     "../../icons/16.png",
     "../../icons/32.png",
     "../../icons/48.png",
     "../../icons/128.png",
     "../../icons/logo.png",
-    // Root files
     "../../../index.html",
     "../../../wel.html",
-    // Calc
     "../../../calc/calc.html",
     "../../../calc/calc.css",
     "../../../calc/calc.js",
-    // CSS
     "../../css/page.css",
     "../../css/panels.css",
-    // JS
     "../../js/page.js",
     "../../js/menu.js",
     "../../js/panels.js",
   ];
 
-  // Filter invalid URLs (avoid chrome-extension://)
   const validUrls = urlsToCache.filter(
     (url) => !url.startsWith("chrome-extension://")
   );
@@ -229,9 +151,6 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// ----------------------
-// ACTIVATE
-// ----------------------
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
@@ -248,21 +167,14 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// ----------------------
-// FETCH
-// ----------------------
 self.addEventListener("fetch", (event) => {
   const url = event.request.url;
   const isApi = API_URLS.some((api) => url.includes(api));
-
-  // Skip non-HTTP(S) requests (chrome-extension://, data:, etc.)
   if (!url.startsWith("http") && !url.startsWith("./")) {
     return;
   }
-
   event.respondWith(
     (async () => {
-      // Always fetch network for API URLs
       if (isApi) {
         try {
           return await fetch(event.request);
@@ -273,17 +185,11 @@ self.addEventListener("fetch", (event) => {
           });
         }
       }
-
-      // Cache-first strategy for all other requests
       const cachedResponse = await caches.match(event.request);
       if (cachedResponse) return cachedResponse;
-
       try {
         const networkResponse = await fetch(event.request);
-
-        // Skip caching invalid schemes
         if (!url.startsWith("http")) return networkResponse;
-
         const cache = await caches.open(CACHE_KEY);
         if (
           networkResponse &&
@@ -292,7 +198,6 @@ self.addEventListener("fetch", (event) => {
         ) {
           cache.put(event.request, networkResponse.clone());
         }
-
         return networkResponse;
       } catch {
         return new Response("Offline and no cached content available", {

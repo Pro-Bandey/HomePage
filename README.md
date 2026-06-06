@@ -2,21 +2,23 @@
 
 A powerful, modern, and feature-packed home page enhancement built for productivity, speed, and customization.
 
-![Chrome Users](https://img.shields.io/badge/Chrome%20Users-1.2k+-yellow)
-![Online Users](https://img.shields.io/badge/Online%20Users-3.4k+-darkgray)
-![Total Downloads](https://img.shields.io/badge/Downloads-3000+-blue)
-![Daily Installs](https://img.shields.io/badge/Daily%20Visitor-35--40-orange)
+![Chrome Users](https://img.shields.io/badge/Chrome%20Users-2.2k+-yellow)
+![Online Users](https://img.shields.io/badge/Online%20Users-5.4k+-darkgray)
+![Total Downloads](https://img.shields.io/badge/Downloads-8k+-blue)
+![Daily Installs\Download](https://img.shields.io/badge/Daily%20Visitor-50--55-orange)
 ![Version](https://img.shields.io/github/v/release/Pro-Bandey/HomePage?color=f44234)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Maintenance](https://img.shields.io/badge/maintained-yes-success)
 ![Licence](https://img.shields.io/github/license/Pro-Bandey/homepage?color=db4d4d)
 ![Repo Size](https://img.shields.io/github/repo-size/Pro-Bandey/homepage?color=008800)
 
+> [!Note]
+> This project idea and core part are associated with [M Ramzan Ch](https://mramzanch.blogspot.com) and hosted by [Pro Bandey](https://github.com/Pro-Bandey) as brand and trademark but hide identity in software documentation and credits
 
 ### ✨ Core Features
 
 - **🔢 Advanced Calculator**  
-  Includes unit converters and a real-time currency converter.
+  Includes our most accurated [Quantix](https://Pro-Bandey.github.io/Projects/?Pro=Quantix) a unit converters real-time currency converter and advannced calculator.
 
 - **📝 To-Do App with Reminders**  
   Stay organized with smart reminders and a beautifully designed task manager.
@@ -28,7 +30,7 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
   Add, edit, remove, or organize your links through a clean popup interface.
 
 - **📦 CAL – Chrome App Launcher**  
-  A dedicated launcher for Google apps, modeled like the link popup.
+  A dedicated launcher for Google apps, modeled like the link sidepanel.
 
 - **🕒 Responsive Header Clock**  
   A sleek dynamic clock positioned above the search bar.
@@ -38,38 +40,8 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
 
 ---
 
-## 📊 Statistics Overview
-
-Visual insights into user engagement and app performance.
-
-### 📈 Stats Graphs
-
-- **Daily Active Users**  
-- **Feature Usage Analytics**  
-- **Search Engine Preferences**  
-- **Task Completion Tracking**  
-- **Currency Converter Usage**  
-
-> *(Graphs dynamically update based on real user interactions.)*
-
----
-
-## 🏆 Achievements
-
-Unlockable milestones as users explore more of the extension:
-
-- ✔️ First Task Completed  
-- ⭐ 100 Tasks Achieved  
-- 🚀 7-Day Productivity Streak  
-- 🔓 Power User Mode  
-- 📚 All Search Engines Used  
-- 🧮 Advanced Calculator Proficiency  
-
----
-
 ## 🧩 Technologies Used
 
-- **HTML5 / CSS3 / JavaScript**
 - **Chrome Extension APIs**
 - **IndexedDB / LocalStorage**
 - **Web Workers**
@@ -80,11 +52,11 @@ Unlockable milestones as users explore more of the extension:
 
 ## 📥 Downloads
 
-- **Chrome Web Store:** Coming Soon  
-- **Manual Installation (.zip):** Available on Releases  
+- **Chrome Web Store:** Coming Soon
+- **Mozilla Add-ons:** Coming Soon
+- **Manual Installation (.zip):** Available on Releases
 
 ---
-
 
 ## 💬 Feedback & Support
 

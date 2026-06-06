@@ -2,10 +2,10 @@
   "manifest_version": 3,
   "name": "HomePage",
   "short_name": "HomePage",
-  "version": "2025.2.20",
-  "version_name": "v2025.2.20",
+  "version": "2026.3.7",
+  "version_name": "v2026.3.7",
   "author": "MainRoute Core",
-  "description": "A HomePage for Chrome, MS Edge, Opera and Mozilla Firefox developed by MainRoute Core.",
+  "description": "A HomePage Tab for your browser, MS Edge, Opera and Mozilla Firefox",
   "minimum_chrome_version": "130",
   "offline_enabled": true,
   "homepage_url": "https://mainroute-core.github.io/",
@@ -32,6 +32,7 @@
       "512": "./src/assets/icons/logo.png"
     }
   },
+  
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -61,9 +62,11 @@
     "activeTab",
     "scripting"
   ],
+
   "side_panel": {
     "default_path": "./src/open.html"
   },
+
   "host_permissions": [
     "<all_urls>",
     "http://*/**",

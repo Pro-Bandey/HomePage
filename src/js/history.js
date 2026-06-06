@@ -8,20 +8,14 @@ async function loadData() {
         chrome.tabs.query({}),
         chrome.history.search({ text: '', maxResults: 400, startTime: 0 })
     ]);
-
     const openUrls = new Set(tabs.map(t => t.url));
     const merged = [];
-
-    // 1. Add Tabs
     tabs.forEach(t => merged.push({ id: t.id, url: t.url, title: t.title, type: 'tab', ts: Date.now() }));
-
-    // 2. Add History until 300 items
     history.forEach(h => {
         if (!openUrls.has(h.url) && merged.length < 300) {
             merged.push({ id: h.id, url: h.url, title: h.title || h.url, type: 'hist', ts: h.lastVisitTime });
         }
     });
-
     render(merged);
 }
 
@@ -33,8 +27,6 @@ function render(data) {
         const row = document.createElement('li');
         row.className = 'historyListItem';
         row.title = `&fw=700;Click or Right Click On &fw; &cl=var(--accent);${new URL(item.url).hostname}&cl;`;
-        // row.title = 'Right Click to Open | ' + new URL(item.url);
-
         const img = document.createElement('img');
         img.className = 'historyListItemIcon';
         let hostname;
@@ -64,15 +56,11 @@ function render(data) {
         } else {
             img.src = "../src/assets/globe.svg";
         }
-
-
         const info = document.createElement('div');
         info.className = 'historyListItemInfo';
         info.innerHTML = `<p class="historyListItemInfoTitle">${esc(item.title)}</p><span class="historyListItemInfoTitleMeta">${smartDate(item.ts)} • ${new URL(item.url).hostname}</span>`;
-
         const status = document.createElement('span');
         status.className = 'material-icons-round historyListItemInfoStatus';
-
         if (item.type === 'tab') {
             status.textContent = 'ok';
             status.classList.add('historyListItemInfoStatusOpened');
@@ -81,14 +69,11 @@ function render(data) {
             status.textContent = isRec ? 'Recent' : 'RecentOld';
             status.classList.add(isRec ? 'historyListItemInfoStatusRecent' : 'historyListItemInfoStatusRecentOld');
         }
-
         row.append(img, info, status);
-
         row.oncontextmenu = (e) => {
             e.preventDefault();
             showMenu(e.pageX, e.pageY, item);
         };
-
         historyListBox.appendChild(row);
     });
 
@@ -97,30 +82,21 @@ function render(data) {
 
 function setupActions() {
     const hide = () => hideMenu();
-
-    // Auto-hide on scroll
     document.getElementById('historyListBox').onscroll = hide;
-
-    // Auto-hide on global click
     window.onclick = hide;
-
-    // Menu Item Logic
     document.getElementById('historyListItemMenuOpen').onclick = () => {
         if (!contextItem) return;
         if (contextItem.type === 'tab') chrome.tabs.update(contextItem.id, { active: true });
         else chrome.tabs.getCurrent(t => chrome.tabs.update(t.id, { url: contextItem.url }));
     };
-
     document.getElementById('historyListItemMenuNew').onclick = () => {
         if (contextItem) chrome.tabs.create({ url: contextItem.url });
     };
-
     document.getElementById('historyListItemMenuIncog').onclick = () => {
         if (contextItem && !contextItem.url.startsWith('chrome')) {
             chrome.windows.create({ url: contextItem.url, incognito: true });
         }
     };
-
     document.getElementById('historyListItemMenuDel').onclick = () => {
         if (contextItem.type === 'tab') chrome.tabs.remove(contextItem.id, loadData);
         else chrome.history.deleteUrl({ url: contextItem.url }, loadData);
@@ -131,23 +107,17 @@ function showMenu(x, y, item) {
     contextItem = item;
     const m = document.getElementById('historyListItemMenu');
     m.style.display = 'block';
-
     if (x + 180 > window.innerWidth) x -= 180;
     if (y + 150 > window.innerHeight) y -= 150;
-
     m.style.left = x + 'px';
     m.style.top = y + 'px';
-
     clearTimeout(menuTimer);
     menuTimer = setTimeout(hideMenu, 5000);
 }
-
 function hideMenu() {
     document.getElementById('historyListItemMenu').style.display = 'none';
 }
-
 function esc(t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
-
 function smartDate(ts) {
     const d = new Date(ts);
     const diff = Date.now() - ts;

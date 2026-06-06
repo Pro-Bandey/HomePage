@@ -1,5 +1,4 @@
 
-/*--- Custom Link Management ---*/
 document.addEventListener("DOMContentLoaded", function () {
   var e = document.getElementById("more");
   const t = document.getElementById("overlayBar"),
@@ -83,20 +82,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       card.className = "link-card";
       card.title = e.name;
-
-      // ✅ Direct structure, no inner "link-content"
       card.innerHTML = `
         <div class="icon" style="background:${bg};color:${textColor};">${fallback}</div>
         <p class="link-label">${e.name}</p>
         <button class="menu-btn" data-index="${t}">&#8942;</button>
       `;
-
-      // Left-click: open link
       card.addEventListener("click", (ev) => {
         if (!ev.target.classList.contains("menu-btn")) w(t, false);
       });
 
-      // Right-click: context menu
       card.addEventListener("contextmenu", (ev) => {
         ev.preventDefault();
         L();
@@ -115,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
         h = cm;
         cm.style.visibility = "hidden";
         cm.style.display = "flex";
-
         requestAnimationFrame(() => {
           const rect = cm.getBoundingClientRect();
           let left = ev.pageX, top = ev.pageY;
@@ -127,7 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
           cm.style.top = top + "px";
           cm.style.visibility = "visible";
         });
-
         cm.querySelectorAll(".menu-item").forEach((btn) => {
           btn.addEventListener("click", (evt) => {
             const action = evt.target.dataset.action,
@@ -154,8 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         });
       });
-
-      // Menu button click
       card.querySelector(".menu-btn").addEventListener("click", (ev) => {
         ev.stopPropagation();
         L();
@@ -212,10 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         });
       });
-
       n.appendChild(card);
-
-      // favicon + fallback handling (unchanged)
       const iconEl = card.querySelector(".icon"),
         labelEl = card.querySelector(".link-label");
       if (iconEl && labelEl)
@@ -268,7 +255,6 @@ document.addEventListener("DOMContentLoaded", function () {
           tryNext();
         }
     });
-
     const add = document.createElement("div");
     add.className = "link-card add-card";
     add.title = "Click To Add New Shortcut";
@@ -277,14 +263,12 @@ document.addEventListener("DOMContentLoaded", function () {
     n.appendChild(add);
     k(y);
   }
-
   function L() {
     if (h && h.parentNode) {
       h.parentNode.removeChild(h);
       h = null;
     }
   }
-
   function w(e, n = !1) {
     const url = y[e].url;
     if (chrome?.tabs)
@@ -294,7 +278,6 @@ document.addEventListener("DOMContentLoaded", function () {
     t.style.display = "none";
     L();
   }
-
   function B() {
     f = null;
     o.value = "";
@@ -305,12 +288,10 @@ document.addEventListener("DOMContentLoaded", function () {
     l.style.display = "flex";
     o.focus();
   }
-
   function I() {
     l.style.display = "none";
     f = null;
   }
-
   r.addEventListener("click", function () {
     const name = o.value.trim();
     let url = c.value.trim(),
@@ -385,14 +366,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 (function () {
-  // ===== Variables =====
   let launcherLinks = [];
   let currentIndex = null;
   let editingIndex = null;
   let deletingIndex = null;
   let contextMenuElement = null;
 
-  // Elements (launcher.js IDs)
   const grid = document.getElementById("cal-link-grid");
   const contextMenu = document.getElementById("cal-contextMenu");
   const addBtn = document.getElementById("cal-add-btn");
@@ -406,7 +385,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const saveBtn = document.getElementById("cal-save-btn");
   const cancelBtn = document.getElementById("cal-cancel-btn");
 
-  // Delete confirmation
   const deleteConfirmBox = document.createElement("div");
   deleteConfirmBox.className = "delete-box";
   deleteConfirmBox.style.display = "none";
@@ -424,7 +402,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const deleteConfirmBtn = deleteConfirmBox.querySelector("#deleteConfirmBtn");
   const deleteCancelBtn = deleteConfirmBox.querySelector("#deleteCancelBtn");
 
-  // ===== Utilities =====
   function getRandomColor() {
     const h = Math.floor(Math.random() * 360);
     const s = Math.floor(Math.random() * 50 + 50);
@@ -487,7 +464,6 @@ document.addEventListener("DOMContentLoaded", function () {
       { "name": "Google Photos", "url": "https://photos.google.com", "fallback": "PHO" }
     ];
   }
-  // ===== Grid Rendering =====
   function renderGrid() {
     grid.innerHTML = "";
     launcherLinks.forEach((link, idx) => {
@@ -504,25 +480,19 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="menu-btn">&#8942;</div>
       `;
 
-      // Left-click: open link
       card.addEventListener("click", e => {
         if (!e.target.classList.contains("menu-btn")) openLink(idx, false);
       });
-
-      // Right-click: context menu
       card.addEventListener("contextmenu", e => {
         e.preventDefault();
         currentIndex = idx;
         showContextMenu(e.pageX, e.pageY);
       });
-
-      // Menu button click
       card.querySelector(".menu-btn").addEventListener("click", e => {
         e.stopPropagation();
         currentIndex = idx;
         showContextMenu(e.pageX, e.pageY);
       });
-
       grid.appendChild(card);
       setTimeout(() => loadFavicon(card, link.url, fallback, bg, color), 100);
     });
@@ -553,8 +523,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     tryNext();
   }
-
-  // ===== Context Menu =====
   function showContextMenu(x, y) {
     contextMenu.style.display = "block";
     const menuWidth = contextMenu.offsetWidth;
@@ -574,13 +542,12 @@ document.addEventListener("DOMContentLoaded", function () {
     else if (action === "cal-Newtab") openLink(currentIndex, true);
     else if (action === "cal-incognito") openLink(currentIndex, false, true);
     else if (action === "cal-edit") {
-      editingIndex = currentIndex;  // store exact item being edited
+      editingIndex = currentIndex;
       openModal(true);
     }
     else if (action === "cal-delete") showDeleteConfirm(currentIndex);
   });
 
-  // ===== Delete Confirmation =====
   function showDeleteConfirm(idx) {
     deletingIndex = idx;
     deleteConfirmBox.style.display = "block";
@@ -600,19 +567,16 @@ document.addEventListener("DOMContentLoaded", function () {
     deleteConfirmBox.style.display = "none";
   });
 
-  // ===== Open Link =====
   function openLink(index, newTab = false, incognito = false) {
     if (index < 0 || index >= launcherLinks.length) return;
     const url = launcherLinks[index].url;
 
-    // Handle Incognito
     if (incognito && chrome?.windows) {
       chrome.windows.create({ url: url, incognito: true });
       contextMenu.style.display = "none";
       return;
     }
 
-    // Existing Logic
     if (chrome.tabs) {
       newTab ? chrome.tabs.create({ url }) : chrome.tabs.query({ active: true, currentWindow: true }, t => { chrome.tabs.update(t[0].id, { url }); });
     } else {
@@ -620,7 +584,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     contextMenu.style.display = "none";
   }
-  // ===== Modal =====
   function openModal(edit = false) {
     popupBox.style.display = "flex";
 
@@ -635,9 +598,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     linkTitleInput.focus();
   }
-
-
-
   function closeModal() { popupBox.style.display = "none"; }
   saveBtn.addEventListener("click", () => {
     const name = linkTitleInput.value.trim();
@@ -671,8 +631,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   cancelBtn.addEventListener("click", closeModal);
-
-  // ===== Buttons =====
   addBtn.onclick = () => openModal(false);
   exportBtn.onclick = () => {
     const blob = new Blob([JSON.stringify(launcherLinks, null, 2)], { type: "application/json" });
@@ -693,12 +651,10 @@ document.addEventListener("DOMContentLoaded", function () {
     reader.readAsText(file);
   };
 
-  // ===== Load Immediately =====
   loadLauncherLinks();
 
 })();
 
-// Displays a custom alert box with a given message.
 function showCustomAlert(message) {
   const overlay = document.getElementById("alert-overlay");
   const alertBox = document.getElementById("alert-box");
