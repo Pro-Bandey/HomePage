@@ -18,7 +18,7 @@ A powerful, modern, and feature-packed home page enhancement built for productiv
 ### ✨ Core Features
 
 - **🔢 Advanced Calculator**  
-  Includes our most accurated [Quantix](https://Pro-Bandey.github.io/Projects/?Pro=Quantix) a unit converters real-time currency converter and advannced calculator.
+  Includes our most accurated [Quantix](https://Pro-Bandey.github.io/?id==Quantix) a unit converters real-time currency converter and advannced calculator.
 
 - **📝 To-Do App with Reminders**  
   Stay organized with smart reminders and a beautifully designed task manager.
