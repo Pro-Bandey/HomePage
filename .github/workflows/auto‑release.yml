@@ -3,7 +3,7 @@ name: Auto Releaser By MainRoute Core
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 1,4' # Twice a week
+    - cron: '0 0 * * 0' # Sunday at Midnight
 
 permissions:
   contents: write
