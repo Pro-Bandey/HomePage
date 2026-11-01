@@ -1,0 +1,16 @@
+[
+  { "name": "Facebook", "url": "https://facebook.com", "fallback": "FB" },
+  { "name": "Instagram", "url": "https://instagram.com", "fallback": "Ins" },
+  { "name": "Meta Ai", "url": "https://Meta.ai", "fallback": "MAi" },
+  { "name": "Threads", "url": "https://threads.com", "fallback": "THd" },
+  { "name": "Instagram", "url": "https://telegram.com", "fallback": "Ins" },
+  { "name": "X Twitter", "url": "https://x.com", "fallback": "X" },
+  { "name": "LinkedIn", "url": "https://linkedin.com", "fallback": "Lnk" },
+  { "name": "ChatGpt", "url": "https://chatgpt.com", "fallback": "Gpt" },
+  { "name": "WhatsApp", "url": "https://whatsapp.com", "fallback": "WA" },
+  { "name": "YouTube", "url": "https://youtube.com", "fallback": "YT" },
+  { "name": "TikTok", "url": "https://tiktok.com", "fallback": "TkTk" },
+  { "name": "GitHub", "url": "https://github.com", "fallback": "Git" },
+  { "name": "claude", "url": "https://claude.com", "fallback": "CLD" },
+  { "name": "Copilot", "url": "https://Copilot.ai", "fallback": "CpT" }
+]
